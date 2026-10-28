@@ -1,0 +1,130 @@
+/* La pàgina de l'explorador (perfil.html). Els colors i les fonts són els d'estil.css. */
+.perfil-cap { display: flex; align-items: center; gap: 20px; padding-bottom: 24px }
+.perfil-cap h1 { margin: 4px 0 6px }
+.avatar { width: 96px; height: 96px; flex: none; border-radius: 50%; overflow: hidden; display: grid; place-items: center; background: var(--sup2); border: 3px solid transparent; background: linear-gradient(var(--sup2), var(--sup2)) padding-box, var(--degradat) border-box; font: 800 40px var(--display); color: var(--accent) }
+.avatar img { width: 100%; height: 100%; object-fit: cover }
+.medalles { list-style: none; padding: 4px 2px 14px; margin: 0; display: flex; gap: 10px; overflow-x: auto; scroll-snap-type: x proximity; scrollbar-width: thin; cursor: grab }
+.medalles.arrossegant { cursor: grabbing; scroll-snap-type: none; user-select: none }
+.medalles > li { flex: 0 0 200px; scroll-snap-align: start }
+.titol-carrusel { display: flex; justify-content: space-between; align-items: end; gap: 12px }
+.titol-carrusel h2 { margin-bottom: 10px }
+.fletxes { display: flex; gap: 4px; margin-bottom: 6px }
+.fletxes .icona:disabled { opacity: .3; cursor: default }
+.medalla { background: var(--sup); border: 1px solid var(--linia); border-left: 6px solid var(--nivell, var(--ambre)); border-radius: 12px; padding: 12px; display: flex; flex-direction: column; gap: 2px }
+.medalla span { color: var(--suau); font-size: 15px }
+.medalla.bronze { --nivell: #C98A4B } .medalla.plata { --nivell: #AEB7C2 } .medalla.or { --nivell: var(--ambre) }
+.buida { color: var(--suau) }
+.comarques { display: flex; flex-direction: column; gap: 8px }
+.comarques details { background: var(--sup); border: 1px solid var(--linia); border-radius: 12px; padding: 0 14px }
+.comarques summary { display: grid; grid-template-columns: 1fr auto 20px; gap: 6px 12px; align-items: center; min-height: 48px; padding: 10px 0; cursor: pointer; font-weight: 600; list-style: none }
+.comarques summary::-webkit-details-marker { display: none }
+.comarques summary::after { content: ""; width: 10px; height: 10px; border: solid var(--suau); border-width: 0 2px 2px 0; transform: rotate(45deg); transition: transform .3s var(--corba); justify-self: center; grid-row: 1; grid-column: 3 }
+.comarques details[open] summary::after { transform: rotate(225deg) }
+.comarques summary .compte { color: var(--suau); font-weight: 400 }
+.barra-progres { grid-column: 1 / -1; height: 6px; border-radius: 3px; --progres: 0%; background: linear-gradient(90deg, #E7A53B, var(--ambre) var(--progres), var(--linia) var(--progres)) }
+.vist .barra-progres { --progres: var(--fi) }
+.comarques .municipis { list-style: none; margin: 0 0 14px; padding: 0; display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 15px; color: var(--cos-text) }
+.crida { margin-top: 48px }
+.crida p { margin: 0 }
+@media (max-width: 560px) { .perfil-cap { flex-direction: column; align-items: flex-start } }
+/* Cercador */
+.cerca { margin-top: 20px; gap: 8px }
+.cerca label { font: 700 13px var(--display); letter-spacing: .14em; text-transform: uppercase; color: var(--suau) }
+.cerca .missatge:empty { display: none }
+.resultats { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px }
+.resultats:empty { display: none }
+.resultats a { position: relative; display: flex; justify-content: space-between; align-items: center; gap: 12px; min-height: 48px; padding: 0 14px; border-radius: 10px; background: var(--sup2); border: 1px solid var(--linia); color: var(--text); text-decoration: none }
+.resultats a:hover { border-color: var(--ambre-f) }
+.resultats a span { color: var(--suau); font-size: 14px }
+.nomes-cerca .avatar, .nomes-cerca .perfil-cap .eti { display: none }
+.nomes-cerca .perfil-cap { order: -1; padding-bottom: 0 }
+.nomes-cerca main { display: flex; flex-direction: column }
+.tipus-compte { background: var(--sup2); color: var(--suau); margin-bottom: 10px }
+/* Logros: una línia de temps per mesos */
+.xips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px }
+.xip { min-height: 48px; padding: 0 16px; border-radius: 999px; border: 1px solid var(--linia); background: var(--fons); color: var(--suau); font: 600 15px var(--cos); cursor: pointer }
+.xip[aria-pressed="true"] { background: var(--degradat); border-color: transparent; color: var(--tinta) }
+#llista-logros { transition: opacity .18s, transform .18s }
+#llista-logros.canvia { opacity: 0; transform: translateY(8px) }
+h3.mes { font: 700 13px var(--display); letter-spacing: .14em; text-transform: uppercase; color: var(--suau); margin: 22px 0 8px }
+h3.mes::first-letter { text-transform: uppercase }
+.logros { list-style: none; margin: 0; padding: 0 0 0 18px; border-left: 2px solid var(--linia); display: flex; flex-direction: column; gap: 10px }
+.logro { position: relative; display: grid; grid-template-columns: 64px 1fr; gap: 12px; align-items: baseline; background: var(--sup); border: 1px solid var(--linia); border-radius: 12px; padding: 12px 14px }
+.logro::before { content: ""; position: absolute; left: -26px; top: 18px; width: 12px; height: 12px; border-radius: 50%; background: var(--punt, var(--suau)); box-shadow: 0 0 0 3px var(--fons) }
+.logro time { color: var(--suau); font-size: 14px; white-space: nowrap }
+.logro div { display: flex; flex-direction: column }
+.logro .que { font: 700 12px var(--display); letter-spacing: .1em; text-transform: uppercase; color: var(--punt, var(--suau)) }
+.logro b { font-size: 18px }
+.logro .detall { color: var(--suau); font-size: 14px }
+.comarca { --punt: #7FC8A9 } .complet { --punt: var(--ambre) } .municipi { --punt: #8FB3E8 }
+[data-tema="clar"] .comarca { --punt: #217A55 } [data-tema="clar"] .complet { --punt: #8A5C00 } [data-tema="clar"] .municipi { --punt: #2A62A8 }
+.medalla.bronze { --punt: #C98A4B } .medalla.plata { --punt: #C5CCD6 } .medalla.or { --punt: var(--ambre) }
+[data-tema="clar"] .medalla.bronze { --punt: #8C5420 } [data-tema="clar"] .medalla.plata { --punt: #5F6A78 } [data-tema="clar"] .medalla.or { --punt: #8A5C00 }
+/* Mapa */
+.mapa { background: var(--sup); border: 1px solid var(--linia); border-radius: 16px; padding: 10px }
+.mapa svg { display: block; width: 100%; height: auto }
+.mapa path { stroke-width: 1.2; stroke-linejoin: round }
+.mapa { --boira: #1A1F28; --vora-boira: #232A36 } [data-tema="clar"] .mapa, [data-tema="clar"] .llegenda { --boira: #ECECEC; --vora-boira: #DADADA }
+.mapa .boira { fill: var(--boira); stroke: var(--vora-boira) }
+.mapa .descobert { stroke: var(--fons) }
+.g0 { fill: #6B7584; background: #6B7584 } .g1 { fill: #8E7A45; background: #8E7A45 }
+[data-tema="clar"] .g0 { fill: #A9AFB8; background: #A9AFB8 } [data-tema="clar"] .g1 { fill: #F5DE9C; background: #F5DE9C } [data-tema="clar"] .g2 { fill: #F2C969; background: #F2C969 }
+.g2 { fill: #C29A3E; background: #C29A3E } .g3 { fill: var(--ambre); background: var(--ambre) }
+.llegenda { list-style: none; padding: 0; margin: 10px 0 0; display: flex; flex-wrap: wrap; gap: 6px 18px; color: var(--suau); font-size: 14px }
+.llegenda i { display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-right: 6px; vertical-align: -1px }
+.llegenda i.boira { background: var(--boira, #1A1F28); border: 1px solid var(--vora-boira, #2E3746) }
+/* Col·lecció */
+.grup h3 { font-size: 16px; color: var(--suau); margin: 20px 0 8px }
+.objectes { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(104px, 1fr)); gap: 8px }
+.objectes > li { display: flex }
+.objecte { width: 100%; min-height: 48px; border-radius: 18px; padding: 12px 8px; display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center; color: var(--text); font: inherit; cursor: zoom-in }
+.objecte img { width: 56px; height: 56px; object-fit: contain }
+.objectes.tipus-portada img { width: 48px; height: 64px; object-fit: cover; border-radius: 4px }
+.objecte .mostra { width: 40px; height: 40px; border-radius: 50%; margin: 8px 0 }
+.objecte b { font-size: 14px; line-height: 1.25 }
+.insignia.comuna, .insignia.inicial { background: var(--linia); color: var(--suau) } .insignia.rara { background: #3D5A80; color: #fff } .insignia.llegendaria { background: var(--degradat); color: var(--tinta) }
+.objecte .insignia { font-size: 10px; padding: 2px 12px 2px 8px }
+.objecte.llegendaria { background: linear-gradient(var(--sup2), var(--sup2)) padding-box, var(--degradat) border-box; border: 2px solid transparent }
+@media (max-width: 560px) { .logro { grid-template-columns: 1fr; gap: 2px } }
+.nomes-cerca .cerca label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%) }
+/* Cercador: estat de càrrega */
+.camp-cerca { position: relative }
+.giny { position: absolute; right: 44px; top: 50%; width: 18px; height: 18px; margin-top: -9px; border-radius: 50%; border: 2px solid var(--linia); border-top-color: var(--accent); opacity: 0; transition: opacity .2s }
+.cercant .giny { opacity: 1; animation: gira .8s linear infinite }
+@keyframes gira { to { transform: rotate(360deg) } }
+/* Marquee dels darrers logros */
+.marquee { display: none; overflow: hidden; margin: 0 0 16px; padding: 10px 0; border-block: 1px solid var(--linia);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent) }
+.marquee.actiu { display: block }
+.cinta { display: flex; gap: 32px; width: max-content; animation: cinta var(--durada, 40s) linear infinite }
+.marquee:hover .cinta, .overlay-actiu .cinta { animation-play-state: paused }
+.cinta span { font: 700 13px var(--display); letter-spacing: .08em; text-transform: uppercase; color: var(--punt, var(--suau)); white-space: nowrap }
+.cinta span::before { content: "◆"; margin-right: 12px; font-size: 9px; vertical-align: 2px }
+@keyframes cinta { to { transform: translateX(calc(-50% - 16px)) } }
+/* Visor de la col·lecció */
+.visor { border: 0; padding: 0; background: none; width: min(92vw, 420px); overflow: visible; color: var(--text) }
+.visor::backdrop { background: rgba(5, 7, 10, .72); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px) }
+.visor[open] { animation: visor .35s var(--corba) }
+.visor figure { margin: 0; padding: 28px 20px 20px; border-radius: 24px; background: var(--sup); border: 1px solid var(--linia); box-shadow: var(--ombra); display: flex; flex-direction: column; align-items: center; gap: 14px }
+.visor .peca { display: grid; place-items: center; width: 220px; height: 220px; touch-action: pan-y }
+.visor .peca img { max-width: 100%; max-height: 100%; object-fit: contain; animation: visor .3s var(--corba) }
+.visor .peca .mostra { width: 140px; height: 140px; border-radius: 50% }
+.visor figcaption { display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center }
+.visor figcaption b { font: 800 22px var(--display) }
+.visor .posicio { color: var(--suau); font-size: 14px }
+.visor .tanca { position: absolute; right: 8px; top: 8px }
+.visor .anterior, .visor .seguent { position: absolute; top: 40%; background: var(--sup2) }
+.visor .anterior { left: -8px } .visor .seguent { right: -8px }
+@keyframes visor { from { opacity: 0; transform: scale(.94) } }
+.crida .ma { display: block; margin-top: 4px; font-size: 30px; transform: rotate(-2deg); transform-origin: left }
+.cerca.vidre, .crida.vidre { background: var(--vidre) }
+/* Rànquing */
+.ranquing { list-style: none; margin: 8px 0 0; padding: 0; display: flex; flex-direction: column; gap: 8px }
+.ranquing a { display: grid; grid-template-columns: 48px 1fr auto; align-items: center; gap: 12px; min-height: 56px; padding: 6px 16px 6px 8px;
+  border-radius: 14px; background: var(--sup); border: 1px solid var(--linia); color: var(--text); text-decoration: none }
+.ranquing .posicio { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: var(--sup2); font: 800 16px var(--display); font-variant-numeric: tabular-nums }
+.ranquing .posicio.or { background: var(--degradat); color: var(--tinta) }
+.ranquing .posicio.plata { background: #C9D1DC; color: #111 }
+.ranquing .posicio.bronze { background: #C98A55; color: #111 }
+.ranquing .nom { font-weight: 700; overflow: hidden; text-overflow: ellipsis; white-space: nowrap }
+.ranquing .valor { color: var(--suau); font-size: 15px; font-variant-numeric: tabular-nums; white-space: nowrap }

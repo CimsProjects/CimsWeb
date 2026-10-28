@@ -1,0 +1,121 @@
+/* Efectes visuals de la web: navegació, superfícies, microinteraccions i moviment. Amb «reduir moviment», tot quiet
+   (al final del fitxer). */
+
+/* Navegació: píndola flotant de vidre ---------------------------------------------------------------------- */
+.barra { position: sticky; top: 12px; z-index: 20; display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  max-width: 900px; margin: 12px auto 0; padding: 8px 8px 8px 20px; border-radius: 999px;
+  background: var(--vidre); border: 1px solid var(--vora-vidre); box-shadow: var(--ombra);
+  -webkit-backdrop-filter: blur(16px) saturate(1.6); backdrop-filter: blur(16px) saturate(1.6) }
+.marca { font: 800 15px var(--display); letter-spacing: .1em; text-transform: uppercase; text-decoration: none;
+  background: var(--degradat-text); -webkit-background-clip: text; background-clip: text; color: transparent; white-space: nowrap }
+.barra nav { display: flex; gap: 4px }
+.barra nav a { position: relative; display: inline-flex; align-items: center; min-height: 48px; padding: 0 14px; color: var(--suau); text-decoration: none; font-weight: 600; border-radius: 999px }
+.barra nav a:hover, .barra nav a[aria-current="page"] { color: var(--text) }
+.barra nav a::after { content: ""; position: absolute; left: 14px; right: 14px; bottom: 10px; height: 2px; border-radius: 2px; background: var(--degradat);
+  transform: scaleX(0); transform-origin: left; transition: transform .35s var(--corba) }
+.barra nav a:hover::after, .barra nav a[aria-current="page"]::after { transform: scaleX(1) }
+.accions { display: flex; align-items: center; gap: 4px }
+.icona { display: inline-grid; place-items: center; width: 48px; height: 48px; border-radius: 50%; border: 0; background: none; color: var(--text); cursor: pointer }
+.icona:hover { background: var(--sup2) }
+.icona svg { width: 22px; height: 22px }
+.obre-menu { display: none }
+/* Desplegable del tema */
+.desplegable { position: relative }
+.desplegable ul { position: absolute; right: 0; top: calc(100% + 8px); min-width: 180px; list-style: none; margin: 0; padding: 6px;
+  border-radius: 16px; background: var(--sup); border: 1px solid var(--linia); box-shadow: var(--ombra);
+  opacity: 0; visibility: hidden; transform: translateY(-8px); transition: opacity .2s, transform .25s var(--corba), visibility 0s .25s }
+.desplegable.obert ul { opacity: 1; visibility: visible; transform: none; transition: opacity .2s, transform .25s var(--corba) }
+.desplegable button[role="menuitemradio"] { width: 100%; min-height: 48px; padding: 0 12px; border: 0; border-radius: 10px; background: none; color: var(--text); font: 600 15px var(--cos); text-align: left; cursor: pointer; display: flex; justify-content: space-between; align-items: center }
+.desplegable button[role="menuitemradio"]:hover { background: var(--sup2) }
+.desplegable button[aria-checked="true"]::after { content: "●"; color: var(--accent); font-size: 10px }
+/* Menú mòbil a pantalla completa */
+@media (max-width: 640px) {
+  .barra { margin: 10px 12px 0; padding-left: 16px }
+  .obre-menu { display: inline-grid }
+  .barra nav { position: fixed; inset: 0; z-index: -1; flex-direction: column; justify-content: center; align-items: flex-start; gap: 8px; padding: 96px 28px 40px;
+    background: var(--fons); opacity: 0; visibility: hidden; transition: opacity .3s, visibility 0s .3s }
+  .barra nav a { font: 800 34px var(--display); color: var(--text); opacity: 0; transform: translateY(16px); transition: opacity .4s, transform .5s var(--corba); transition-delay: calc(var(--i, 0) * 70ms) }
+  .barra nav a::after { bottom: 6px }
+  .menu-obert .barra nav { opacity: 1; visibility: visible; transition: opacity .3s }
+  .menu-obert .barra nav a { opacity: 1; transform: none }
+  .menu-obert { overflow: hidden }
+}
+/* Tornar amunt */
+.amunt { visibility: hidden; position: fixed; right: 16px; bottom: 16px; z-index: 15; width: 52px; height: 52px; border-radius: 50%; border: 1px solid var(--vora-vidre);
+  background: var(--vidre); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); color: var(--text); box-shadow: var(--ombra); cursor: pointer;
+  display: grid; place-items: center; opacity: 0; transform: translateY(16px) scale(.9); pointer-events: none; transition: opacity .3s, transform .35s var(--corba) }
+.amunt.visible { visibility: visible; opacity: 1; transform: none; pointer-events: auto }
+.amunt svg { width: 22px; height: 22px }
+
+/* Fons: el mapa de Catalunya amb una deriva lenta i un vel per sobre ------------------------------------- */
+.fons { position: fixed; inset: 0; z-index: -2; overflow: hidden; pointer-events: none }
+.fons img { position: absolute; width: 150vmax; height: auto; left: 50%; top: 50%; translate: -50% -50%; opacity: .5;
+  animation: deriva 60s ease-in-out infinite alternate; transform: translateY(var(--parallax-fons, 0)); will-change: transform }
+.fons::after { content: ""; position: absolute; inset: 0; background: var(--vel) }
+.overlay-actiu .fons img { animation-play-state: paused }
+@keyframes deriva { from { scale: 1; rotate: -2deg; translate: calc(-50% - 2vw) -50% } to { scale: 1.12; rotate: 2deg; translate: calc(-50% + 2vw) -52% } }
+
+/* Pantalla de càrrega (només a perfil.html) --------------------------------------------------------------- */
+.carrega { display: none }
+.amb-carrega .carrega { display: grid; position: fixed; inset: 0; z-index: 50; place-items: center; background: var(--fons); transition: opacity .6s, visibility 0s .6s }
+.carrega.surt { opacity: 0; visibility: hidden }
+.carrega .escena { perspective: 700px; width: min(56vw, 240px) }
+.carrega svg { width: 100%; overflow: visible; transform-style: preserve-3d; animation: escena 2.1s var(--corba) both }
+.carrega .capa { transform-box: view-box; transform-style: preserve-3d; animation: capa 1.6s var(--corba) both }
+.carrega .capa-catalunya { --z: -90px; animation-delay: .05s } .carrega .capa-vidre { --z: 0px; animation-delay: .2s } .carrega .capa-fanal { --z: 90px; animation-delay: .35s }
+.carrega path { stroke-dasharray: 1 1; stroke-dashoffset: 1; fill-opacity: 0; animation: dibuixa 1.3s ease-out forwards, omple .6s 1.2s forwards }
+.carrega .capa-catalunya path { fill: var(--sup2); stroke: var(--accent); stroke-width: .8 }
+.carrega .capa-vidre path { fill: var(--ambre); stroke: var(--ambre); filter: drop-shadow(0 0 6px var(--ambre)) }
+.carrega .capa-fanal path { stroke: var(--text) } .carrega .capa-fanal path[fill]:not([fill="none"]) { fill: var(--text) }
+.carrega .marca { display: block; margin-top: 18px; text-align: center; animation: focus 1s .9s both }
+.carrega .salta { position: absolute; right: 20px; bottom: 20px }
+@keyframes dibuixa { to { stroke-dashoffset: 0 } }
+@keyframes omple { to { fill-opacity: 1 } }
+@keyframes capa { from { transform: translate3d(0, 0, var(--z)); opacity: 0 } 30% { opacity: 1 } to { transform: none } }
+@keyframes escena { from { transform: rotateX(52deg) rotateZ(-18deg) scale(.85) } to { transform: none } }
+@keyframes focus { from { filter: blur(10px); opacity: 0 } to { filter: none; opacity: 1 } }
+/* La pàgina passa de desenfocada a nítida quan marxa la càrrega */
+main, .barra { transition: filter .8s var(--corba), opacity .8s, transform .8s var(--corba) }
+.amb-carrega main, .amb-carrega .barra { filter: blur(14px); opacity: .4; transform: scale(.985) }
+
+/* Superfícies --------------------------------------------------------------------------------------------- */
+.vidre { background: var(--vidre); border: 1px solid var(--vora-vidre); -webkit-backdrop-filter: blur(14px) saturate(1.5); backdrop-filter: blur(14px) saturate(1.5) }
+/* Argila: relleu tou, amb llum i ombra interiors */
+.argila { border: 0; background: var(--sup2);
+  box-shadow: 0 8px 18px var(--argila-ombra), inset 0 2px 3px var(--argila-llum), inset 0 -6px 10px var(--argila-ombra) }
+/* Insígnies retallades */
+.insignia { display: inline-block; padding: 4px 16px 4px 12px; font: 700 12px var(--display); letter-spacing: .08em; text-transform: uppercase;
+  clip-path: polygon(0 0, 100% 0, calc(100% - 8px) 50%, 100% 100%, 0 100%) }
+
+/* Microinteraccions --------------------------------------------------------------------------------------- */
+.boto, .xip, .icona, .amunt, .resultats a { transition: transform .2s var(--corba), box-shadow .2s, background-color .2s, border-color .2s }
+.boto:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(242, 181, 68, .28) }
+.boto:active, .xip:active, .icona:active, .amunt:active, .resultats a:active { transform: scale(.97) }
+.boto .fletxa { transition: transform .25s var(--corba) }
+.boto:hover .fletxa { transform: translateX(4px) }
+/* Targetes que s'eleven i una brillantor que segueix el cursor */
+.brilla { position: relative; isolation: isolate; transition: transform .25s var(--corba), box-shadow .25s, border-color .25s }
+.brilla::after { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: -1; opacity: 0; transition: opacity .3s;
+  background: radial-gradient(220px circle at var(--x, 50%) var(--y, 50%), var(--brillantor), transparent 70%) }
+.brilla:hover { transform: translateY(-3px); box-shadow: var(--ombra); border-color: var(--ambre-f) }
+.brilla:hover::after { opacity: 1 }
+/* Zoom des del cursor */
+.zoom { overflow: hidden }
+.zoom img { transition: transform .35s var(--corba); transform-origin: var(--x, 50%) var(--y, 50%) }
+.zoom:hover img { transform: scale(1.35) }
+
+/* Moviment en fer scroll ---------------------------------------------------------------------------------- */
+.revela { opacity: 0; transform: translateY(24px); transition: opacity .7s var(--corba), transform .7s var(--corba); transition-delay: calc(var(--i, 0) * 60ms) }
+.revela.vist { opacity: 1; transform: none }
+.barra-progres { transition: --progres 1.2s var(--corba) }
+@property --progres { syntax: "<percentage>"; inherits: false; initial-value: 0% }
+
+/* Accessibilitat del moviment ----------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; transition-delay: 0s !important; scroll-behavior: auto !important }
+  .revela { opacity: 1; transform: none }
+  .fons img { animation: none; transform: none }
+  .brilla:hover, .boto:hover { transform: none }
+  .zoom:hover img { transform: none }
+}
+@media (max-width: 640px) { .menu-obert .barra { -webkit-backdrop-filter: none; backdrop-filter: none; background: transparent; border-color: transparent; box-shadow: none } }

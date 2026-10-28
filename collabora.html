@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Espai de col·laboració · Bocins de Catalunya</title>
+<link rel="icon" href="icona.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icona-180.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500..900&family=Caveat:wght@600&family=Instrument+Sans:wght@400..700&display=swap">
+<link rel="stylesheet" href="estil.css">
+<link rel="stylesheet" href="efectes.css">
+<script>try{var t=localStorage.getItem('bocins-tema')}catch(e){}document.documentElement.dataset.tema=t==='clar'||t==='fosc'?t:matchMedia('(prefers-color-scheme: light)').matches?'clar':'fosc'</script>
+<script type="module" src="efectes/comuns.js"></script>
+<script src="config.js"></script>
+<script src="collabora.js" defer></script>
+</head>
+<body>
+<header class="barra">
+  <a class="marca" href="./">Bocins de Catalunya</a>
+  <nav id="menu" aria-label="Seccions">
+    <a href="./">Inici</a>
+    <a href="perfil.html">Exploradors</a>
+    <a href="ranquing.html">Rànquing</a>
+    <a href="collabora.html" aria-current="page">Espai de col·laboració</a>
+  </nav>
+  <div class="accions">
+    <div class="desplegable" id="tema">
+      <button class="icona" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="tema-menu" aria-label="Tema de colors">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 4a8 8 0 0 1 0 16Z" fill="currentColor"/></svg>
+      </button>
+      <ul id="tema-menu" role="menu" aria-label="Tema de colors">
+        <li role="none"><button type="button" role="menuitemradio" aria-checked="false" data-tema="auto">Automàtic</button></li>
+        <li role="none"><button type="button" role="menuitemradio" aria-checked="false" data-tema="clar">Clar</button></li>
+        <li role="none"><button type="button" role="menuitemradio" aria-checked="false" data-tema="fosc">Fosc</button></li>
+      </ul>
+    </div>
+    <button class="icona obre-menu" id="obre-menu" type="button" aria-expanded="false" aria-controls="menu" aria-label="Obre el menú">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16M4 16h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+</header>
+<main>
+  <section class="portada">
+    <span class="eti">Espai de col·laboració</span>
+    <h1 id="titol">Entreu amb el vostre codi</h1>
+    <p id="subtitol">El codi us l'hem enviat per correu. Si no el teniu, demaneu-lo.</p>
+  </section>
+
+  <form id="entrada">
+    <label>Codi de col·laboració
+      <input id="codi" name="codi" autocomplete="off" required>
+    </label>
+    <button class="boto" type="submit">Entra</button>
+    <p class="missatge" id="msg-entrada" role="status"></p>
+  </form>
+
+  <div id="espai" hidden>
+    <p><button class="boto secundari" type="button" id="surt">Surt</button></p>
+
+    <h2>Persona de contacte</h2>
+    <p>Perquè us puguem respondre i avisar quan surtin les propostes a l'app.</p>
+    <form id="contacte">
+      <div class="fila">
+        <label>Nom i cognoms <input name="nom" required maxlength="120" autocomplete="name"></label>
+        <label>Càrrec o departament <input name="carrec" maxlength="120"></label>
+      </div>
+      <label>Correu electrònic <input name="correu" type="email" required maxlength="200" autocomplete="email"></label>
+      <label class="casella"><input type="checkbox" name="consentiment" required>
+        <span>Accepto que es guardin aquestes dades només per contactar amb mi sobre aquest projecte. No es comparteixen amb ningú i es poden esborrar demanant-ho.</span>
+      </label>
+      <button class="boto" type="submit">Desa el contacte</button>
+      <p class="missatge" id="msg-contacte" role="status"></p>
+    </form>
+
+    <h2>La medalla de la comarca</h2>
+    <p>Què ha de sortir al dibuix de la medalla? El més representatiu: un monument, un paisatge, una festa, un producte… Podeu fer més d'una proposta.</p>
+    <form id="medalla">
+      <label>Què hi ha de sortir? <textarea name="que_hi_surt" required maxlength="1000"></textarea></label>
+      <label>Per què és representatiu? <small>Opcional</small><textarea name="per_que" maxlength="1000"></textarea></label>
+      <label>Enllaç a una imatge de referència <small>Opcional: una foto o un dibuix que ens ajudi a fer-lo.</small><input name="referencia" type="url" maxlength="500"></label>
+      <button class="boto" type="submit">Envia la proposta</button>
+      <p class="missatge" id="msg-medalla" role="status"></p>
+    </form>
+    <ul class="llista" id="llista-medalla" aria-label="Propostes de medalla enviades"></ul>
+
+    <h2>Missions</h2>
+    <p>Llocs emblemàtics, festes i tradicions dels municipis. Cada missió és una cosa concreta que la gent pot fer quan hi va.</p>
+    <form id="missio">
+      <label>Municipi <select name="codi_ine" id="municipi" required></select></label>
+      <label>Què s'ha de fer? <small>Curt, com un títol. Per exemple: «Puja al campanar» o «Visita el mercat setmanal».</small><input name="titol" required maxlength="120"></label>
+      <label>Descripció <small>Opcional: què hi ha, per què val la pena, horaris…</small><textarea name="descripcio" maxlength="1000"></textarea></label>
+      <div class="fila">
+        <label>On és? <small>Adreça o com s'hi arriba</small><input name="lloc" maxlength="300"></label>
+        <label>Coordenades <small>Opcional: latitud i longitud, com «41.93, 2.25»</small><input name="coordenades" inputmode="decimal" maxlength="60"></label>
+      </div>
+      <label>Com es comprova que s'ha fet?
+        <select name="prova">
+          <option value="GPS">Anant al lloc (GPS)</option>
+          <option value="FOTO">Fent-hi una foto</option>
+          <option value="QR">Llegint un codi QR que hi posaríem</option>
+          <option value="ALTRE">Una altra manera (expliqueu-la a la descripció)</option>
+        </select>
+      </label>
+      <div class="fila">
+        <label>Si és una festa o fira: primer dia <input name="data_inici" type="date"></label>
+        <label>Últim dia <input name="data_fi" type="date"></label>
+      </div>
+      <button class="boto" type="submit">Envia la missió</button>
+      <p class="missatge" id="msg-missio" role="status"></p>
+    </form>
+    <ul class="llista" id="llista-missions" aria-label="Missions enviades"></ul>
+  </div>
+</main>
+<button class="amunt" id="amunt" type="button" aria-label="Torna amunt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+<footer>Bocins de Catalunya</footer>
+</body>
+</html>

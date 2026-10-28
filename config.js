@@ -1,0 +1,1 @@
+window.CONFIG = { supabaseUrl: 'https://mjdbqbcyensvyvhzegrc.supabase.co', anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1qZGJxYmN5ZW5zdnl2aHplZ3JjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODk5MTcyNzEsImV4cCI6MjEwNTQ5MzI3MX0.6y2fN-z7voI1K_43oKvpnZd4804egLKhDQDdrccRGy4' };

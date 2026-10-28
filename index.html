@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bocins de Catalunya · Col·labora</title>
+<link rel="icon" href="icona.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icona-180.png">
+<meta name="description" content="Una app per recórrer els 947 municipis de Catalunya com en un joc. Busquem la col·laboració dels consells comarcals i els ajuntaments.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500..900&family=Caveat:wght@600&family=Instrument+Sans:wght@400..700&display=swap">
+<link rel="stylesheet" href="estil.css">
+<link rel="stylesheet" href="efectes.css">
+<script>try{var t=localStorage.getItem('bocins-tema')}catch(e){}document.documentElement.dataset.tema=t==='clar'||t==='fosc'?t:matchMedia('(prefers-color-scheme: light)').matches?'clar':'fosc'</script>
+<script type="module" src="efectes/comuns.js"></script>
+</head>
+<body>
+<header class="barra">
+  <a class="marca" href="./">Bocins de Catalunya</a>
+  <nav id="menu" aria-label="Seccions">
+    <a href="./" aria-current="page">Inici</a>
+    <a href="perfil.html">Exploradors</a>
+    <a href="ranquing.html">Rànquing</a>
+    <a href="collabora.html">Espai de col·laboració</a>
+  </nav>
+  <div class="accions">
+    <div class="desplegable" id="tema">
+      <button class="icona" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="tema-menu" aria-label="Tema de colors">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 4a8 8 0 0 1 0 16Z" fill="currentColor"/></svg>
+      </button>
+      <ul id="tema-menu" role="menu" aria-label="Tema de colors">
+        <li role="none"><button type="button" role="menuitemradio" aria-checked="false" data-tema="auto">Automàtic</button></li>
+        <li role="none"><button type="button" role="menuitemradio" aria-checked="false" data-tema="clar">Clar</button></li>
+        <li role="none"><button type="button" role="menuitemradio" aria-checked="false" data-tema="fosc">Fosc</button></li>
+      </ul>
+    </div>
+    <button class="icona obre-menu" id="obre-menu" type="button" aria-expanded="false" aria-controls="menu" aria-label="Obre el menú">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16M4 16h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+</header>
+<main>
+  <section class="portada">
+    <span class="eti">Un projecte per als 947 municipis</span>
+    <h1>Recórrer tot Catalunya, poble a poble, com en un joc</h1>
+    <p class="destacat">Bocins de Catalunya és una app per visitar els municipis de Catalunya. Cada visita desbloqueja un tros del mapa i convida a anar al poble del costat.</p>
+    <p><a class="boto" href="collabora.html">Ja tinc un codi de col·laboració</a></p>
+  </section>
+
+  <h2>Qui som</h2>
+  <p>Som el Martí Farran i el Pol Marsol, i ens acabem de graduar en Enginyeria Informàtica. La idea de l'app va ser del Martí, i la fem entre tots dos.</p>
+
+  <h2>El projecte</h2>
+  <p>És una app per a Android. El mapa de Catalunya comença tot cobert de boira, amb els límits reals dels municipis, i cadascú comença pel seu poble.</p>
+  <div class="xifres">
+    <div class="xifra"><b>947</b>municipis</div>
+    <div class="xifra"><b>43</b>comarques</div>
+    <div class="xifra"><b>1</b>passaport per omplir de segells</div>
+  </div>
+  <div class="targetes">
+    <div class="targeta"><h3>Missions</h3><p>Cada municipi té missions: llocs per visitar i coses per fer. Es comproven amb el GPS o amb una foto feta allà mateix.</p></div>
+    <div class="targeta"><h3>El mapa s'obre</h3><p>Les missions donen barretines, i amb les barretines es desbloquegen els municipis veïns. Així el mapa es va descobrint.</p></div>
+    <div class="targeta"><h3>Passaport i medalles</h3><p>Cada municipi visitat posa un segell al passaport, i completar una comarca dona la seva medalla.</p></div>
+  </div>
+  <p style="margin-top:16px">L'app és <b>gratuïta</b>, en català, funciona sense connexió i no té anuncis ni eines per seguir què fa la gent. Qui vulgui donar-hi suport hi podrà fer una donació.</p>
+
+  <h2>Per què ho faig</h2>
+  <p>Vaig passar una mala època i vaig decidir viatjar sol. Però amb els ingressos d'una feina a mitja jornada i les despeses d'un estudiant, no em podia permetre viatjar fora de Catalunya.</p>
+  <p>Va ser llavors quan vaig descobrir que no coneixem on vivim. No vivim a Catalunya: vivim en un poble, d'un municipi, d'una comarca de Catalunya. I vaig decidir recórrer tots els municipis de Catalunya. No sabia que n'hi havia tants: 947, quasi mil.</p>
+  <p>Vaig veure que seria difícil portar un registre fidel d'aquest viatge, i vaig posar en pràctica el que sé d'informàtica per fer-me una aplicació: un registre personal, que la família i els amics poguessin seguir si es volien sumar a veure els meus progressos.</p>
+  <p class="destacat">Però la cosa es va anar embolicant, i ara estic creant un videojoc. La meva intenció és donar a conèixer Catalunya a gent com jo: gent que, tot i haver viscut a Catalunya, no ha viscut Catalunya.</p>
+
+  <h2>Per què necessito la vostra ajuda</h2>
+  <p class="destacat">Us demano ajuda per portar al joc missions pensades per a cada municipi, i perquè hi puguin participar tots els catalans i catalanes. I qualsevol altra ajuda sempre serà benvinguda.</p>
+  <p>Les dades de l'app surten de fonts públiques i obertes: els límits dels municipis, els monuments i els llocs d'interès. Però hi ha coses que només sabeu els qui viviu i treballeu al territori, i no les vull inventar.</p>
+  <div class="targetes">
+    <div class="targeta"><h3>La medalla de la comarca</h3><p>Cada comarca tindrà una medalla amb un dibuix propi. Què és el més representatiu de la vostra comarca? Ho heu de dir vosaltres.</p></div>
+    <div class="targeta"><h3>Missions amb els llocs emblemàtics</h3><p>Els llocs, les festes i les tradicions que valen la pena, perquè la gent que arribi al vostre municipi sàpiga què ha de veure i què ha de fer.</p></div>
+  </div>
+
+  <h2>Què hi guanyeu</h2>
+  <ul>
+    <li>El vostre municipi o comarca surt a l'app amb el distintiu <b>«Municipi col·laborador»</b>, amb la presentació, el web i l'oficina de turisme.</li>
+    <li>Missions oficials, que podeu fer coincidir amb festes i fires, o amb un punt de segellat amb codi QR a l'oficina de turisme.</li>
+    <li>Xifres anònimes de quanta gent visita el municipi amb l'app. Mai no es dona cap xifra de menys de 10 persones.</li>
+    <li>Un cartell amb un codi QR per promocionar-ho.</li>
+  </ul>
+
+  <h2>Com col·laborar</h2>
+  <ol class="passos">
+    <li>Us enviem un <b>codi de col·laboració</b>, un per comarca (als consells comarcals) o per municipi.</li>
+    <li>Entreu a l'<a href="collabora.html">espai de col·laboració</a> amb el codi.</li>
+    <li>Hi proposeu què ha de sortir a la medalla i les missions dels vostres municipis. Ho podeu fer en diverses vegades.</li>
+    <li>Revisem les propostes i us diem quan surten a l'app.</li>
+  </ol>
+  <!-- PENDENT: correu de contacte i xarxes socials (Instagram i TikTok). -->
+  <p class="pendent">Aquí hi anirà com contactar amb nosaltres, i els comptes d'Instagram i TikTok del projecte.</p>
+</main>
+<button class="amunt" id="amunt" type="button" aria-label="Torna amunt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+<footer>Bocins de Catalunya</footer>
+</body>
+</html>

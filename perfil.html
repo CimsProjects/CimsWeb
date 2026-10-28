@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Explorador · Bocins de Catalunya</title>
+<link rel="icon" href="icona.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icona-180.png">
+<meta name="description" content="Com va recorrent Catalunya, poble a poble, un explorador de Bocins de Catalunya.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500..900&family=Caveat:wght@600&family=Instrument+Sans:wght@400..700&display=swap">
+<link rel="stylesheet" href="estil.css">
+<link rel="stylesheet" href="efectes.css">
+<script>try{var t=localStorage.getItem('bocins-tema')}catch(e){}document.documentElement.dataset.tema=t==='clar'||t==='fosc'?t:matchMedia('(prefers-color-scheme: light)').matches?'clar':'fosc';try{if(!sessionStorage.getItem('bocins-carrega')&&!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('amb-carrega')}catch(e){}</script>
+<script type="module" src="efectes/comuns.js"></script>
+<link rel="stylesheet" href="perfil.css">
+<script src="config.js"></script>
+<script type="module" src="perfil/inici.js"></script>
+</head>
+<body>
+<header class="barra">
+  <a class="marca" href="./">Bocins de Catalunya</a>
+  <nav id="menu" aria-label="Seccions">
+    <a href="./">Inici</a>
+    <a href="perfil.html" aria-current="page">Exploradors</a>
+    <a href="ranquing.html">Rànquing</a>
+    <a href="collabora.html">Espai de col·laboració</a>
+  </nav>
+  <div class="accions">
+    <div class="desplegable" id="tema">
+      <button class="icona" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="tema-menu" aria-label="Tema de colors">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 4a8 8 0 0 1 0 16Z" fill="currentColor"/></svg>
+      </button>
+      <ul id="tema-menu" role="menu" aria-label="Tema de colors">
+        <li role="none"><button type="button" role="menuitemradio" aria-checked="false" data-tema="auto">Automàtic</button></li>
+        <li role="none"><button type="button" role="menuitemradio" aria-checked="false" data-tema="clar">Clar</button></li>
+        <li role="none"><button type="button" role="menuitemradio" aria-checked="false" data-tema="fosc">Fosc</button></li>
+      </ul>
+    </div>
+    <button class="icona obre-menu" id="obre-menu" type="button" aria-expanded="false" aria-controls="menu" aria-label="Obre el menú">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16M4 16h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+</header>
+<div class="fons" id="fons" aria-hidden="true"></div>
+<div class="carrega" id="carrega" role="status" aria-label="Carregant el perfil">
+  <div>
+    <div class="escena"><svg viewBox="0 0 100 100" aria-hidden="true"><g class="capa capa-catalunya" transform="translate(8 9) scale(0.84)"><path d="M14.3,49.0L24.0,27.9L22.5,8.5L39.7,13.7L42.2,23.8L49.5,21.4L57.2,27.0L63.5,23.8L70.7,27.5L84.3,22.5L91.8,28.0L87.7,30.0L89.4,41.2L84.4,47.3L60.5,64.3L29.8,73.4L22.3,81.8L26.7,85.5L17.4,91.5L8.0,83.5Z" fill="#1C2330" stroke="#1C2330" stroke-width=".6" pathLength="1"/></g>
+<g class="capa capa-vidre" transform="translate(14.55 19.50) scale(0.85)"><path d="M47,39h26l-5,18h-16Z" fill="#FFFFFF" stroke="#FFFFFF" stroke-width=".6" pathLength="1"/></g>
+<g class="capa capa-fanal" transform="translate(14.55 19.50) scale(0.85)"><path d="M95.5,10.0h2.0a1.5,1.5 0 0 1 1.5,1.5v31.0a1.5,1.5 0 0 1 -1.5,1.5h-2.0a1.5,1.5 0 0 1 -1.5,-1.5v-31.0a1.5,1.5 0 0 1 1.5,-1.5Z" fill="#55655F" stroke="#55655F" stroke-width=".6" pathLength="1"/><path d="M95,18H60" fill="none" stroke="#55655F" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" pathLength="1"/><path d="M56.4,15.5a2.1,2.1 0 1,0 4.2,0a2.1,2.1 0 1,0 -4.2,0Z" fill="#55655F" stroke="#55655F" stroke-width=".6" pathLength="1"/><path d="M58.5,17.5V19" fill="none" stroke="#55655F" stroke-width="2.08" stroke-linecap="round" stroke-linejoin="round" pathLength="1"/><path d="M95,38L64,19.5" fill="none" stroke="#55655F" stroke-width="2.21" stroke-linecap="round" stroke-linejoin="round" pathLength="1"/><path d="M88,33.5c-4,-1 -5,-6 -1.5,-8c3,-1.5 5,1.5 3,3.5c-1.5,1.5 -3,0 -2,-1.2" fill="none" stroke="#55655F" stroke-width="1.43" stroke-linecap="round" stroke-linejoin="round" pathLength="1"/><path d="M80,28.5c-3.5,-1 -4.5,-5.5 -1.2,-7c2.6,-1.2 4.4,1.2 2.6,3c-1.2,1.2 -2.6,0 -1.7,-1" fill="none" stroke="#55655F" stroke-width="1.43" stroke-linecap="round" stroke-linejoin="round" pathLength="1"/><path d="M72,23.5c-2.6,-.6 -3.4,-3.6 -1,-4.6" fill="none" stroke="#55655F" stroke-width="1.43" stroke-linecap="round" stroke-linejoin="round" pathLength="1"/><path d="M90,19c0,3 -2,6 -6,6.5M82,19c0,2.6 -1.8,4.6 -4.6,5" fill="none" stroke="#55655F" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" pathLength="1"/><path d="M58.0,22.5a2.0,2.0 0 1,0 4.0,0a2.0,2.0 0 1,0 -4.0,0Z" fill="#55655F" stroke="#55655F" stroke-width=".6" pathLength="1"/><path d="M56.5,28.5c0,-3.5 1.5,-5 3.5,-5s3.5,1.5 3.5,5Z" fill="#55655F" stroke="#55655F" stroke-width=".6" pathLength="1"/><path d="M44,37L56,28.5h8L76,37Z" fill="#55655F" stroke="#55655F" stroke-width=".6" pathLength="1"/><path d="M42.5,36.5h35.0a1.0,1.0 0 0 1 1.0,1.0v0.3999999999999999a1.0,1.0 0 0 1 -1.0,1.0h-35.0a1.0,1.0 0 0 1 -1.0,-1.0v-0.3999999999999999a1.0,1.0 0 0 1 1.0,-1.0Z" fill="#55655F" stroke="#55655F" stroke-width=".6" pathLength="1"/><path d="M47,39h26l-5,18h-16Z" fill="none" stroke="#55655F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" pathLength="1"/><path d="M51,57h18l-2.4,3h-13.2Z" fill="#55655F" stroke="#55655F" stroke-width=".6" pathLength="1"/><path d="M58.7,61.6a1.3,1.3 0 1,0 2.6,0a1.3,1.3 0 1,0 -2.6,0Z" fill="#55655F" stroke="#55655F" stroke-width=".6" pathLength="1"/></g></svg></div>
+    <span class="marca">Bocins de Catalunya</span>
+  </div>
+  <button class="boto secundari salta" type="button">Salta</button>
+</div>
+<main>
+  <form class="cerca vidre" id="cerca" role="search" novalidate>
+    <label for="cerca-text">Busca un explorador</label>
+    <div class="camp-cerca">
+      <input id="cerca-text" type="search" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="Nom d'usuari" maxlength="20" aria-describedby="cerca-estat">
+      <span class="giny" aria-hidden="true"></span>
+    </div>
+    <p class="missatge" id="cerca-estat" role="status"></p>
+    <ul class="resultats" id="cerca-resultats"></ul>
+  </form>
+
+  <section class="portada perfil-cap">
+    <div class="avatar" id="avatar" aria-hidden="true"></div>
+    <div>
+      <span class="eti">Explorador</span>
+      <h1 id="nom">Carregant…</h1>
+      <span class="insignia tipus-compte" id="tipus-compte" hidden></span>
+      <p class="missatge" id="estat" role="status"></p>
+    </div>
+  </section>
+
+  <div class="xifres" id="xifres" hidden></div>
+
+  <section id="logros" hidden>
+    <h2>Fites</h2>
+    <div class="marquee" id="marquee" aria-hidden="true"><div class="cinta"></div></div>
+    <div class="xips" id="filtres-logros" role="group" aria-label="Filtra les fites"></div>
+    <div id="llista-logros" aria-live="polite"></div>
+    <p><button class="boto secundari" type="button" id="mes-logros" hidden>Mostra'n més</button></p>
+  </section>
+
+  <section id="mapa" hidden>
+    <h2>Mapa</h2>
+    <div class="mapa" id="mapa-svg"><p class="ajuda">Carregant el mapa…</p></div>
+    <ul class="llegenda" aria-label="Llegenda del mapa">
+      <li><i class="boira"></i>A la boira</li>
+      <li><i class="g0"></i>Descobert</li>
+      <li><i class="g1"></i>Amb missions</li>
+      <li><i class="g3"></i>Totes les missions</li>
+    </ul>
+  </section>
+
+  <section id="comarques" hidden>
+    <h2>Municipis descoberts</h2>
+    <p class="ajuda" id="comarques-resum"></p>
+    <div class="comarques" id="llista-comarques"></div>
+  </section>
+
+  <section id="medalles" hidden>
+    <div class="titol-carrusel">
+      <h2>Medalles</h2>
+      <div class="fletxes">
+        <button class="icona" type="button" id="medalles-anterior" aria-label="Medalles anteriors"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button class="icona" type="button" id="medalles-seguent" aria-label="Medalles següents"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+    </div>
+    <ul class="medalles" id="llista-medalles" tabindex="0" aria-label="Medalles guanyades"></ul>
+  </section>
+
+  <section id="passaport" hidden>
+    <h2>Passaport</h2>
+    <div class="xifres" id="xifres-passaport"></div>
+    <p class="ajuda" id="cartells"></p>
+  </section>
+
+  <section id="colleccio" hidden>
+    <h2>Col·lecció</h2>
+    <p class="ajuda" id="colleccio-resum"></p>
+    <div id="llista-colleccio"></div>
+  </section>
+
+  <section class="bloc crida vidre">
+    <h3>Vols recórrer Catalunya tu també? <span class="ma">poble a poble</span></h3>
+    <p>Bocins de Catalunya és una app gratuïta per visitar els 947 municipis com en un joc: el mapa es descobreix a mesura que hi vas.</p>
+    <p><a class="boto" href="./">Coneix l'app <span class="fletxa" aria-hidden="true">→</span></a></p>
+  </section>
+</main>
+<button class="amunt" id="amunt" type="button" aria-label="Torna amunt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+<footer>Bocins de Catalunya</footer>
+</body>
+</html>

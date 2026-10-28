@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Rànquing · Bocins de Catalunya</title>
+<link rel="icon" href="icona.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icona-180.png">
+<meta name="description" content="Els exploradors de Bocins de Catalunya que han recorregut més Catalunya.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500..900&family=Caveat:wght@600&family=Instrument+Sans:wght@400..700&display=swap">
+<link rel="stylesheet" href="estil.css">
+<link rel="stylesheet" href="efectes.css">
+<script>try{var t=localStorage.getItem('bocins-tema')}catch(e){}document.documentElement.dataset.tema=t==='clar'||t==='fosc'?t:matchMedia('(prefers-color-scheme: light)').matches?'clar':'fosc';</script>
+<script type="module" src="efectes/comuns.js"></script>
+<link rel="stylesheet" href="perfil.css">
+<script src="config.js"></script>
+<script type="module" src="perfil/ranquing.js"></script>
+</head>
+<body>
+<header class="barra">
+  <a class="marca" href="./">Bocins de Catalunya</a>
+  <nav id="menu" aria-label="Seccions">
+    <a href="./">Inici</a>
+    <a href="perfil.html">Exploradors</a>
+    <a href="ranquing.html" aria-current="page">Rànquing</a>
+    <a href="collabora.html">Espai de col·laboració</a>
+  </nav>
+  <div class="accions">
+    <div class="desplegable" id="tema">
+      <button class="icona" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="tema-menu" aria-label="Tema de colors">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 4a8 8 0 0 1 0 16Z" fill="currentColor"/></svg>
+      </button>
+      <ul id="tema-menu" role="menu" aria-label="Tema de colors">
+        <li role="none"><button type="button" role="menuitemradio" aria-checked="false" data-tema="auto">Automàtic</button></li>
+        <li role="none"><button type="button" role="menuitemradio" aria-checked="false" data-tema="clar">Clar</button></li>
+        <li role="none"><button type="button" role="menuitemradio" aria-checked="false" data-tema="fosc">Fosc</button></li>
+      </ul>
+    </div>
+    <button class="icona obre-menu" id="obre-menu" type="button" aria-expanded="false" aria-controls="menu" aria-label="Obre el menú">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16M4 16h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+</header>
+<main>
+  <section class="portada">
+    <span class="eti">Rànquing</span>
+    <h1>Qui ha recorregut <span class="degradat-text">més Catalunya</span></h1>
+    <p>Les posicions són les mateixes que a l'app. Només hi surt qui ha triat compartir la seva posició a l'enllaç del perfil.</p>
+  </section>
+  <div class="xips" role="group" aria-label="Ordena per">
+    <button class="xip" type="button" data-criteri="PUNTS" aria-pressed="true">Per punts</button>
+    <button class="xip" type="button" data-criteri="MUNICIPIS" aria-pressed="false">Per municipis</button>
+  </div>
+  <p class="missatge" id="ranquing-estat" role="status"></p>
+  <ol class="ranquing" id="ranquing" aria-live="polite"></ol>
+</main>
+<button class="amunt" id="amunt" type="button" aria-label="Torna amunt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+<footer>Bocins de Catalunya</footer>
+</body>
+</html>
