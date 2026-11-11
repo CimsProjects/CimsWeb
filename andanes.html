@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Andana 947 · CIMS</title>
+<link rel="icon" href="icona.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icona-180.png">
+<meta name="description" content="Joc per a Android de geolocalització i gestió del transport públic de Catalunya, amb parades, línies i afluència reals.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500..900&family=Caveat:wght@600&family=Instrument+Sans:wght@400..700&display=swap">
+<link rel="stylesheet" href="estil.css">
+<link rel="stylesheet" href="efectes.css">
+<script>try{var t=localStorage.getItem('bocins-tema')}catch(e){}document.documentElement.dataset.tema=t==='clar'||t==='fosc'?t:matchMedia('(prefers-color-scheme: light)').matches?'clar':'fosc'</script>
+<script type="module" src="efectes/comuns.js"></script>
+</head>
+<body>
+<header class="barra">
+  <a class="marca" href="./" aria-label="CIMS, inici"><svg class="mk" viewBox="0 0 100 100" aria-hidden="true"><rect class="mk-bg" width="100" height="100" rx="22"/><path class="mk-c" d="M 74.51 29.43 A 32 32 0 1 0 74.51 70.57" fill="none" stroke-width="10" stroke-linecap="round"/><polygon class="mk-a" points="31.44,63.12 46.16,36.88 60.88,63.12" stroke-width="1.5" stroke-linejoin="round"/><polygon class="mk-f" points="44.88,63.12 57.04,42.64 68.56,63.12" stroke-width="2.5" stroke-linejoin="round"/></svg>CIMS</a>
+  <nav id="menu" aria-label="Seccions">
+    <a href="./">Inici</a>
+    <a href="municipis.html">Municipis</a>
+    <a href="andanes.html" aria-current="page">Andanes</a>
+    <a href="consultoria.html">Consultoria</a>
+  </nav>
+  <div class="accions">
+    <div class="desplegable" id="tema">
+      <button class="icona" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="tema-menu" aria-label="Tema de colors">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 4a8 8 0 0 1 0 16Z" fill="currentColor"/></svg>
+      </button>
+      <ul id="tema-menu" role="menu" aria-label="Tema de colors">
+        <li role="none"><button type="button" role="menuitemradio" aria-checked="false" data-tema="auto">Automàtic</button></li>
+        <li role="none"><button type="button" role="menuitemradio" aria-checked="false" data-tema="clar">Clar</button></li>
+        <li role="none"><button type="button" role="menuitemradio" aria-checked="false" data-tema="fosc">Fosc</button></li>
+      </ul>
+    </div>
+    <button class="icona obre-menu" id="obre-menu" type="button" aria-expanded="false" aria-controls="menu" aria-label="Obre el menú">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16M4 16h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+</header>
+<main>
+  <section class="portada">
+    <span class="eti">Joc per a Android · en desenvolupament</span>
+    <h1>Andana 947: dirigeix una companyia de transport, parada a parada</h1>
+    <p class="destacat">Comences com un petit operador de mobilitat local. Camines fins a una parada o estació real, hi fas <i>check-in</i> amb el GPS i n'aconsegueixes la concessió.</p>
+    <p><a class="boto secundari" href="https://github.com/CimsProjects/andana947">Veure el projecte a GitHub</a></p>
+  </section>
+
+  <h2>Com es juga</h2>
+  <div class="targetes">
+    <div class="targeta"><h3>Conquereix andanes</h3><p>Has d'anar físicament a la parada o estació i fer-hi <i>check-in</i> amb el GPS del mòbil.</p></div>
+    <div class="targeta"><h3>Cobra pels passatgers</h3><p>Cada concessió genera ingressos diaris segons l'afluència real de passatgers.</p></div>
+    <div class="targeta"><h3>Fes créixer l'imperi</h3><p>Amb els beneficis compres autobusos i trens, obres línies i et planteges el caos de cada dia: robatoris de coure, temporals i més.</p></div>
+  </div>
+  <p style="margin-top:16px">Del bus del barri fins al primer tren regional, pels 947 municipis de Catalunya. La moneda del joc són els <b>catalins</b>.</p>
+
+  <h2>Dades reals</h2>
+  <p>Les parades, les línies i l'afluència surten de fonts obertes: els horaris (GTFS) de TMB, FGC, Renfe, TRAM i els autobusos interurbans, i les dades d'afluència de TMB, FGC, la Generalitat, Renfe i Idescat. Els límits dels municipis venen de l'IGN, i el mapa és d'OpenStreetMap.</p>
+  <p>Quan no hi ha dades per a una parada, s'estimen amb un model documentat, i l'app ho diu.</p>
+
+  <h2>El Director</h2>
+  <p>El joc comença amb en Valentí Casas i Mir, «el Director», que té 68 anys i es jubila. Fa cinquanta-dos anys que treballa entre vies, i en lloc de vendre la companyia te la deixa a tu. <span class="ma">«Una andana és una promesa: algú hi esperarà.»</span></p>
+  <p>La història és ficció: cap personatge ni empresa del joc representa cap persona ni cap operador real.</p>
+
+  <h2>Estat</h2>
+  <p>En desenvolupament. Ja hi ha una primera versió jugable amb parades a prop, <i>check-in</i> amb GPS, conquesta de concessions, imperi i ingrés diari. Segueix el projecte a GitHub.</p>
+  <p>També pots conèixer el <a href="municipis.html">projecte germà, Bocins de Catalunya</a>.</p>
+</main>
+<button class="amunt" id="amunt" type="button" aria-label="Torna amunt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+<footer>CIMS · Fem cim.</footer>
+</body>
+</html>

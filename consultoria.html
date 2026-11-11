@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ca" data-marca="cims">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CIMS · Consultoria</title>
+<link rel="icon" href="cims-icona.svg" type="image/svg+xml">
+<meta name="description" content="Apps i webs a mida per a empreses petites i creadors de contingut en català, fetes amb mètode.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;800&family=DM+Sans:wght@400..700&display=swap">
+<link rel="stylesheet" href="estil.css">
+<link rel="stylesheet" href="efectes.css">
+<link rel="stylesheet" href="cims.css">
+<script>try{var t=localStorage.getItem('bocins-tema')}catch(e){}document.documentElement.dataset.tema=t==='clar'||t==='fosc'?t:matchMedia('(prefers-color-scheme: light)').matches?'clar':'fosc'</script>
+<script type="module" src="efectes/comuns.js"></script>
+</head>
+<body>
+<header class="barra">
+  <a class="marca" href="./" aria-label="CIMS, inici"><svg class="mk" viewBox="0 0 100 100" aria-hidden="true"><rect class="mk-bg" width="100" height="100" rx="22"/><path class="mk-c" d="M 74.51 29.43 A 32 32 0 1 0 74.51 70.57" fill="none" stroke-width="10" stroke-linecap="round"/><polygon class="mk-a" points="31.44,63.12 46.16,36.88 60.88,63.12" stroke-width="1.5" stroke-linejoin="round"/><polygon class="mk-f" points="44.88,63.12 57.04,42.64 68.56,63.12" stroke-width="2.5" stroke-linejoin="round"/></svg>CIMS</a>
+  <nav id="menu" aria-label="Seccions">
+    <a href="./">Inici</a>
+    <a href="municipis.html">Municipis</a>
+    <a href="andanes.html">Andanes</a>
+    <a href="consultoria.html" aria-current="page">Consultoria</a>
+  </nav>
+  <div class="accions">
+    <div class="desplegable" id="tema">
+      <button class="icona" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="tema-menu" aria-label="Tema de colors">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 4a8 8 0 0 1 0 16Z" fill="currentColor"/></svg>
+      </button>
+      <ul id="tema-menu" role="menu" aria-label="Tema de colors">
+        <li role="none"><button type="button" role="menuitemradio" aria-checked="false" data-tema="auto">Automàtic</button></li>
+        <li role="none"><button type="button" role="menuitemradio" aria-checked="false" data-tema="clar">Clar</button></li>
+        <li role="none"><button type="button" role="menuitemradio" aria-checked="false" data-tema="fosc">Fosc</button></li>
+      </ul>
+    </div>
+    <button class="icona obre-menu" id="obre-menu" type="button" aria-expanded="false" aria-controls="menu" aria-label="Obre el menú">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16M4 16h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+</header>
+<main>
+  <section class="portada">
+    <span class="eti">Consultoria</span>
+    <h1>Apps i webs fetes amb mètode</h1>
+    <p class="destacat">Ajudem empreses petites i creadors de contingut en català a tenir l'aplicació o la web que necessiten, de la idea fins a la publicació.</p>
+    <div class="accions-portada"><a class="boto" href="#contacte">Explica'ns la teva idea <span class="fletxa" aria-hidden="true">→</span></a></div>
+  </section>
+
+  <h2>Què podem fer</h2>
+  <div class="targetes">
+    <div class="targeta brilla"><h3>Aplicacions Android</h3><p>Apps per a l'ús intern d'una empresa o pensades per als seus clients o la seva comunitat.</p></div>
+    <div class="targeta brilla"><h3>Webs</h3><p>Pàgines i eines web a mida: presentació, formularis, catàlegs o petits panells de gestió.</p></div>
+    <div class="targeta brilla"><h3>Assessorament</h3><p>Si no saps ben bé què necessites, ho aclarim abans de programar res.</p></div>
+  </div>
+
+  <h2>Per a qui</h2>
+  <ul>
+    <li>Empreses petites que volen una app o una eina digital i no tenen un equip d'informàtica.</li>
+    <li>Creadors i creadores de contingut en català que volen una app o una web per a la seva comunitat.</li>
+  </ul>
+
+  <h2>Com treballem</h2>
+  <ol class="passos">
+    <li><b>Escoltem.</b> Ens expliques el problema, sense jargon tècnic.</li>
+    <li><b>Proposem.</b> Et diem què farem, en quins passos i amb un preu orientatiu.</li>
+    <li><b>Lliurem per parts.</b> Veus avenços des del principi i pots corregir el rumb.</li>
+    <li><b>Publiquem i acompanyem.</b> Posem l'eina en marxa i, si cal, la mantenim.</li>
+  </ol>
+  <p>Cada projecte és diferent, així que el preu depèn de què necessites i de la complexitat de les funcions. Te'l diem després d'escoltar-te.</p>
+
+  <h2 id="contacte">Parlem</h2>
+  <p>Explica'ns breument què vols fer i per a qui, i et diem com ho veiem.</p>
+  <p class="pendent">Aquí hi anirà el correu de contacte i els comptes d'Instagram i TikTok de CIMS.</p>
+</main>
+<button class="amunt" id="amunt" type="button" aria-label="Torna amunt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+<footer>CIMS · Fem cim.</footer>
+</body>
+</html>

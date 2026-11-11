@@ -75,3 +75,12 @@ textarea { min-height: 96px; resize: vertical }
 [hidden] { display: none !important }
 .amagat { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap }
 @media (max-width: 560px) { .portada { padding-top: 40px } }
+/* Logo de CIMS a la capçalera (marca.mk): el quadrat s'aclareix en mode fosc perquè no es confongui amb el fons */
+.marca { display: inline-flex; align-items: center; gap: 10px }
+.marca svg.mk { width: 28px; height: 28px; flex: none }
+.mk-bg { fill: #1F2430 } .mk-c { stroke: #FAF6F0 } .mk-a { fill: #9AA3B5; stroke: #9AA3B5 } .mk-f { fill: #FF6B57; stroke: #1F2430 }
+:root[data-tema="fosc"] .mk-bg { fill: #2B3345 } :root[data-tema="fosc"] .mk-f { stroke: #2B3345 }
+/* Submenú de la secció Bocins de Catalunya */
+.subnav { display: flex; flex-wrap: wrap; gap: 8px; padding-top: 24px }
+.subnav a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px; border-radius: 999px; border: 1px solid var(--linia); color: var(--suau); text-decoration: none; font-weight: 600; font-size: 15px }
+.subnav a:hover, .subnav a[aria-current="page"] { color: var(--text); border-color: var(--accent) }
