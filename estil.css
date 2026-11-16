@@ -6,8 +6,7 @@
   --ambre: #F2B544; --ambre-f: #B8862F; --accent: #F2B544; --tinta: #1A1305;
   --vidre: rgba(21, 26, 34, .58); --vora-vidre: rgba(255, 255, 255, .08);
   --vel: linear-gradient(180deg, rgba(11, 14, 19, .55), rgba(11, 14, 19, .9) 40%, var(--fons) 85%);
-  --degradat: linear-gradient(120deg, #FAD27A, #F2B544 45%, #D8922C);
-  --degradat-text: linear-gradient(120deg, #FCE2A6, #F2B544 50%, #E7A53B);
+  --degradat: linear-gradient(#F2B544, #F2B544); --degradat-text: linear-gradient(#F2B544, #F2B544);
   --ombra: 0 10px 30px rgba(0, 0, 0, .35); --brillantor: rgba(242, 181, 68, .16);
   --argila-llum: rgba(255, 255, 255, .07); --argila-ombra: rgba(0, 0, 0, .45);
   color-scheme: dark;
@@ -18,8 +17,7 @@
   --ambre: #F2B544; --ambre-f: #C99027; --accent: #8A5C00; --tinta: #1A1305;
   --vidre: rgba(255, 255, 255, .62); --vora-vidre: rgba(17, 17, 17, .08);
   --vel: linear-gradient(180deg, rgba(255, 255, 255, .5), rgba(255, 255, 255, .88) 40%, var(--fons) 85%);
-  --degradat: linear-gradient(120deg, #FAD27A, #F2B544 45%, #E0A23A);
-  --degradat-text: linear-gradient(120deg, #A86F00, #7A4E00);
+  --degradat: linear-gradient(#F2B544, #F2B544); --degradat-text: linear-gradient(#8A5C00, #8A5C00);
   --ombra: 0 10px 30px rgba(17, 17, 17, .12); --brillantor: rgba(242, 181, 68, .22);
   --argila-llum: rgba(255, 255, 255, .9); --argila-ombra: rgba(17, 17, 17, .14);
   color-scheme: light;
@@ -35,9 +33,7 @@ a { color: var(--accent) }
 :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 6px }
 main { max-width: 860px; margin: 0 auto; padding: 0 20px 64px; position: relative }
 .portada { padding: 72px 0 40px; position: relative }
-.portada::before { content: ""; position: absolute; inset: -40px -20px 0; z-index: -1; pointer-events: none;
-  background: radial-gradient(circle at 80% 0, var(--brillantor), transparent 60%); transform: translateY(var(--parallax, 0)) }
-.eti { font: 700 13px var(--display); letter-spacing: .14em; text-transform: uppercase; color: var(--accent) }
+.eti { font: 600 16px var(--cos); color: var(--suau) }
 h1 { font: 800 clamp(34px, 6.4vw, 56px)/1.05 var(--display); letter-spacing: -.01em; margin: 10px 0 18px; text-wrap: balance }
 h2 { font: 800 28px/1.15 var(--display); margin: 52px 0 14px; text-wrap: balance }
 h3 { font: 700 19px var(--display); margin: 0 0 6px; text-wrap: balance }
@@ -46,22 +42,22 @@ p { margin: 0 0 14px; color: var(--cos-text); max-width: 68ch; text-wrap: pretty
 .degradat-text { background: var(--degradat-text); -webkit-background-clip: text; background-clip: text; color: transparent }
 .destacat { font-size: 20px; color: var(--text) }
 .xifres { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin: 24px 0 }
-.xifra { background: var(--sup); border: 1px solid var(--linia); border-radius: 14px; padding: 14px }
+.xifra { border-top: 2px solid var(--text); padding: 10px 0 0 }
 .xifra b { display: block; font: 800 32px var(--display); font-variant-numeric: tabular-nums; background: var(--degradat-text); -webkit-background-clip: text; background-clip: text; color: transparent }
-.targetes { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px }
-.targeta { background: var(--sup); border: 1px solid var(--linia); border-radius: 16px; padding: 18px }
+.targetes { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px 28px }
+.targeta { border-top: 1px solid var(--linia); padding: 14px 0 0 }
 .targeta p { font-size: 16px; margin: 0 }
-.pendent { border: 1px dashed var(--ambre-f); border-radius: 12px; padding: 12px 14px; color: var(--accent); background: var(--brillantor) }
-.boto { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 0 22px; border-radius: 12px; border: 0; background: var(--degradat); color: var(--tinta); font: 700 16px var(--display); text-decoration: none; cursor: pointer }
-.boto.secundari { background: none; color: var(--text); border: 1px solid var(--linia) }
+.pendent { border: 1px dashed var(--ambre-f); border-radius: 4px; padding: 12px 14px; color: var(--accent) }
+.boto { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 0 22px; border-radius: 4px; border: 0; background: var(--degradat); color: var(--tinta); font: 700 16px var(--display); text-decoration: none; cursor: pointer }
+.boto.secundari { background: none; color: var(--text); border: 1.5px solid var(--text) }
 .boto[disabled] { opacity: .5; cursor: default }
 ol.passos { padding-left: 22px } ol.passos li { margin-bottom: 8px; color: var(--cos-text) }
 footer { border-top: 1px solid var(--linia); padding: 24px 20px; color: var(--suau); font-size: 14px; text-align: center }
 /* Formularis */
-form, .bloc { background: var(--sup); border: 1px solid var(--linia); border-radius: 16px; padding: 18px; display: flex; flex-direction: column; gap: 14px; margin-top: 14px }
+form, .bloc { background: var(--sup); border: 1px solid var(--linia); border-radius: 4px; padding: 18px; display: flex; flex-direction: column; gap: 14px; margin-top: 14px }
 label { display: flex; flex-direction: column; gap: 6px; font-weight: 600 }
 label small, .ajuda { font-weight: 400; color: var(--suau); font-size: 14px }
-input, select, textarea { width: 100%; min-height: 48px; background: var(--fons); color: var(--text); border: 1px solid var(--linia); border-radius: 10px; padding: 10px; font: inherit; font-size: 16px }
+input, select, textarea { width: 100%; min-height: 48px; background: var(--fons); color: var(--text); border: 1px solid var(--linia); border-radius: 4px; padding: 10px; font: inherit; font-size: 16px }
 input[aria-invalid="true"] { border-color: var(--error) }
 textarea { min-height: 96px; resize: vertical }
 .fila { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px }
@@ -69,9 +65,9 @@ textarea { min-height: 96px; resize: vertical }
 .casella input { width: 20px; min-height: 20px; height: 20px; margin-top: 3px; accent-color: var(--ambre); flex: none }
 .missatge { min-height: 1.5em; font-size: 15px; color: var(--suau) } .missatge.error { color: var(--error) } .missatge.be { color: var(--accent) }
 .llista { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px }
-.llista li { background: var(--sup2); border: 1px solid var(--linia); border-radius: 12px; padding: 12px; display: flex; justify-content: space-between; gap: 12px; align-items: flex-start }
+.llista li { background: var(--sup2); border: 1px solid var(--linia); border-radius: 4px; padding: 12px; display: flex; justify-content: space-between; gap: 12px; align-items: flex-start }
 .llista li p { margin: 2px 0 0; font-size: 15px }
-.llista button { background: none; border: 1px solid var(--linia); color: var(--suau); border-radius: 10px; min-height: 48px; padding: 0 12px; cursor: pointer; flex: none }
+.llista button { background: none; border: 1px solid var(--linia); color: var(--suau); border-radius: 4px; min-height: 48px; padding: 0 12px; cursor: pointer; flex: none }
 [hidden] { display: none !important }
 .amagat { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap }
 @media (max-width: 560px) { .portada { padding-top: 40px } }
@@ -82,5 +78,5 @@ textarea { min-height: 96px; resize: vertical }
 :root[data-tema="fosc"] .mk-bg { fill: #2B3345 } :root[data-tema="fosc"] .mk-f { stroke: #2B3345 }
 /* Submenú de la secció Bocins de Catalunya */
 .subnav { display: flex; flex-wrap: wrap; gap: 8px; padding-top: 24px }
-.subnav a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px; border-radius: 999px; border: 1px solid var(--linia); color: var(--suau); text-decoration: none; font-weight: 600; font-size: 15px }
-.subnav a:hover, .subnav a[aria-current="page"] { color: var(--text); border-color: var(--accent) }
+.subnav a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px; border-radius: 4px; border: 1px solid var(--linia); color: var(--suau); text-decoration: none; font-weight: 600; font-size: 15px }
+.subnav a:hover, .subnav a[aria-current="page"] { color: var(--text); border-color: var(--text) }

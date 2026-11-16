@@ -59,22 +59,10 @@ html[data-marca="cims"] .casella input { accent-color: #FF6B57 }
 .serveis dd { margin: 0; color: var(--cos-text) }
 @media (max-width: 560px) { .serveis div { grid-template-columns: 1fr } }
 
-/* Anti-slop a les pàgines de CIMS: superfícies llises, sense vidre, sense resplendors ni ombres que suren,
-   cantonades gairebé rectes (perfil d'estil). Les seccions dels jocs no es toquen. */
-html[data-marca="cims"] .barra { top: 0; max-width: none; margin: 0; padding: 8px 20px; border-radius: 0; border: 0;
-  border-bottom: 1px solid var(--linia); background: var(--fons); box-shadow: none; -webkit-backdrop-filter: none; backdrop-filter: none }
-html[data-marca="cims"] .barra nav a { border-radius: 0 }
-html[data-marca="cims"] .barra nav a::after { background: var(--accent); border-radius: 0 }
-html[data-marca="cims"] .marca { background: none; color: var(--text) }
-html[data-marca="cims"] .amunt { border-radius: 4px; border-color: var(--linia); background: var(--fons); box-shadow: none; -webkit-backdrop-filter: none; backdrop-filter: none }
-html[data-marca="cims"] .desplegable ul { border-radius: 4px; box-shadow: none }
-html[data-marca="cims"] .desplegable button[role="menuitemradio"] { border-radius: 2px }
-html[data-marca="cims"] .portada::before { content: none }
-html[data-marca="cims"] .boto { border-radius: 4px; background: var(--accent); color: var(--fons) }
+/* Botons de la marca: corall pla */
+html[data-marca="cims"] .boto { background: var(--accent); color: var(--fons) }
 html[data-marca="cims"][data-tema="fosc"] .boto { color: var(--tinta) }
 html[data-marca="cims"] .boto.secundari { background: none; color: var(--text); border: 1.5px solid var(--text) }
-html[data-marca="cims"] .boto:hover { transform: none; box-shadow: none }
 html[data-marca="cims"] .boto.secundari:hover { border-color: var(--accent); color: var(--accent) }
-html[data-marca="cims"] .pendent { border-radius: 4px; background: none }
 .qui { font: 600 16px var(--cos); color: var(--suau); margin: 0 }
 @media (prefers-reduced-motion: reduce) { .tri { animation: none } }

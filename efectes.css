@@ -1,36 +1,33 @@
 /* Efectes visuals de la web: navegació, superfícies, microinteraccions i moviment. Amb «reduir moviment», tot quiet
    (al final del fitxer). */
 
-/* Navegació: píndola flotant de vidre ---------------------------------------------------------------------- */
-.barra { position: sticky; top: 12px; z-index: 20; display: flex; align-items: center; justify-content: space-between; gap: 12px;
-  max-width: 900px; margin: 12px auto 0; padding: 8px 8px 8px 20px; border-radius: 999px;
-  background: var(--vidre); border: 1px solid var(--vora-vidre); box-shadow: var(--ombra);
-  -webkit-backdrop-filter: blur(16px) saturate(1.6); backdrop-filter: blur(16px) saturate(1.6) }
-.marca { font: 800 15px var(--display); letter-spacing: .1em; text-transform: uppercase; text-decoration: none;
-  background: var(--degradat-text); -webkit-background-clip: text; background-clip: text; color: transparent; white-space: nowrap }
+/* Navegació: barra plana d'amplada completa, amb una línia a sota ------------------------------------------ */
+.barra { position: sticky; top: 0; z-index: 20; display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 8px 20px; background: var(--fons); border-bottom: 1px solid var(--linia) }
+.marca { font: 800 15px var(--display); letter-spacing: .1em; text-transform: uppercase; text-decoration: none; color: var(--text); white-space: nowrap }
 .barra nav { display: flex; gap: 4px }
-.barra nav a { position: relative; display: inline-flex; align-items: center; min-height: 48px; padding: 0 14px; color: var(--suau); text-decoration: none; font-weight: 600; border-radius: 999px }
+.barra nav a { position: relative; display: inline-flex; align-items: center; min-height: 48px; padding: 0 14px; color: var(--suau); text-decoration: none; font-weight: 600 }
 .barra nav a:hover, .barra nav a[aria-current="page"] { color: var(--text) }
-.barra nav a::after { content: ""; position: absolute; left: 14px; right: 14px; bottom: 10px; height: 2px; border-radius: 2px; background: var(--degradat);
+.barra nav a::after { content: ""; position: absolute; left: 14px; right: 14px; bottom: 10px; height: 2px; background: var(--accent);
   transform: scaleX(0); transform-origin: left; transition: transform .35s var(--corba) }
 .barra nav a:hover::after, .barra nav a[aria-current="page"]::after { transform: scaleX(1) }
 .accions { display: flex; align-items: center; gap: 4px }
-.icona { display: inline-grid; place-items: center; width: 48px; height: 48px; border-radius: 50%; border: 0; background: none; color: var(--text); cursor: pointer }
+.icona { display: inline-grid; place-items: center; width: 48px; height: 48px; border-radius: 4px; border: 0; background: none; color: var(--text); cursor: pointer }
 .icona:hover { background: var(--sup2) }
 .icona svg { width: 22px; height: 22px }
 .obre-menu { display: none }
 /* Desplegable del tema */
 .desplegable { position: relative }
 .desplegable ul { position: absolute; right: 0; top: calc(100% + 8px); min-width: 180px; list-style: none; margin: 0; padding: 6px;
-  border-radius: 16px; background: var(--sup); border: 1px solid var(--linia); box-shadow: var(--ombra);
+  border-radius: 4px; background: var(--sup); border: 1px solid var(--linia);
   opacity: 0; visibility: hidden; transform: translateY(-8px); transition: opacity .2s, transform .25s var(--corba), visibility 0s .25s }
 .desplegable.obert ul { opacity: 1; visibility: visible; transform: none; transition: opacity .2s, transform .25s var(--corba) }
-.desplegable button[role="menuitemradio"] { width: 100%; min-height: 48px; padding: 0 12px; border: 0; border-radius: 10px; background: none; color: var(--text); font: 600 15px var(--cos); text-align: left; cursor: pointer; display: flex; justify-content: space-between; align-items: center }
+.desplegable button[role="menuitemradio"] { width: 100%; min-height: 48px; padding: 0 12px; border: 0; border-radius: 2px; background: none; color: var(--text); font: 600 15px var(--cos); text-align: left; cursor: pointer; display: flex; justify-content: space-between; align-items: center }
 .desplegable button[role="menuitemradio"]:hover { background: var(--sup2) }
 .desplegable button[aria-checked="true"]::after { content: "●"; color: var(--accent); font-size: 10px }
 /* Menú mòbil a pantalla completa */
 @media (max-width: 640px) {
-  .barra { margin: 10px 12px 0; padding-left: 16px }
+  .barra { padding-left: 16px }
   .obre-menu { display: inline-grid }
   .barra nav { position: fixed; inset: 0; z-index: -1; flex-direction: column; justify-content: center; align-items: flex-start; gap: 8px; padding: 96px 28px 40px;
     background: var(--fons); opacity: 0; visibility: hidden; transition: opacity .3s, visibility 0s .3s }
@@ -41,16 +38,15 @@
   .menu-obert { overflow: hidden }
 }
 /* Tornar amunt */
-.amunt { visibility: hidden; position: fixed; right: 16px; bottom: 16px; z-index: 15; width: 52px; height: 52px; border-radius: 50%; border: 1px solid var(--vora-vidre);
-  background: var(--vidre); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); color: var(--text); box-shadow: var(--ombra); cursor: pointer;
+.amunt { visibility: hidden; position: fixed; right: 16px; bottom: 16px; z-index: 15; width: 52px; height: 52px; border-radius: 4px; border: 1px solid var(--linia);
+  background: var(--fons); color: var(--text); cursor: pointer;
   display: grid; place-items: center; opacity: 0; transform: translateY(16px) scale(.9); pointer-events: none; transition: opacity .3s, transform .35s var(--corba) }
 .amunt.visible { visibility: visible; opacity: 1; transform: none; pointer-events: auto }
 .amunt svg { width: 22px; height: 22px }
 
 /* Fons: el mapa de Catalunya amb una deriva lenta i un vel per sobre ------------------------------------- */
 .fons { position: fixed; inset: 0; z-index: -2; overflow: hidden; pointer-events: none }
-.fons img { position: absolute; width: 150vmax; height: auto; left: 50%; top: 50%; translate: -50% -50%; opacity: .5;
-  animation: deriva 60s ease-in-out infinite alternate; transform: translateY(var(--parallax-fons, 0)); will-change: transform }
+.fons img { position: absolute; width: 150vmax; height: auto; left: 50%; top: 50%; translate: -50% -50%; opacity: .35 }
 .fons::after { content: ""; position: absolute; inset: 0; background: var(--vel) }
 .overlay-actiu .fons img { animation-play-state: paused }
 @keyframes deriva { from { scale: 1; rotate: -2deg; translate: calc(-50% - 2vw) -50% } to { scale: 1.12; rotate: 2deg; translate: calc(-50% + 2vw) -52% } }
@@ -79,7 +75,7 @@ main, .barra { transition: filter .8s var(--corba), opacity .8s, transform .8s v
 .amb-carrega main, .amb-carrega .barra { filter: blur(14px); opacity: .4; transform: scale(.985) }
 
 /* Superfícies --------------------------------------------------------------------------------------------- */
-.vidre { background: var(--vidre); border: 1px solid var(--vora-vidre); -webkit-backdrop-filter: blur(14px) saturate(1.5); backdrop-filter: blur(14px) saturate(1.5) }
+.vidre { background: var(--sup); border: 1px solid var(--linia) }
 /* Argila: relleu tou, amb llum i ombra interiors */
 .argila { border: 0; background: var(--sup2);
   box-shadow: 0 8px 18px var(--argila-ombra), inset 0 2px 3px var(--argila-llum), inset 0 -6px 10px var(--argila-ombra) }
@@ -89,7 +85,7 @@ main, .barra { transition: filter .8s var(--corba), opacity .8s, transform .8s v
 
 /* Microinteraccions --------------------------------------------------------------------------------------- */
 .boto, .xip, .icona, .amunt, .resultats a { transition: transform .2s var(--corba), box-shadow .2s, background-color .2s, border-color .2s }
-.boto:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(242, 181, 68, .28) }
+.boto:hover { filter: brightness(1.06) }
 .boto:active, .xip:active, .icona:active, .amunt:active, .resultats a:active { transform: scale(.97) }
 .boto .fletxa { transition: transform .25s var(--corba) }
 .boto:hover .fletxa { transform: translateX(4px) }
@@ -97,8 +93,7 @@ main, .barra { transition: filter .8s var(--corba), opacity .8s, transform .8s v
 .brilla { position: relative; isolation: isolate; transition: transform .25s var(--corba), box-shadow .25s, border-color .25s }
 .brilla::after { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: -1; opacity: 0; transition: opacity .3s;
   background: radial-gradient(220px circle at var(--x, 50%) var(--y, 50%), var(--brillantor), transparent 70%) }
-.brilla:hover { transform: translateY(-3px); box-shadow: var(--ombra); border-color: var(--ambre-f) }
-.brilla:hover::after { opacity: 1 }
+.brilla:hover { border-color: var(--ambre-f) }
 /* Zoom des del cursor */
 .zoom { overflow: hidden }
 .zoom img { transition: transform .35s var(--corba); transform-origin: var(--x, 50%) var(--y, 50%) }
