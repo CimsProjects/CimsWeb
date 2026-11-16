@@ -7,4 +7,4 @@ iniciaTema();
 iniciaNavegacio();
 iniciaParallax();
 iniciaCursor();
-revela(document.querySelectorAll('main > h2, main > p, .targeta, main > .xifres > .xifra, ol.passos li'), { esglaons: true });
+revela(document.querySelectorAll('main > h2, main > p, .seccio > h2, .seccio > p, .targeta, main > .xifres > .xifra, ol.passos li'), { esglaons: true });

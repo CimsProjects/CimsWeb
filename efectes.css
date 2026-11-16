@@ -25,22 +25,21 @@
 .desplegable button[role="menuitemradio"] { width: 100%; min-height: 48px; padding: 0 12px; border: 0; border-radius: 2px; background: none; color: var(--text); font: 600 15px var(--cos); text-align: left; cursor: pointer; display: flex; justify-content: space-between; align-items: center }
 .desplegable button[role="menuitemradio"]:hover { background: var(--sup2) }
 .desplegable button[aria-checked="true"]::after { content: "●"; color: var(--accent); font-size: 10px }
-/* Menú mòbil a pantalla completa */
+/* Mòbil: menú fix a baix, com en una app (el polze hi arriba sense moure la mà) */
 @media (max-width: 640px) {
-  .barra { padding-left: 16px }
-  .obre-menu { display: inline-grid }
-  .barra nav { position: fixed; inset: 0; z-index: -1; flex-direction: column; justify-content: center; align-items: flex-start; gap: 8px; padding: 96px 28px 40px;
-    background: var(--fons); opacity: 0; visibility: hidden; transition: opacity .3s, visibility 0s .3s }
-  .barra nav a { font: 800 34px var(--display); color: var(--text); opacity: 0; transform: translateY(16px); transition: opacity .4s, transform .5s var(--corba); transition-delay: calc(var(--i, 0) * 70ms) }
-  .barra nav a::after { bottom: 6px }
-  .menu-obert .barra nav { opacity: 1; visibility: visible; transition: opacity .3s }
-  .menu-obert .barra nav a { opacity: 1; transform: none }
-  .menu-obert { overflow: hidden }
+  body { padding-bottom: calc(60px + env(safe-area-inset-bottom)) }
+  .barra { padding: 6px 12px 6px 16px }
+  .obre-menu { display: none }
+  .barra nav { position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; display: flex; gap: 0;
+    padding-bottom: env(safe-area-inset-bottom); background: var(--fons); border-top: 1px solid var(--linia) }
+  .barra nav a { flex: 1; justify-content: center; min-height: 60px; padding: 0 4px; font: 600 14px var(--cos) }
+  .barra nav a::after { top: 0; bottom: auto; left: 22%; right: 22%; height: 3px }
 }
 /* Tornar amunt */
 .amunt { visibility: hidden; position: fixed; right: 16px; bottom: 16px; z-index: 15; width: 52px; height: 52px; border-radius: 4px; border: 1px solid var(--linia);
   background: var(--fons); color: var(--text); cursor: pointer;
   display: grid; place-items: center; opacity: 0; transform: translateY(16px) scale(.9); pointer-events: none; transition: opacity .3s, transform .35s var(--corba) }
+@media (max-width: 640px) { .amunt { bottom: calc(72px + env(safe-area-inset-bottom)) } }
 .amunt.visible { visibility: visible; opacity: 1; transform: none; pointer-events: auto }
 .amunt svg { width: 22px; height: 22px }
 
@@ -113,4 +112,3 @@ main, .barra { transition: filter .8s var(--corba), opacity .8s, transform .8s v
   .brilla:hover, .boto:hover { transform: none }
   .zoom:hover img { transform: none }
 }
-@media (max-width: 640px) { .menu-obert .barra { -webkit-backdrop-filter: none; backdrop-filter: none; background: transparent; border-color: transparent; box-shadow: none } }
