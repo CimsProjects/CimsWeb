@@ -1,5 +1,5 @@
-/* Hallmark · redesign: full · pages: index.html, consultoria.html · brand: CIMS (pissarra i corall, Sora i DM Sans, el logo) · genre: editorial · shape: Index-First · hero: Stage (/) amb el mapa real, Settled (/consultoria) · nav: marca a l'esquerra, enllaços i tema a la dreta, sense línia · footer: mast, «Fem cim.» en gran sobre els enllaços · signature: els 947 municipis reals de Catalunya, dibuixats amb les dades de l'IGN · job: presentar CIMS a empreses petites que ens vulguin contractar · copy: to tècnic i jove, en primera persona del plural */
-/* critique: la portada ensenya una cosa real en lloc d'una columna buida; cada secció té una composició pròpia (índex, banda fosca, fitxa, llista); els títols van a mida de secció */
+/* Hallmark · redesign: full · pages: index.html, consultoria.html · brand: CIMS (pissarra i corall, Sora i DM Sans, el logo) · genre: editorial · shape: Index-First · hero: Stage (/) amb el logo, Settled (/consultoria) · nav: marca a l'esquerra, enllaços i tema a la dreta, sense línia · footer: mast, «Fem cim.» en gran sobre els enllaços · signature: el logo de CIMS en gran · job: presentar CIMS a empreses petites que ens vulguin contractar · copy: to tècnic i jove, en primera persona del plural */
+/* critique: la portada ensenya la marca en lloc d'una columna buida; cada secció té una composició pròpia (índex, banda fosca, fitxa, llista); els títols van a mida de secció */
 /* waive 38iii · «cim» en corall és el senyal de la marca i surt una sola vegada, al títol de la portada */
 /* waive 42 · la barra és compartida amb les pàgines dels jocs; aquí només se li treu la línia i s'alineen els enllaços a la dreta */
 
@@ -10,14 +10,14 @@ html[data-marca="cims"], html[data-marca="cims"][data-tema="clar"] {
   --c-paper: oklch(97.4% .008 80); --c-paper-2: oklch(94.2% .012 78); --c-ink: oklch(24.5% .022 265); --c-ink-2: oklch(36% .02 265);
   --c-muted: oklch(50% .02 265); --c-rule: oklch(87% .014 78); --c-accent: oklch(55% .17 33); --c-accent-ink: oklch(98% .01 80);
   --c-band: oklch(24.5% .022 265); --c-band-ink: oklch(96% .008 80); --c-band-muted: oklch(78% .015 265); --c-band-accent: oklch(72% .16 33);
-  --c-map: oklch(62% .03 265); --c-map-fill: oklch(94.5% .012 78);
+ 
   color-scheme: light;
 }
 html[data-marca="cims"][data-tema="fosc"] {
   --c-paper: oklch(24.5% .022 265); --c-paper-2: oklch(28.5% .024 265); --c-ink: oklch(96% .008 80); --c-ink-2: oklch(87% .012 265);
   --c-muted: oklch(74% .016 265); --c-rule: oklch(36% .022 265); --c-accent: oklch(70% .17 33); --c-accent-ink: oklch(22% .02 265);
   --c-band: oklch(19% .02 265); --c-band-ink: oklch(96% .008 80); --c-band-muted: oklch(74% .016 265); --c-band-accent: oklch(72% .16 33);
-  --c-map: oklch(60% .03 265); --c-map-fill: oklch(28.5% .024 265);
+ 
   color-scheme: dark;
 }
 html[data-marca="cims"], html[data-marca="cims"][data-tema] {
@@ -60,15 +60,13 @@ html[data-marca="cims"] h2 { font: 800 var(--t-section)/1.05 var(--f-display); l
 html[data-marca="cims"] p { color: var(--c-ink-2); max-width: 65ch; margin: 0 0 var(--s-4) }
 .lede { font-size: var(--t-lede); line-height: 1.45; color: var(--c-ink-2) }
 
-/* Portada: el títol i les accions a l'esquerra, el mapa real a la dreta */
+/* Portada: el títol i les accions a l'esquerra, el logo de CIMS en gran a la dreta */
 .heroi { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: var(--s-8); align-items: center; min-height: calc(100svh - 80px); max-height: 860px; padding-block: var(--s-7) }
 .heroi h1 { font: 800 var(--t-hero)/.92 var(--f-display); letter-spacing: -.045em; margin: 0 0 var(--s-6) }
 .heroi h1 .cim { color: var(--c-accent) }
 .heroi .lede { max-width: 28ch; margin-bottom: var(--s-6) }
-.mapa-cat { margin: 0; min-width: 0 }
-.mapa-cat svg { width: 100%; height: auto; display: block; max-height: 640px; aspect-ratio: 2000 / 1974 }
-.mapa-cat path { fill: var(--c-map-fill); stroke: var(--c-map); stroke-width: .8; vector-effect: non-scaling-stroke }
-.mapa-cat figcaption { margin-top: var(--s-3); font-size: var(--t-small); color: var(--c-muted) }
+.logo-gran { margin: 0; min-width: 0; display: grid; place-items: center }
+.logo-gran .mk-gran { width: min(100%, 420px); height: auto; display: block }
 
 /* Capçalera d'una pàgina interior (consultoria) */
 .cap { padding-block: var(--s-9) var(--s-8); display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--s-8); align-items: end }
@@ -131,7 +129,7 @@ html[data-marca="cims"] .peu p { font-size: var(--t-small); color: var(--c-muted
 
 @media (max-width: 900px) {
   .heroi { grid-template-columns: minmax(0, 1fr); min-height: 0; max-height: none; padding-block: var(--s-6) var(--s-8); gap: var(--s-6) }
-  .mapa-cat svg { max-height: 360px }
+  .logo-gran .mk-gran { width: min(60%, 240px) }
   .cap { grid-template-columns: minmax(0, 1fr); gap: var(--s-5); padding-block: var(--s-7) var(--s-6) }
   .index li > a, .index li > div { grid-template-columns: minmax(0, 1fr); gap: var(--s-2) }
   .index .estat { justify-self: start; text-align: left; order: -1 }
