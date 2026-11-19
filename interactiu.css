@@ -1,0 +1,76 @@
+/* Versió interactiva de CIMS: només s'aplica amb <html data-interactiu>, que activa el botó de la barra.
+   Sense l'atribut, la web és exactament la de sempre. Amb «reduir moviment», res no es desplaça. */
+
+/* Botó de la barra */
+.interruptor { width: auto; padding-inline: 12px; gap: 8px; display: inline-flex; align-items: center; font: 600 15px var(--f-body); color: var(--c-ink); border-radius: 999px }
+.interruptor .pista { position: relative; width: 34px; height: 20px; border-radius: 999px; border: 1.5px solid currentColor; flex: none; transition: background-color var(--dur) var(--ease) }
+.interruptor .pista::after { content: ""; position: absolute; top: 2px; left: 2px; width: 13px; height: 13px; border-radius: 50%; background: currentColor; transition: transform var(--dur) var(--ease) }
+.interruptor[aria-pressed="true"] .pista { background: var(--c-accent); border-color: var(--c-accent) }
+.interruptor[aria-pressed="true"] .pista::after { transform: translateX(14px); background: var(--c-accent-ink) }
+@media (max-width: 900px) { .interruptor .text { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap } .interruptor { padding-inline: 7px } }
+.amagat { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap }
+
+/* Barra de progrés de lectura */
+.int-progres { position: fixed; inset: 0 0 auto; height: 3px; z-index: 30; background: var(--c-accent); transform-origin: 0 50%; transform: scaleX(var(--p, 0)); pointer-events: none }
+
+/* Llum que segueix el cursor dins de files i targetes */
+[data-interactiu] .int-llum { position: relative; isolation: isolate }
+[data-interactiu] .int-llum::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: 0; transition: opacity var(--dur) var(--ease);
+  background: radial-gradient(260px circle at var(--x, 50%) var(--y, 50%), color-mix(in oklch, var(--c-accent) 14%, transparent), transparent 70%) }
+[data-interactiu] .int-llum:hover::before, [data-interactiu] .int-llum:focus-within::before { opacity: 1; transition-duration: var(--dur-in) }
+
+/* Índex «Què fem»: la fila s'obre cap a la dreta i una línia de color hi creix a sota */
+[data-interactiu] .index a { position: relative }
+[data-interactiu] .index a::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; background: var(--c-accent); transform: scaleX(0); transform-origin: 0 50%; transition: transform .3s var(--ease) }
+[data-interactiu] .index a:hover::after, [data-interactiu] .index a:focus-visible::after { transform: scaleX(1); transition-duration: .15s }
+[data-interactiu] .index .nom { transition: color var(--dur) var(--ease), transform .3s var(--ease) }
+[data-interactiu] .index a:hover .nom, [data-interactiu] .index a:focus-visible .nom { transform: translateX(12px); transition-duration: .15s }
+
+/* Preguntes: el signe gira en obrir-se */
+[data-interactiu] .preguntes summary::after { content: "+"; transition: transform .3s var(--ease) }
+[data-interactiu] .preguntes details[open] summary::after { content: "+"; transform: rotate(45deg) }
+
+/* El nom: la paraula que toques s'encén i les altres s'apaguen */
+[data-interactiu] .lletres li { transition: color .3s var(--ease), opacity .3s var(--ease), transform .3s var(--ease); transform-origin: 0 50% }
+[data-interactiu] .lletres:hover li { opacity: .45 }
+[data-interactiu] .lletres li:hover { opacity: 1; color: var(--c-band-ink); transform: translateX(10px); transition-duration: .15s }
+
+/* Compromisos i passos: la línia de dalt es torna de color */
+[data-interactiu] .compromisos li, [data-interactiu] .passos-s li { transition: border-color .3s var(--ease) }
+[data-interactiu] .compromisos li:hover, [data-interactiu] .passos-s li:hover { border-top-color: var(--c-accent); transition-duration: .15s }
+
+/* Botons que s'acosten al cursor */
+[data-interactiu] .bt { transform: translate(var(--mx, 0), var(--my, 0)); transition: transform .3s var(--ease), background-color var(--dur) var(--ease), color var(--dur) var(--ease), border-color var(--dur) var(--ease) }
+[data-interactiu] .bt:hover { transform: translate(var(--mx, 0), calc(var(--my, 0px) - 2px)); transition-duration: .12s }
+
+/* Logo gran: s'inclina cap al cursor; els dos cims, a profunditats diferents */
+[data-interactiu] .logo-gran { perspective: 900px; cursor: pointer }
+[data-interactiu] .logo-gran .mk-gran { transform: rotateX(calc(var(--iy, 0) * -14deg)) rotateY(calc(var(--ix, 0) * 16deg)); transition: transform .5s var(--ease) }
+[data-interactiu] .logo-gran.int-viu .mk-gran { transition-duration: .12s }
+[data-interactiu] .logo-gran .mk-a, [data-interactiu] .logo-gran .mk-f, [data-interactiu] .logo-gran .mk-c { transition: transform .5s var(--ease); transform-box: fill-box; transform-origin: 50% 100% }
+[data-interactiu] .logo-gran.int-viu .mk-a, [data-interactiu] .logo-gran.int-viu .mk-f, [data-interactiu] .logo-gran.int-viu .mk-c { transition-duration: .12s }
+[data-interactiu] .logo-gran .mk-c { transform: translate(calc(var(--ix, 0) * -3px), calc(var(--iy, 0) * -3px)) }
+[data-interactiu] .logo-gran .mk-a { transform: translate(calc(var(--ix, 0) * 4px), calc(var(--iy, 0) * 4px)) }
+[data-interactiu] .logo-gran .mk-f { transform: translate(calc(var(--ix, 0) * 8px), calc(var(--iy, 0) * 8px)) }
+[data-interactiu] .logo-gran.int-salta .mk-a { animation: int-salta .7s var(--ease) }
+[data-interactiu] .logo-gran.int-salta .mk-f { animation: int-salta .7s var(--ease) .08s }
+@keyframes int-salta { 0%, 100% { translate: 0 0 } 35% { translate: 0 -9px } 60% { translate: 0 1px } }
+
+/* Cercle que segueix el cursor */
+.int-halo { position: fixed; left: -18px; top: -18px; width: 36px; height: 36px; border-radius: 50%; border: 1.5px solid var(--c-accent); pointer-events: none; z-index: 40; opacity: 0; transition: opacity .3s, width .2s var(--ease), height .2s var(--ease), left .2s var(--ease), top .2s var(--ease), background-color .2s }
+.int-halo.visible { opacity: .7 }
+.int-halo.gran { width: 64px; height: 64px; left: -32px; top: -32px; background: color-mix(in oklch, var(--c-accent) 10%, transparent) }
+
+/* Entrades en fer scroll: només per a les peces que encara no s'havien vist */
+[data-interactiu] .int-abans { opacity: 0; translate: 0 28px }
+[data-interactiu] main h2, [data-interactiu] main .gran, [data-interactiu] .index li, [data-interactiu] .serveis dl > div, [data-interactiu] .compromisos li,
+[data-interactiu] .passos-s li, [data-interactiu] .preguntes details, [data-interactiu] .fitxa, [data-interactiu] .lletres li, [data-interactiu] .banda p, [data-interactiu] .legal section {
+  transition: opacity .6s var(--ease) calc(var(--i, 0) * 45ms), translate .6s var(--ease) calc(var(--i, 0) * 45ms), color .3s var(--ease), transform .3s var(--ease), border-color .3s var(--ease) }
+
+@media (prefers-reduced-motion: reduce) {
+  [data-interactiu] *, [data-interactiu] *::before, [data-interactiu] *::after { transition-property: color, background-color, border-color, opacity !important; animation: none !important }
+  [data-interactiu] .int-abans { opacity: 1; translate: none }
+  [data-interactiu] .index a:hover .nom, [data-interactiu] .lletres li:hover, [data-interactiu] .bt, [data-interactiu] .bt:hover, [data-interactiu] .logo-gran .mk-gran { transform: none }
+  .int-halo { display: none }
+}
+@media print { .int-progres, .int-halo { display: none } }
