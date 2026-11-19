@@ -1,3 +1,6 @@
+/* Hallmark · redesign: polish · pages: municipis.html, andanes.html, perfil.html, ranquing.html, collabora.html · brand: Bocins de Catalunya (nit i fanals, ambre, Archivo i Instrument Sans) · copy: verbatim tret dels textos que ha demanat el Martí */
+/* critique: es manté l'aspecte dels jocs; es treuen els rètols damunt els títols, les fletxes i els punts volats, el text amagat fins fer scroll i el text amb degradat; els títols de secció pugen de mida */
+/* waive 38iii · «poble a poble» en lletra de mà és el senyal de Bocins, al perfil */
 /* Estils comuns de la web. Colors de l'app (docs/disseny.md): nit i fanals en fosc, blanc net en clar.
    Els tokens estan duplicats per tema; el tema el posa tema.js a <html data-tema> abans de pintar. */
 :root, :root[data-tema="fosc"] {
@@ -27,23 +30,23 @@
   --corba: cubic-bezier(.2, .7, .2, 1);
 }
 * { box-sizing: border-box }
-html { scroll-behavior: smooth }
-body { margin: 0; background: var(--fons); color: var(--text); font: 17px/1.55 var(--cos); transition: background-color .3s, color .3s }
+html { scroll-behavior: smooth; overflow-x: clip }
+body { overflow-x: clip; margin: 0; background: var(--fons); color: var(--text); font: 17px/1.55 var(--cos); transition: background-color .3s, color .3s }
 a { color: var(--accent) }
 :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 6px }
 main { max-width: 860px; margin: 0 auto; padding: 0 20px 64px; position: relative }
 .portada { padding: 72px 0 40px; position: relative }
-.eti { font: 600 16px var(--cos); color: var(--suau) }
-h1 { font: 800 clamp(34px, 6.4vw, 56px)/1.05 var(--display); letter-spacing: -.01em; margin: 10px 0 18px; text-wrap: balance }
-h2 { font: 800 28px/1.15 var(--display); margin: 52px 0 14px; text-wrap: balance }
+h1 { font: 800 clamp(34px, 6.4vw, 56px)/1.05 var(--display); letter-spacing: -.01em; margin: 10px 0 18px; text-wrap: balance; overflow-wrap: break-word; min-width: 0 }
+h2 { font: 800 clamp(32px, 3.6vw, 44px)/1.08 var(--display); letter-spacing: -.015em; margin: 64px 0 20px; text-wrap: balance; overflow-wrap: break-word; min-width: 0 }
 h3 { font: 700 19px var(--display); margin: 0 0 6px; text-wrap: balance }
 p { margin: 0 0 14px; color: var(--cos-text); max-width: 68ch; text-wrap: pretty }
 .ma { font: 600 1.35em/1 var(--ma); color: var(--accent); letter-spacing: 0 }
 .degradat-text { background: var(--degradat-text); -webkit-background-clip: text; background-clip: text; color: transparent }
 .destacat { font-size: 20px; color: var(--text) }
+.nota-joc { margin-top: 16px }
 .xifres { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin: 24px 0 }
 .xifra { border-top: 2px solid var(--text); padding: 10px 0 0 }
-.xifra b { display: block; font: 800 32px var(--display); font-variant-numeric: tabular-nums; background: var(--degradat-text); -webkit-background-clip: text; background-clip: text; color: transparent }
+.xifra b { display: block; font: 800 40px/1.1 var(--display); font-variant-numeric: tabular-nums; color: var(--accent) }
 .targetes { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px 28px }
 .targeta { border-top: 1px solid var(--linia); padding: 14px 0 0 }
 .targeta p { font-size: 16px; margin: 0 }
@@ -89,16 +92,17 @@ html { scroll-padding-top: 80px }
   .portada:not(.perfil-cap) { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); column-gap: 64px; align-items: end;
     padding: 104px 0 64px; margin-bottom: 8px; border-bottom: 1px solid var(--linia) }
   .portada:not(.perfil-cap) > * { grid-column: 2 }
-  .portada:not(.perfil-cap) > .qui, .portada:not(.perfil-cap) > .eti, .portada:not(.perfil-cap) > h1 { grid-column: 1 }
+  .portada:not(.perfil-cap) > h1 { grid-column: 1 }
   .portada:not(.perfil-cap) > h1 { margin-bottom: 0; font-size: clamp(44px, 4.6vw, 64px) }
   .portada:not(.perfil-cap) > .cims-h1 { font-size: clamp(88px, 8.4vw, 116px); white-space: nowrap }
   .portada > .destacat { margin-bottom: 0 }
   .portada .accions-portada, .portada > p:has(.boto) { margin: 20px 0 0 }
-  .seccio { display: grid; grid-template-columns: 220px minmax(0, 1fr); column-gap: 64px; padding: 48px 0; border-bottom: 1px solid var(--linia) }
+  .seccio { display: grid; grid-template-columns: 220px minmax(0, 1fr); column-gap: 64px; padding: 72px 0; border-bottom: 1px solid var(--linia) }
   .seccio:last-child { border-bottom: 0 }
   .seccio > * { grid-column: 2 }
-  .seccio > h2 { grid-column: 1; grid-row: 1 / span 40; align-self: start; position: sticky; top: 96px; margin: 0; font-size: 26px }
+  .seccio > h2 { grid-column: 1 / -1; margin: 0 0 var(--s-h2, 28px) }
   .seccio > :nth-child(2) { margin-top: 0 }
+  .seccio:nth-of-type(even) { border-bottom-width: 2px; border-bottom-color: var(--text) }
   .seccio > :last-child { margin-bottom: 0 }
 }
 
@@ -106,7 +110,7 @@ html { scroll-padding-top: 80px }
 @media (max-width: 640px) {
   main { padding: 0 16px 40px }
   .portada { padding: 28px 0 24px }
-  h2 { font-size: 24px; margin-top: 40px }
+  h2 { font-size: 30px; margin-top: 48px }
   .destacat { font-size: 18px }
   .accions-portada { flex-direction: column }
   .accions-portada .boto, .portada .boto { width: 100% }

@@ -12,24 +12,24 @@
 <!-- Tot és dins de la pàgina: GitHub Pages la serveix a qualsevol adreça que no existeix, i les rutes relatives no hi
      funcionarien. -->
 <style>
-  :root { --fons: #0B0E13; --text: #EEF1F5; --suau: #9AA4B2; --accent: #F2B544; --boira: #9AA4B2; color-scheme: dark }
-  [data-tema="clar"] { --fons: #FFFFFF; --text: #111111; --suau: #5E6672; --accent: #8A5C00; --boira: #6B6B6B; color-scheme: light }
+  :root { --fons: #0B0E13; --text: #EEF1F5; --suau: #9AA4B2; --accent: #F2B544; --tinta: #1A1305; --boira: #9AA4B2; --display: "Archivo", system-ui, sans-serif; --cos: "Instrument Sans", system-ui, sans-serif; --ma: "Caveat", cursive; --corba: cubic-bezier(.2, .7, .2, 1); color-scheme: dark }
+  /* Hallmark · redesign: polish · page: 404.html · brand: Bocins de Catalunya */
+  [data-tema="clar"] { --fons: #FFFFFF; --text: #111111; --suau: #5E6672; --accent: #8A5C00; --tinta: #FFFFFF; --boira: #6B6B6B; color-scheme: light }
   * { box-sizing: border-box }
-  body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: var(--fons); color: var(--text); font: 17px/1.55 "Instrument Sans", system-ui, sans-serif; overflow: hidden; text-align: center; padding: 20px }
+  body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: var(--fons); color: var(--text); font: 17px/1.55 var(--cos); overflow: clip; text-align: center; padding: 20px }
   main { position: relative; z-index: 1; max-width: 36ch }
-  h1 { font: 900 clamp(72px, 22vw, 160px)/1 "Archivo", system-ui, sans-serif; margin: 0; background: linear-gradient(120deg, #FAD27A, #F2B544 45%, #D8922C); -webkit-background-clip: text; background-clip: text; color: transparent;
-    filter: blur(12px); opacity: 0; animation: focus 1.4s .2s cubic-bezier(.2, .7, .2, 1) forwards }
-  p { color: var(--suau); text-wrap: pretty } .ma { display: block; font: 600 30px "Caveat", cursive; color: var(--accent); transform: rotate(-2deg); margin: 6px 0 14px }
-  a { display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 22px; border-radius: 12px; background: linear-gradient(120deg, #FAD27A, #F2B544 45%, #D8922C); color: #1A1305; font: 700 16px "Archivo", sans-serif; text-decoration: none; transition: transform .2s }
+  h1 { font: 900 clamp(72px, 22vw, 160px)/1 var(--display); margin: 0; color: var(--accent);
+    filter: blur(12px); opacity: 0; animation: focus 1.4s .2s var(--corba) forwards }
+  p { color: var(--suau); text-wrap: pretty } .ma { display: block; font: 600 30px var(--ma); color: var(--accent); transform: rotate(-2deg); margin: 6px 0 14px }
+  a { display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 22px; border-radius: 4px; background: var(--accent); color: var(--tinta); font: 700 16px var(--display); text-decoration: none; transition: transform .2s var(--corba) }
   a:hover { transform: translateY(-2px) } a:active { transform: scale(.97) } a:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px }
-  a span { transition: transform .25s } a:hover span { transform: translateX(4px) }
   /* La boira: tres núvols que passen per davant i per darrere del número */
   .boira { position: fixed; inset: 0; pointer-events: none }
   .boira i { position: absolute; width: 70vmax; height: 26vmax; border-radius: 50%; background: radial-gradient(closest-side, var(--boira), transparent); opacity: .18; filter: blur(20px); animation: passa 26s linear infinite }
   .boira i:nth-child(1) { top: 18%; left: -70vmax } .boira i:nth-child(2) { top: 46%; left: -70vmax; animation-delay: -9s; animation-duration: 34s } .boira i:nth-child(3) { top: 64%; left: -70vmax; animation-delay: -18s; z-index: 2 }
   @keyframes passa { to { transform: translateX(calc(100vw + 70vmax)) } }
   @keyframes focus { to { filter: none; opacity: 1 } }
-  @media (prefers-reduced-motion: reduce) { h1 { animation: none; filter: none; opacity: 1 } .boira i { animation: none; left: 10% } a, a span { transition: none } }
+  @media (prefers-reduced-motion: reduce) { h1 { animation: none; filter: none; opacity: 1 } .boira i { animation: none; left: 10% } a { transition: none } }
 </style>
 </head>
 <body>
@@ -38,7 +38,7 @@
   <h1>404</h1>
   <span class="ma">aquest racó encara és a la boira</span>
   <p>Aquesta pàgina no existeix, o l'enllaç no és complet.</p>
-  <a id="inici" href="/">Torna a l'inici <span aria-hidden="true">→</span></a>
+  <a id="inici" href="/">Torna a l'inici</a>
 </main>
 <script>
   // A github.io la web viu dins d'una carpeta (/municipis/); amb domini propi, a l'arrel.
