@@ -10,14 +10,14 @@ html[data-marca="cims"], html[data-marca="cims"][data-tema="clar"] {
   --c-paper: oklch(97.4% .008 80); --c-paper-2: oklch(94.2% .012 78); --c-ink: oklch(24.5% .022 265); --c-ink-2: oklch(36% .02 265);
   --c-muted: oklch(50% .02 265); --c-rule: oklch(87% .014 78); --c-accent: oklch(55% .17 33); --c-accent-ink: oklch(98% .01 80);
   --c-band: oklch(24.5% .022 265); --c-band-ink: oklch(96% .008 80); --c-band-muted: oklch(78% .015 265); --c-band-accent: oklch(72% .16 33);
-  --c-map: oklch(80% .02 265); --c-map-fill: oklch(94.5% .012 78);
+  --c-map: oklch(62% .03 265); --c-map-fill: oklch(94.5% .012 78);
   color-scheme: light;
 }
 html[data-marca="cims"][data-tema="fosc"] {
   --c-paper: oklch(24.5% .022 265); --c-paper-2: oklch(28.5% .024 265); --c-ink: oklch(96% .008 80); --c-ink-2: oklch(87% .012 265);
   --c-muted: oklch(74% .016 265); --c-rule: oklch(36% .022 265); --c-accent: oklch(70% .17 33); --c-accent-ink: oklch(22% .02 265);
   --c-band: oklch(19% .02 265); --c-band-ink: oklch(96% .008 80); --c-band-muted: oklch(74% .016 265); --c-band-accent: oklch(72% .16 33);
-  --c-map: oklch(42% .025 265); --c-map-fill: oklch(28.5% .024 265);
+  --c-map: oklch(60% .03 265); --c-map-fill: oklch(28.5% .024 265);
   color-scheme: dark;
 }
 html[data-marca="cims"], html[data-marca="cims"][data-tema] {
@@ -25,7 +25,7 @@ html[data-marca="cims"], html[data-marca="cims"][data-tema] {
   --s-1: 4px; --s-2: 8px; --s-3: 12px; --s-4: 16px; --s-5: 24px; --s-6: 32px; --s-7: 48px; --s-8: 64px; --s-9: 96px; --s-10: 128px;
   --t-hero: clamp(64px, 9vw, 132px); --t-h1: clamp(40px, 5.4vw, 72px); --t-section: clamp(36px, 4vw, 52px); --t-title: clamp(26px, 2.6vw, 36px);
   --t-lede: clamp(19px, 1.6vw, 22px); --t-body: 18px; --t-small: 15px;
-  --ease: cubic-bezier(.16, 1, .3, 1); --dur: .28s; --wrap: 1280px;
+  --ease: cubic-bezier(.16, 1, .3, 1); --dur: .3s; --dur-in: .15s; --wrap: 1280px;
   /* Els noms d'estil.css, perquè la barra, el desplegable i el botó d'amunt prenguin la marca */
   --fons: var(--c-paper); --sup: var(--c-paper-2); --sup2: var(--c-paper-2); --linia: var(--c-rule); --text: var(--c-ink);
   --cos-text: var(--c-ink-2); --suau: var(--c-muted); --accent: var(--c-accent); --ambre: var(--c-accent); --ambre-f: var(--c-accent);
@@ -48,7 +48,7 @@ html[data-marca="cims"] .barra nav a:hover, html[data-marca="cims"] .barra nav a
 /* Botons: un sol estil principal, en píndola i sense ombra */
 .bt { display: inline-flex; align-items: center; min-height: 48px; padding: 0 var(--s-5); border-radius: 999px; font: 600 16px var(--f-body); text-decoration: none; white-space: nowrap; cursor: pointer;
   background: var(--c-accent); color: var(--c-accent-ink); border: 1.5px solid var(--c-accent); transition: transform var(--dur) var(--ease), color var(--dur) var(--ease), border-color var(--dur) var(--ease) }
-.bt:hover { transform: translateY(-2px) }
+.bt:hover { transform: translateY(-2px); transition-duration: var(--dur-in) }
 .bt:active { transform: translateY(0) }
 .bt.sec { background: transparent; color: var(--c-ink); border-color: var(--c-ink) }
 .bt.sec:hover { border-color: var(--c-accent); color: var(--c-accent) }
@@ -67,7 +67,7 @@ html[data-marca="cims"] p { color: var(--c-ink-2); max-width: 65ch; margin: 0 0 
 .heroi .lede { max-width: 28ch; margin-bottom: var(--s-6) }
 .mapa-cat { margin: 0; min-width: 0 }
 .mapa-cat svg { width: 100%; height: auto; display: block; max-height: 640px; aspect-ratio: 2000 / 1974 }
-.mapa-cat path { fill: var(--c-map-fill); stroke: var(--c-map); stroke-width: 1.4; vector-effect: non-scaling-stroke }
+.mapa-cat path { fill: var(--c-map-fill); stroke: var(--c-map); stroke-width: .8; vector-effect: non-scaling-stroke }
 .mapa-cat figcaption { margin-top: var(--s-3); font-size: var(--t-small); color: var(--c-muted) }
 
 /* Capçalera d'una pàgina interior (consultoria) */
@@ -83,7 +83,7 @@ html[data-marca="cims"] p { color: var(--c-ink-2); max-width: 65ch; margin: 0 0 
 .index .desc p { margin: 0 0 var(--s-2) }
 .index .desc p:last-child { margin: 0 }
 .index .estat { font-size: var(--t-small); color: var(--c-muted); justify-self: end; text-align: right }
-.index a:hover .nom { color: var(--c-accent) }
+.index a:hover .nom { color: var(--c-accent); transition-duration: var(--dur-in) }
 
 /* Qui som: una frase gran i la fitxa al costat */
 .qui-som { padding-block: var(--s-9); border-top: 2px solid var(--c-ink) }
@@ -124,8 +124,8 @@ html[data-marca="cims"] footer.peu { border-top: 2px solid var(--c-ink); padding
 html[data-marca="cims"] .peu .gran { font: 800 clamp(56px, 10vw, 160px)/.85 var(--f-display); letter-spacing: -.05em; color: var(--c-ink); margin: 0; max-width: none }
 .peu .gran span { color: var(--c-accent) }
 html[data-marca="cims"] .peu p { font-size: var(--t-small); color: var(--c-muted); margin: 0; max-width: none }
-.peu ul { list-style: none; padding: 0; margin: 0; display: grid; gap: var(--s-2); text-align: right }
-.peu a { color: var(--c-ink-2) }
+.peu ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 0; text-align: right }
+.peu a { display: inline-flex; align-items: center; min-height: 44px; color: var(--c-ink-2) }
 .peu a:hover { color: var(--c-accent) }
 .peu .credit { grid-column: 1 / -1 }
 

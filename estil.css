@@ -72,6 +72,9 @@ textarea { min-height: 96px; resize: vertical }
 .llista li p { margin: 2px 0 0; font-size: 15px }
 .llista button { background: none; border: 1px solid var(--linia); color: var(--suau); border-radius: 4px; min-height: 48px; padding: 0 12px; cursor: pointer; flex: none }
 [hidden] { display: none !important }
+/* Enllaç per saltar al contingut: invisible fins que rep el focus del teclat */
+.salt { position: absolute; left: 16px; top: -100px; z-index: 60; display: inline-flex; align-items: center; min-height: 48px; padding: 0 20px; border-radius: 4px; background: var(--text); color: var(--fons); font-weight: 700; text-decoration: none }
+.salt:focus-visible { top: 8px }
 .amagat { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap }
 @media (max-width: 560px) { .portada { padding-top: 40px } }
 /* Logo de CIMS a la capçalera (marca.mk): el quadrat s'aclareix en mode fosc perquè no es confongui amb el fons */

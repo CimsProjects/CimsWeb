@@ -100,7 +100,7 @@ main, .barra { transition: filter .8s var(--corba), opacity .8s, transform .8s v
 
 /* Moviment en fer scroll ---------------------------------------------------------------------------------- */
 /* Les llistes que es pinten amb JavaScript entren amb una animació que s'executa sola: el contingut mai no queda amagat */
-.revela { animation: entra .6s var(--corba) both; animation-delay: calc(var(--i, 0) * 60ms) }
+.revela { animation: entra .6s var(--corba) both; animation-delay: calc(var(--i, 0) * 40ms) }
 @keyframes entra { from { opacity: 0; transform: translateY(16px) } }
 .barra-progres { transition: --progres 1.2s var(--corba) }
 @property --progres { syntax: "<percentage>"; inherits: false; initial-value: 0% }

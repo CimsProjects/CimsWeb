@@ -25,11 +25,12 @@
   a:hover { transform: translateY(-2px) } a:active { transform: scale(.97) } a:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px }
   /* La boira: tres núvols que passen per davant i per darrere del número */
   .boira { position: fixed; inset: 0; pointer-events: none }
-  .boira i { position: absolute; width: 70vmax; height: 26vmax; border-radius: 50%; background: radial-gradient(closest-side, var(--boira), transparent); opacity: .18; filter: blur(20px); animation: passa 26s linear infinite }
-  .boira i:nth-child(1) { top: 18%; left: -70vmax } .boira i:nth-child(2) { top: 46%; left: -70vmax; animation-delay: -9s; animation-duration: 34s } .boira i:nth-child(3) { top: 64%; left: -70vmax; animation-delay: -18s; z-index: 2 }
-  @keyframes passa { to { transform: translateX(calc(100vw + 70vmax)) } }
+  .boira i { position: absolute; width: 70vmax; height: 26vmax; border-radius: 50%; background: radial-gradient(closest-side, var(--boira), transparent); opacity: .18; filter: blur(20px); animation: apareix 1.6s var(--corba) both }
+  /* La boira ja no es mou sense parar (la guia demana que res no es mogui més de 5 s sense poder-ho aturar): apareix i es queda */
+  .boira i:nth-child(1) { top: 10%; left: -30vmax } .boira i:nth-child(2) { top: 44%; left: 40%; animation-delay: .2s } .boira i:nth-child(3) { top: 66%; left: -20vmax; animation-delay: .4s; z-index: 2 }
+  @keyframes apareix { from { opacity: 0; transform: translateX(-6vmax) } }
   @keyframes focus { to { filter: none; opacity: 1 } }
-  @media (prefers-reduced-motion: reduce) { h1 { animation: none; filter: none; opacity: 1 } .boira i { animation: none; left: 10% } a { transition: none } }
+  @media (prefers-reduced-motion: reduce) { h1 { animation: none; filter: none; opacity: 1 } .boira i { animation: none } a { transition: none } }
 </style>
 </head>
 <body>

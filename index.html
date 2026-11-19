@@ -14,6 +14,7 @@
 <script type="module" src="efectes/comuns.js"></script>
 </head>
 <body>
+<a class="salt" href="#contingut">Salta al contingut</a>
 <header class="barra">
   <a class="marca" href="./" aria-label="CIMS, inici"><svg class="mk" viewBox="0 0 100 100" aria-hidden="true"><rect class="mk-bg" width="100" height="100" rx="22"/><path class="mk-c" d="M 74.51 29.43 A 32 32 0 1 0 74.51 70.57" fill="none" stroke-width="10" stroke-linecap="round"/><polygon class="mk-a" points="31.44,63.12 46.16,36.88 60.88,63.12" stroke-width="1.5" stroke-linejoin="round"/><polygon class="mk-f" points="44.88,63.12 57.04,42.64 68.56,63.12" stroke-width="2.5" stroke-linejoin="round"/></svg>CIMS</a>
   <nav id="menu" aria-label="Seccions">
@@ -24,7 +25,7 @@
   </nav>
   <div class="accions">
     <div class="desplegable" id="tema">
-      <button class="icona" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="tema-menu" aria-label="Tema de colors">
+      <button class="icona" type="button" title="Tema de colors" aria-haspopup="true" aria-expanded="false" aria-controls="tema-menu" aria-label="Tema de colors">
         <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 4a8 8 0 0 1 0 16Z" fill="currentColor"/></svg>
       </button>
       <ul id="tema-menu" role="menu" aria-label="Tema de colors">
@@ -38,14 +39,14 @@
     </button>
   </div>
 </header>
-<main>
+<main id="contingut">
   <section class="wrap heroi">
     <div>
       <h1>Fem <span class="cim">cim</span>.</h1>
       <p class="lede">Som el Martí i el Pol, i ajudem empreses petites a fer servir bé la IA.</p>
       <div class="accions">
-        <a class="bt" href="consultoria.html">Què us oferim</a>
-        <a class="bt sec" href="#projectes">Els nostres projectes</a>
+        <a class="bt" href="consultoria.html">Mira què us oferim</a>
+        <a class="bt sec" href="#projectes">Mira els projectes</a>
       </div>
     </div>
     <figure class="mapa-cat">
@@ -103,7 +104,7 @@
     </div>
   </section>
 </main>
-<button class="amunt" id="amunt" type="button" aria-label="Torna amunt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+<button class="amunt" id="amunt" type="button" title="Torna amunt" aria-label="Torna amunt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
 <footer class="peu">
   <div class="wrap">
     <p class="gran">Fem cim<span>.</span></p>
