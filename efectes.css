@@ -79,7 +79,7 @@ main, .barra { transition: filter .8s var(--corba), opacity .8s, transform .8s v
 .argila { border: 0; background: var(--sup2);
   box-shadow: 0 8px 18px var(--argila-ombra), inset 0 2px 3px var(--argila-llum), inset 0 -6px 10px var(--argila-ombra) }
 /* Insígnies retallades */
-.insignia { display: inline-block; padding: 4px 16px 4px 12px; font: 700 12px var(--display); letter-spacing: .08em; text-transform: uppercase;
+.insignia { display: inline-block; padding: 4px 16px 4px 12px; font: 700 13px var(--cos);
   clip-path: polygon(0 0, 100% 0, calc(100% - 8px) 50%, 100% 100%, 0 100%) }
 
 /* Microinteraccions --------------------------------------------------------------------------------------- */
@@ -99,15 +99,16 @@ main, .barra { transition: filter .8s var(--corba), opacity .8s, transform .8s v
 .zoom:hover img { transform: scale(1.35) }
 
 /* Moviment en fer scroll ---------------------------------------------------------------------------------- */
-.revela { opacity: 0; transform: translateY(24px); transition: opacity .7s var(--corba), transform .7s var(--corba); transition-delay: calc(var(--i, 0) * 60ms) }
-.revela.vist { opacity: 1; transform: none }
+/* Les llistes que es pinten amb JavaScript entren amb una animació que s'executa sola: el contingut mai no queda amagat */
+.revela { animation: entra .6s var(--corba) both; animation-delay: calc(var(--i, 0) * 40ms) }
+@keyframes entra { from { opacity: 0; transform: translateY(16px) } }
 .barra-progres { transition: --progres 1.2s var(--corba) }
 @property --progres { syntax: "<percentage>"; inherits: false; initial-value: 0% }
 
 /* Accessibilitat del moviment ----------------------------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; transition-delay: 0s !important; scroll-behavior: auto !important }
-  .revela { opacity: 1; transform: none }
+  .revela { animation: none }
   .fons img { animation: none; transform: none }
   .brilla:hover, .boto:hover { transform: none }
   .zoom:hover img { transform: none }

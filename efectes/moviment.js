@@ -20,7 +20,7 @@ export function revela(elements, { esglaons = false } = {}) {
   }, { rootMargin: '0px 0px -8% 0px' });
   llista.forEach((el, i) => {
     el.classList.add('revela');
-    if (esglaons) el.style.setProperty('--i', Math.min(i, 12));
+    if (esglaons) el.style.setProperty('--i', Math.min(i, 10));
     observador.observe(el);
   });
 }

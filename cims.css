@@ -1,68 +1,150 @@
-/* Marca CIMS: Pissarra i corall. S'aplica a les pàgines amb <html data-marca="cims">; les seccions dels jocs
-   (municipis, andanes) conserven el seu propi aspecte. Els noms dels tokens són els d'estil.css. */
+/* Hallmark · redesign: full · pages: index.html, consultoria.html · brand: CIMS (pissarra i corall, Sora i DM Sans, el logo) · genre: editorial · shape: Index-First · hero: Stage (/) amb el mapa real, Settled (/consultoria) · nav: marca a l'esquerra, enllaços i tema a la dreta, sense línia · footer: mast, «Fem cim.» en gran sobre els enllaços · signature: els 947 municipis reals de Catalunya, dibuixats amb les dades de l'IGN · job: presentar CIMS a empreses petites que ens vulguin contractar · copy: to tècnic i jove, en primera persona del plural */
+/* critique: la portada ensenya una cosa real en lloc d'una columna buida; cada secció té una composició pròpia (índex, banda fosca, fitxa, llista); els títols van a mida de secció */
+/* waive 38iii · «cim» en corall és el senyal de la marca i surt una sola vegada, al títol de la portada */
+/* waive 42 · la barra és compartida amb les pàgines dels jocs; aquí només se li treu la línia i s'alineen els enllaços a la dreta */
+
+/* Marca CIMS. S'aplica a les pàgines amb <html data-marca="cims">; les pàgines dels jocs (municipis, andanes)
+   conserven el seu propi aspecte. Els tokens antics (--fons, --text…) es deriven dels nous perquè la barra i el
+   desplegable d'estil.css i efectes.css continuïn funcionant. */
+html[data-marca="cims"], html[data-marca="cims"][data-tema="clar"] {
+  --c-paper: oklch(97.4% .008 80); --c-paper-2: oklch(94.2% .012 78); --c-ink: oklch(24.5% .022 265); --c-ink-2: oklch(36% .02 265);
+  --c-muted: oklch(50% .02 265); --c-rule: oklch(87% .014 78); --c-accent: oklch(55% .17 33); --c-accent-ink: oklch(98% .01 80);
+  --c-band: oklch(24.5% .022 265); --c-band-ink: oklch(96% .008 80); --c-band-muted: oklch(78% .015 265); --c-band-accent: oklch(72% .16 33);
+  --c-map: oklch(62% .03 265); --c-map-fill: oklch(94.5% .012 78);
+  color-scheme: light;
+}
 html[data-marca="cims"][data-tema="fosc"] {
-  --fons: #1F2430; --sup: #272D3B; --sup2: #2F3646; --linia: #3A4256;
-  --text: #FAF6F0; --cos-text: #D6D9E0; --suau: #A9B1C2; --error: #F08A8A;
-  --ambre: #FF6B57; --ambre-f: #FF6B57; --accent: #FF6B57; --tinta: #1F2430;
-  --vidre: rgba(39, 45, 59, .62); --vora-vidre: rgba(250, 246, 240, .1);
-  --vel: linear-gradient(180deg, rgba(31, 36, 48, .55), rgba(31, 36, 48, .9) 40%, var(--fons) 85%);
-  --degradat: linear-gradient(#FF6B57, #FF6B57); --degradat-text: linear-gradient(#FF6B57, #FF6B57);
-  --ombra: 0 10px 30px rgba(0, 0, 0, .35); --brillantor: rgba(255, 107, 87, .16);
-  --argila-llum: rgba(255, 255, 255, .07); --argila-ombra: rgba(0, 0, 0, .45);
+  --c-paper: oklch(24.5% .022 265); --c-paper-2: oklch(28.5% .024 265); --c-ink: oklch(96% .008 80); --c-ink-2: oklch(87% .012 265);
+  --c-muted: oklch(74% .016 265); --c-rule: oklch(36% .022 265); --c-accent: oklch(70% .17 33); --c-accent-ink: oklch(22% .02 265);
+  --c-band: oklch(19% .02 265); --c-band-ink: oklch(96% .008 80); --c-band-muted: oklch(74% .016 265); --c-band-accent: oklch(72% .16 33);
+  --c-map: oklch(60% .03 265); --c-map-fill: oklch(28.5% .024 265);
+  color-scheme: dark;
 }
-html[data-marca="cims"][data-tema="clar"] {
-  --fons: #FAF6F0; --sup: #F1EBE0; --sup2: #E9E1D2; --linia: #DDD3C2;
-  --text: #1F2430; --cos-text: #2E3442; --suau: #5C6578; --error: #B42318;
-  --ambre: #FF6B57; --ambre-f: #C23B27; --accent: #C23B27; --tinta: #1F2430;
-  --vidre: rgba(250, 246, 240, .7); --vora-vidre: rgba(31, 36, 48, .1);
-  --vel: linear-gradient(180deg, rgba(250, 246, 240, .5), rgba(250, 246, 240, .88) 40%, var(--fons) 85%);
-  --degradat: linear-gradient(#FF6B57, #FF6B57); --degradat-text: linear-gradient(#C23B27, #C23B27);
-  --ombra: 0 10px 30px rgba(31, 36, 48, .12); --brillantor: rgba(255, 107, 87, .2);
-  --argila-llum: rgba(255, 255, 255, .9); --argila-ombra: rgba(31, 36, 48, .14);
+html[data-marca="cims"], html[data-marca="cims"][data-tema] {
+  --f-display: "Sora", system-ui, sans-serif; --f-body: "DM Sans", system-ui, sans-serif;
+  --s-1: 4px; --s-2: 8px; --s-3: 12px; --s-4: 16px; --s-5: 24px; --s-6: 32px; --s-7: 48px; --s-8: 64px; --s-9: 96px; --s-10: 128px;
+  --t-hero: clamp(64px, 9vw, 132px); --t-h1: clamp(40px, 5.4vw, 72px); --t-section: clamp(36px, 4vw, 52px); --t-title: clamp(26px, 2.6vw, 36px);
+  --t-lede: clamp(19px, 1.6vw, 22px); --t-body: 18px; --t-small: 15px;
+  --ease: cubic-bezier(.16, 1, .3, 1); --dur: .3s; --dur-in: .15s; --wrap: 1280px;
+  /* Els noms d'estil.css, perquè la barra, el desplegable i el botó d'amunt prenguin la marca */
+  --fons: var(--c-paper); --sup: var(--c-paper-2); --sup2: var(--c-paper-2); --linia: var(--c-rule); --text: var(--c-ink);
+  --cos-text: var(--c-ink-2); --suau: var(--c-muted); --accent: var(--c-accent); --ambre: var(--c-accent); --ambre-f: var(--c-accent);
+  --tinta: var(--c-accent-ink); --display: var(--f-display); --cos: var(--f-body); --corba: var(--ease);
+  overflow-x: clip;
 }
-html[data-marca="cims"] {
-  --display: "Sora", system-ui, sans-serif; --cos: "DM Sans", system-ui, sans-serif;
+html[data-marca="cims"] body { overflow-x: clip; background: var(--c-paper); color: var(--c-ink); font: 400 var(--t-body)/1.55 var(--f-body) }
+html[data-marca="cims"] main { max-width: none; padding: 0; margin: 0 }
+html[data-marca="cims"] :focus-visible { outline: 3px solid var(--c-accent); outline-offset: 3px; transition: none }
+html[data-marca="cims"] .casella input { accent-color: var(--c-accent) }
+.wrap { max-width: var(--wrap); margin-inline: auto; padding-inline: clamp(var(--s-4), 5vw, var(--s-8)) }
+
+/* Barra: la marca a l'esquerra, els enllaços i el tema a la dreta, sense línia a sota */
+html[data-marca="cims"] body > .barra { max-width: var(--wrap); margin-inline: auto; padding-block: var(--s-3); padding-inline: clamp(var(--s-4), 5vw, var(--s-8)); border: 0 }
+html[data-marca="cims"] .barra .marca { font: 800 20px var(--f-display); letter-spacing: -.01em; text-transform: none; color: var(--c-ink) }
+html[data-marca="cims"] .barra nav { margin-left: auto }
+html[data-marca="cims"] .barra nav a { color: var(--c-muted); font: 500 var(--t-small) var(--f-body) }
+html[data-marca="cims"] .barra nav a:hover, html[data-marca="cims"] .barra nav a[aria-current="page"] { color: var(--c-ink) }
+
+/* Botons: un sol estil principal, en píndola i sense ombra */
+.bt { display: inline-flex; align-items: center; min-height: 48px; padding: 0 var(--s-5); border-radius: 999px; font: 600 16px var(--f-body); text-decoration: none; white-space: nowrap; cursor: pointer;
+  background: var(--c-accent); color: var(--c-accent-ink); border: 1.5px solid var(--c-accent); transition: transform var(--dur) var(--ease), color var(--dur) var(--ease), border-color var(--dur) var(--ease) }
+.bt:hover { transform: translateY(-2px); transition-duration: var(--dur-in) }
+.bt:active { transform: translateY(0) }
+.bt.sec { background: transparent; color: var(--c-ink); border-color: var(--c-ink) }
+.bt.sec:hover { border-color: var(--c-accent); color: var(--c-accent) }
+.accions { display: flex; flex-wrap: wrap; gap: var(--s-3) }
+
+/* Títols */
+html[data-marca="cims"] h1, html[data-marca="cims"] h2, html[data-marca="cims"] h3 { overflow-wrap: break-word; min-width: 0; text-wrap: balance; color: inherit }
+html[data-marca="cims"] h2 { font: 800 var(--t-section)/1.05 var(--f-display); letter-spacing: -.03em; margin: 0 0 var(--s-7) }
+html[data-marca="cims"] p { color: var(--c-ink-2); max-width: 65ch; margin: 0 0 var(--s-4) }
+.lede { font-size: var(--t-lede); line-height: 1.45; color: var(--c-ink-2) }
+
+/* Portada: el títol i les accions a l'esquerra, el mapa real a la dreta */
+.heroi { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: var(--s-8); align-items: center; min-height: calc(100svh - 80px); max-height: 860px; padding-block: var(--s-7) }
+.heroi h1 { font: 800 var(--t-hero)/.92 var(--f-display); letter-spacing: -.045em; margin: 0 0 var(--s-6) }
+.heroi h1 .cim { color: var(--c-accent) }
+.heroi .lede { max-width: 28ch; margin-bottom: var(--s-6) }
+.mapa-cat { margin: 0; min-width: 0 }
+.mapa-cat svg { width: 100%; height: auto; display: block; max-height: 640px; aspect-ratio: 2000 / 1974 }
+.mapa-cat path { fill: var(--c-map-fill); stroke: var(--c-map); stroke-width: .8; vector-effect: non-scaling-stroke }
+.mapa-cat figcaption { margin-top: var(--s-3); font-size: var(--t-small); color: var(--c-muted) }
+
+/* Capçalera d'una pàgina interior (consultoria) */
+.cap { padding-block: var(--s-9) var(--s-8); display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--s-8); align-items: end }
+.cap h1 { font: 800 var(--t-h1)/1 var(--f-display); letter-spacing: -.035em; margin: 0 }
+.cap .lede { margin: 0 0 var(--s-5) }
+
+/* Índex: noms grans, la descripció al mig i l'estat a la dreta */
+.index { padding-block: var(--s-9) var(--s-10) }
+.index ul { list-style: none; margin: 0; padding: 0; border-top: 2px solid var(--c-ink) }
+.index li > a, .index li > div { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 5fr) minmax(0, 2fr); gap: var(--s-6); align-items: baseline; padding-block: var(--s-6); border-bottom: 1px solid var(--c-rule); color: inherit; text-decoration: none }
+.index .nom { font: 800 var(--t-title)/1.1 var(--f-display); letter-spacing: -.02em; transition: color var(--dur) var(--ease) }
+.index .desc p { margin: 0 0 var(--s-2) }
+.index .desc p:last-child { margin: 0 }
+.index .estat { font-size: var(--t-small); color: var(--c-muted); justify-self: end; text-align: right }
+.index a:hover .nom { color: var(--c-accent); transition-duration: var(--dur-in) }
+
+/* Qui som: una frase gran i la fitxa al costat */
+.qui-som { padding-block: var(--s-9); border-top: 2px solid var(--c-ink) }
+.qui-som .wrap { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--s-8); align-items: start }
+.qui-som .gran { font: 700 clamp(28px, 3vw, 40px)/1.2 var(--f-display); letter-spacing: -.02em; color: var(--c-ink); max-width: 22ch; margin: 0 0 var(--s-5) }
+.fitxa { margin: 0; display: grid; gap: 0; border-top: 1px solid var(--c-rule) }
+.fitxa div { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); gap: var(--s-4); padding-block: var(--s-4); border-bottom: 1px solid var(--c-rule) }
+.fitxa dt { font-size: var(--t-small); color: var(--c-muted) }
+.fitxa dd { margin: 0; font-weight: 600; color: var(--c-ink) }
+
+/* El nom: banda fosca, les quatre paraules en gran */
+.banda { background: var(--c-band); color: var(--c-band-ink); padding-block: var(--s-10) }
+.banda .wrap { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--s-8); align-items: end }
+html[data-marca="cims"] .banda h2 { color: var(--c-band-ink) }
+html[data-marca="cims"] .banda p { color: var(--c-band-muted); font-size: var(--t-lede); line-height: 1.45; max-width: 30ch; margin: 0 }
+.lletres { list-style: none; margin: 0; padding: 0; font: 800 clamp(44px, 6vw, 88px)/1.02 var(--f-display); letter-spacing: -.035em }
+.lletres li { color: var(--c-band-muted) }
+.lletres b { color: var(--c-band-accent) }
+
+/* Serveis: una llista de definicions amb el títol gran */
+.serveis { padding-block: var(--s-8) var(--s-9) }
+.serveis dl { margin: 0; border-top: 2px solid var(--c-ink) }
+.serveis dl > div { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--s-6); padding-block: var(--s-6); border-bottom: 1px solid var(--c-rule) }
+.serveis dt { font: 800 var(--t-title)/1.1 var(--f-display); letter-spacing: -.02em; color: var(--c-ink) }
+.serveis dd { margin: 0 }
+.serveis dd p:last-child { margin: 0 }
+
+/* Com treballem: quatre passos en fila sobre una superfície */
+.passos-s { background: var(--c-paper-2); padding-block: var(--s-9) }
+.passos-s ol { list-style: none; margin: 0 0 var(--s-6); padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--s-6) }
+.passos-s li { border-top: 2px solid var(--c-ink); padding-top: var(--s-4); color: var(--c-ink-2) }
+.passos-s li b { display: block; font: 800 22px/1.2 var(--f-display); color: var(--c-ink); margin-bottom: var(--s-2) }
+html[data-marca="cims"] .passos-s .nota { margin: 0; color: var(--c-ink) }
+
+/* Peu: «Fem cim.» en gran sobre els enllaços */
+html[data-marca="cims"] footer.peu { border-top: 2px solid var(--c-ink); padding-block: var(--s-8) var(--s-7); padding-inline: 0; text-align: left; color: var(--c-muted); font-size: var(--t-small) }
+.peu .wrap { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--s-5) var(--s-8); align-items: end }
+html[data-marca="cims"] .peu .gran { font: 800 clamp(56px, 10vw, 160px)/.85 var(--f-display); letter-spacing: -.05em; color: var(--c-ink); margin: 0; max-width: none }
+.peu .gran span { color: var(--c-accent) }
+html[data-marca="cims"] .peu p { font-size: var(--t-small); color: var(--c-muted); margin: 0; max-width: none }
+.peu ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 0; text-align: right }
+.peu a { display: inline-flex; align-items: center; min-height: 44px; color: var(--c-ink-2) }
+.peu a:hover { color: var(--c-accent) }
+.peu .credit { grid-column: 1 / -1 }
+
+@media (max-width: 900px) {
+  .heroi { grid-template-columns: minmax(0, 1fr); min-height: 0; max-height: none; padding-block: var(--s-6) var(--s-8); gap: var(--s-6) }
+  .mapa-cat svg { max-height: 360px }
+  .cap { grid-template-columns: minmax(0, 1fr); gap: var(--s-5); padding-block: var(--s-7) var(--s-6) }
+  .index li > a, .index li > div { grid-template-columns: minmax(0, 1fr); gap: var(--s-2) }
+  .index .estat { justify-self: start; text-align: left; order: -1 }
+  .qui-som .wrap, .banda .wrap, .peu .wrap { grid-template-columns: minmax(0, 1fr) }
+  .serveis dl > div { grid-template-columns: minmax(0, 1fr); gap: var(--s-3) }
+  .passos-s ol { grid-template-columns: repeat(2, minmax(0, 1fr)) }
+  .peu ul { text-align: left }
+  .index, .qui-som, .serveis, .passos-s { padding-block: var(--s-8) }
+  .banda { padding-block: var(--s-9) }
 }
-html[data-marca="cims"] .casella input { accent-color: #FF6B57 }
-
-/* Portada: «Fem cim.» amb el triangle com a punt */
-.cims-h1 { font: 800 clamp(56px, 15vw, 120px)/.95 var(--display); letter-spacing: -.04em; margin: 12px 0 18px }
-.cims-h1 .cim { color: var(--accent) }
-.tri { display: inline-block; width: .17em; height: .17em; margin-left: .05em; background: var(--accent);
-  clip-path: polygon(50% 0, 100% 100%, 0 100%); animation: tri-puja 2.6s var(--corba) infinite }
-@keyframes tri-puja { 0%, 100% { transform: translateY(0) } 50% { transform: translateY(-.1em) } }
-.accions-portada { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px }
-
-/* Llista de projectes: files separades per una línia, sense targetes ni brillantors */
-.projectes { list-style: none; margin: 18px 0 0; padding: 0; border-top: 1px solid var(--linia) }
-.projectes a { display: grid; grid-template-columns: 180px 1fr; column-gap: 24px; row-gap: 4px; padding: 20px 0;
-  border-bottom: 1px solid var(--linia); color: inherit; text-decoration: none }
-.projectes .tipus { grid-row: span 2; padding-top: 4px; font: 600 14px var(--cos); color: var(--suau) }
-.projectes .nom { font: 800 24px/1.2 var(--display); letter-spacing: -.01em; transition: color .2s }
-.projectes .desc { color: var(--cos-text); max-width: 60ch }
-.projectes .fletxa { display: inline-block; color: var(--accent); transition: transform .25s var(--corba) }
-.projectes a:hover .nom { color: var(--accent) }
-.projectes a:hover .fletxa { transform: translateX(6px) }
-@media (max-width: 560px) {
-  .projectes a { grid-template-columns: 1fr }
-  .projectes .tipus { grid-row: auto; padding: 0 }
+@media (max-width: 640px) {
+  html[data-marca="cims"] .barra nav { margin: 0 }
+  .passos-s ol { grid-template-columns: minmax(0, 1fr) }
+  .accions .bt { width: 100%; justify-content: center }
 }
-
-/* Les quatre lletres, en una sola línia de text */
-.lletres { display: flex; flex-wrap: wrap; gap: 4px 28px; margin: 18px 0 0; max-width: none; font: 600 22px/1.3 var(--display); color: var(--text) }
-.lletres b { color: var(--accent); font-weight: 800 }
-
-/* Serveis de consultoria: llista de definicions, no targetes */
-.serveis { margin: 18px 0 0; border-top: 1px solid var(--linia) }
-.serveis div { display: grid; grid-template-columns: 220px 1fr; gap: 4px 24px; padding: 16px 0; border-bottom: 1px solid var(--linia) }
-.serveis dt { font: 700 19px var(--display) }
-.serveis dd { margin: 0; color: var(--cos-text) }
-@media (max-width: 560px) { .serveis div { grid-template-columns: 1fr } }
-
-/* Botons de la marca: corall pla */
-html[data-marca="cims"] .boto { background: var(--accent); color: var(--fons) }
-html[data-marca="cims"][data-tema="fosc"] .boto { color: var(--tinta) }
-html[data-marca="cims"] .boto.secundari { background: none; color: var(--text); border: 1.5px solid var(--text) }
-html[data-marca="cims"] .boto.secundari:hover { border-color: var(--accent); color: var(--accent) }
-.qui { font: 600 16px var(--cos); color: var(--suau); margin: 0 }
-@media (prefers-reduced-motion: reduce) { .tri { animation: none } }
+@media (prefers-reduced-motion: reduce) { .bt, .index .nom { transition: none } .bt:hover { transform: none } }

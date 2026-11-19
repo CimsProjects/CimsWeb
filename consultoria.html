@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>CIMS · Consultoria</title>
 <link rel="icon" href="cims-icona.svg" type="image/svg+xml">
-<meta name="description" content="Apps i webs a mida per a empreses petites i creadors de contingut en català, fetes amb mètode.">
+<meta name="description" content="Ajudem empreses petites a crear les seves pròpies apps i webs amb intel·ligència artificial, ben fetes i segures. També fem cursets d'IA per a empreses.">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;800&family=DM+Sans:wght@400..700&display=swap">
 <link rel="stylesheet" href="estil.css">
 <link rel="stylesheet" href="efectes.css">
@@ -14,6 +14,7 @@
 <script type="module" src="efectes/comuns.js"></script>
 </head>
 <body>
+<a class="salt" href="#contingut">Salta al contingut</a>
 <header class="barra">
   <a class="marca" href="./" aria-label="CIMS, inici"><svg class="mk" viewBox="0 0 100 100" aria-hidden="true"><rect class="mk-bg" width="100" height="100" rx="22"/><path class="mk-c" d="M 74.51 29.43 A 32 32 0 1 0 74.51 70.57" fill="none" stroke-width="10" stroke-linecap="round"/><polygon class="mk-a" points="31.44,63.12 46.16,36.88 60.88,63.12" stroke-width="1.5" stroke-linejoin="round"/><polygon class="mk-f" points="44.88,63.12 57.04,42.64 68.56,63.12" stroke-width="2.5" stroke-linejoin="round"/></svg>CIMS</a>
   <nav id="menu" aria-label="Seccions">
@@ -24,7 +25,7 @@
   </nav>
   <div class="accions">
     <div class="desplegable" id="tema">
-      <button class="icona" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="tema-menu" aria-label="Tema de colors">
+      <button class="icona" type="button" title="Tema de colors" aria-haspopup="true" aria-expanded="false" aria-controls="tema-menu" aria-label="Tema de colors">
         <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 4a8 8 0 0 1 0 16Z" fill="currentColor"/></svg>
       </button>
       <ul id="tema-menu" role="menu" aria-label="Tema de colors">
@@ -38,40 +39,46 @@
     </button>
   </div>
 </header>
-<main>
-  <section class="portada">
-    <p class="qui">Consultoria</p>
-    <h1>Apps i webs a mida per a empreses petites i creadors en català</h1>
-    <p class="destacat">De la idea fins a la publicació.</p>
-    <div class="accions-portada"><a class="boto" href="#contacte">Explica'ns la teva idea <span class="fletxa" aria-hidden="true">→</span></a></div>
+<main id="contingut">
+  <section class="wrap cap">
+    <h1>Us ajudem a fer servir bé la intel·ligència artificial</h1>
+    <div>
+      <p class="lede">Per a empreses petites que volen crear les seves pròpies apps o webs amb IA, de manera segura.</p>
+      <div class="accions"><a class="bt" href="#com-treballem">Mira com treballem</a></div>
+    </div>
   </section>
 
-  <section class="seccio">
-    <h2>Què podem fer</h2>
-    <dl class="serveis">
-      <div><dt>Aplicacions Android</dt><dd>Per a l'equip, els clients o la comunitat.</dd></div>
-      <div><dt>Webs</dt><dd>Presentació, formularis, catàlegs o panells de gestió.</dd></div>
-      <div><dt>Assessorament</dt><dd>Aclarim què necessites abans de programar res.</dd></div>
+  <section class="wrap serveis" aria-labelledby="serveis">
+    <h2 id="serveis">Què podem fer</h2>
+    <dl>
+      <div><dt>Apps i webs amb IA</dt><dd><p>Si voleu fer la vostra app o la vostra web amb eines d'intel·ligència artificial, us acompanyem: triem les eines amb vosaltres, us ensenyem a fer-les servir i revisem el que en surt.</p></dd></div>
+      <div><dt>IA segura</dt><dd><p>Us ajudem a fer servir la IA sense posar en risc les vostres dades ni les dels vostres clients.</p></dd></div>
+      <div><dt>Cursets d'IA</dt><dd><p>Cursets pràctics per a empreses relativament petites: què pot fer la IA a la vostra feina i com fer-la servir bé.</p></dd></div>
+      <div><dt>Assessorament</dt><dd><p>Aclarim què necessiteu abans de programar res.</p></dd></div>
     </dl>
   </section>
 
-  <section class="seccio">
-    <h2>Com treballem</h2>
-    <ol class="passos">
-      <li><b>Escoltem</b> el problema, sense jargon.</li>
-      <li><b>Proposem</b> passos i un preu orientatiu.</li>
-      <li><b>Lliurem per parts</b>, perquè puguis corregir el rumb.</li>
-      <li><b>Publiquem</b> i, si cal, mantenim.</li>
-    </ol>
-    <p>El preu depèn del projecte. Te'l diem després d'escoltar-te.</p>
+  <section class="passos-s" aria-labelledby="com-treballem">
+    <div class="wrap">
+      <h2 id="com-treballem">Com treballem</h2>
+      <ol>
+        <li><b>Escoltem</b> el problema, sense jargon.</li>
+        <li><b>Proposem</b> passos i un preu orientatiu.</li>
+        <li><b>Lliurem per parts</b> perquè pugueu corregir el rumb.</li>
+        <li><b>Publiquem</b> i, si cal, mantenim.</li>
+      </ol>
+      <p class="nota">El preu depèn del projecte. Us el diem després d'escoltar-vos.</p>
+    </div>
   </section>
-
-  <section class="seccio">
-    <h2 id="contacte">Parlem</h2>
-    <p class="pendent">Aquí hi anirà el correu de contacte i els comptes d'Instagram i TikTok de CIMS.</p>
-  </section>
+  <!-- PENDENT: correu de contacte i comptes d'Instagram i TikTok de CIMS, quan n'hi hagi. -->
 </main>
-<button class="amunt" id="amunt" type="button" aria-label="Torna amunt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-<footer>CIMS · Fem cim.</footer>
+<button class="amunt" id="amunt" type="button" title="Torna amunt" aria-label="Torna amunt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+<footer class="peu">
+  <div class="wrap">
+    <p class="gran">Fem cim<span>.</span></p>
+    <ul><li><a href="consultoria.html">Consultoria</a></li><li><a href="municipis.html">Bocins de Catalunya</a></li><li><a href="andanes.html">Andana 947</a></li></ul>
+    <p class="credit">Estudi de creació digital d'Andorra i Catalunya.</p>
+  </div>
+</footer>
 </body>
 </html>
