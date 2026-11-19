@@ -121,6 +121,27 @@ html[data-marca="cims"] .passos-s .nota { margin: 0; color: var(--c-ink) }
 html[data-marca="cims"] .per-a-qui .gran { font: 700 clamp(28px, 3.4vw, 46px)/1.15 var(--f-display); letter-spacing: -.02em; color: var(--c-ink); max-width: 26ch; margin: 0 }
 html[data-marca="cims"] .per-a-qui h2 { margin-bottom: var(--s-5) }
 
+/* Per a qui: situacions en una graella de dues columnes */
+html[data-marca="cims"] .intro-casos { margin: var(--s-7) 0 var(--s-4); color: var(--c-ink-2) }
+.casos { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-5) var(--s-8) }
+.casos li { border-top: 1px solid var(--c-rule); padding-top: var(--s-4); color: var(--c-ink-2) }
+.casos b { color: var(--c-ink) }
+
+/* Com treballem amb vosaltres: tres principis en fila */
+.per-que { padding-block: var(--s-9); border-top: 2px solid var(--c-ink) }
+.per-que ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-8) }
+.per-que b { display: block; font: 800 var(--t-title)/1.1 var(--f-display); letter-spacing: -.02em; color: var(--c-ink); margin-bottom: var(--s-3) }
+.per-que span { color: var(--c-ink-2) }
+
+/* Crida final: una frase i una acció */
+.crida { padding-block: var(--s-9) }
+html[data-marca="cims"] .crida h2 { margin-bottom: var(--s-4) }
+html[data-marca="cims"] .crida .lede { margin-bottom: var(--s-6); max-width: 40ch }
+
+/* Serveis: llistes dins les definicions */
+.serveis dd ul { margin: 0; padding-left: var(--s-5); color: var(--c-ink-2) }
+.serveis dd li { margin-bottom: var(--s-2) }
+
 /* Què us donem: quatre compromisos en dues columnes */
 .compromisos { padding-block: var(--s-9) var(--s-8) }
 .compromisos ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-6) var(--s-8) }
@@ -171,6 +192,8 @@ html[data-marca="cims"] .peu p { font-size: var(--t-small); color: var(--c-muted
   .serveis dl > div { grid-template-columns: minmax(0, 1fr); gap: var(--s-3) }
   .passos-s ol { grid-template-columns: repeat(2, minmax(0, 1fr)) }
   .compromisos ul { grid-template-columns: minmax(0, 1fr) }
+  .casos, .per-que ul { grid-template-columns: minmax(0, 1fr); gap: var(--s-5) }
+  .per-que, .crida { padding-block: var(--s-8) }
   .per-a-qui { padding-block: var(--s-8) }
   .legal dl div { grid-template-columns: minmax(0, 1fr); gap: var(--s-1) }
   .peu ul { text-align: left }
