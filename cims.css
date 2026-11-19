@@ -116,6 +116,40 @@ html[data-marca="cims"] .banda p { color: var(--c-band-muted); font-size: var(--
 .passos-s li b { display: block; font: 800 22px/1.2 var(--f-display); color: var(--c-ink); margin-bottom: var(--s-2) }
 html[data-marca="cims"] .passos-s .nota { margin: 0; color: var(--c-ink) }
 
+/* Per a qui: una frase gran sobre la superfície */
+.per-a-qui { background: var(--c-paper-2); padding-block: var(--s-9) }
+html[data-marca="cims"] .per-a-qui .gran { font: 700 clamp(28px, 3.4vw, 46px)/1.15 var(--f-display); letter-spacing: -.02em; color: var(--c-ink); max-width: 26ch; margin: 0 }
+html[data-marca="cims"] .per-a-qui h2 { margin-bottom: var(--s-5) }
+
+/* Què us donem: quatre compromisos en dues columnes */
+.compromisos { padding-block: var(--s-9) var(--s-8) }
+.compromisos ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-6) var(--s-8) }
+.compromisos li { border-top: 2px solid var(--c-ink); padding-top: var(--s-4); color: var(--c-ink-2); font-size: var(--t-lede); line-height: 1.4 }
+.compromisos b { color: var(--c-ink) }
+
+/* Preguntes freqüents: desplegables natius */
+.preguntes { padding-block: var(--s-8) var(--s-9) }
+.preguntes details { border-bottom: 1px solid var(--c-rule) }
+.preguntes details:first-of-type { border-top: 2px solid var(--c-ink) }
+.preguntes summary { display: flex; align-items: center; justify-content: space-between; gap: var(--s-4); min-height: 64px; padding-block: var(--s-3); cursor: pointer; list-style: none; font: 700 22px/1.3 var(--f-display); color: var(--c-ink) }
+.preguntes summary::-webkit-details-marker { display: none }
+.preguntes summary::after { content: "+"; font: 400 28px/1 var(--f-body); color: var(--c-accent); flex: none }
+.preguntes details[open] summary::after { content: "−" }
+.preguntes summary:hover { color: var(--c-accent) }
+html[data-marca="cims"] .preguntes details p { margin: 0 0 var(--s-5) }
+
+/* Avís legal: text llarg en una columna de lectura */
+.legal { padding-block: var(--s-8) var(--s-9); max-width: 820px }
+html[data-marca="cims"] .titol-legal { font: 800 var(--t-h1)/1 var(--f-display); letter-spacing: -.035em; margin: 0 0 var(--s-4) }
+html[data-marca="cims"] .legal h2 { font-size: clamp(28px, 3vw, 36px); margin: var(--s-8) 0 var(--s-4) }
+.legal dl { margin: 0 0 var(--s-5) }
+.legal dl div { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); gap: var(--s-4); padding-block: var(--s-3); border-bottom: 1px solid var(--c-rule) }
+.legal dt { color: var(--c-muted) }
+.legal dd { margin: 0; color: var(--c-ink) }
+.legal .falta { color: var(--c-accent); font-weight: 600 }
+.legal ul { color: var(--c-ink-2); padding-left: var(--s-5) }
+.legal li { margin-bottom: var(--s-2) }
+
 /* Peu: «Fem cim.» en gran sobre els enllaços */
 html[data-marca="cims"] footer.peu { border-top: 2px solid var(--c-ink); padding-block: var(--s-8) var(--s-7); padding-inline: 0; text-align: left; color: var(--c-muted); font-size: var(--t-small) }
 .peu .wrap { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--s-5) var(--s-8); align-items: end }
@@ -136,6 +170,9 @@ html[data-marca="cims"] .peu p { font-size: var(--t-small); color: var(--c-muted
   .qui-som .wrap, .banda .wrap, .peu .wrap { grid-template-columns: minmax(0, 1fr) }
   .serveis dl > div { grid-template-columns: minmax(0, 1fr); gap: var(--s-3) }
   .passos-s ol { grid-template-columns: repeat(2, minmax(0, 1fr)) }
+  .compromisos ul { grid-template-columns: minmax(0, 1fr) }
+  .per-a-qui { padding-block: var(--s-8) }
+  .legal dl div { grid-template-columns: minmax(0, 1fr); gap: var(--s-1) }
   .peu ul { text-align: left }
   .index, .qui-som, .serveis, .passos-s { padding-block: var(--s-8) }
   .banda { padding-block: var(--s-9) }
