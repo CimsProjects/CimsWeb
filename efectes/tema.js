@@ -25,8 +25,9 @@ export function iniciaTema() {
     if (obert) caixa.querySelector('[aria-checked="true"]')?.focus();
   });
   caixa.addEventListener('click', (e) => {
-    const b = e.target.closest('[data-tema]');
-    if (!b) return;
+    // Només els botons del menú: <html> també porta data-tema, i closest() el trobaria en clicar el botó del tema.
+    const b = e.target.closest('#tema-menu [data-tema]');
+    if (!b || !caixa.contains(b)) return;
     try { localStorage.setItem(CLAU, b.dataset.tema); } catch { /* Sense memòria: només per a aquesta visita. */ }
     aplica(b.dataset.tema);
     tanca();
