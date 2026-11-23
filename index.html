@@ -5,26 +5,31 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>CIMS · Fem cim.</title>
 <link rel="icon" href="cims-icona.svg" type="image/svg+xml">
-<meta name="description" content="CIMS és un estudi de creació digital d'Andorra i Catalunya: jocs, aplicacions i webs en català, i consultoria per a empreses petites i creadors de contingut.">
+<meta name="description" content="CIMS som el Martí i el Pol, un estudi de creació digital de Catalunya. Ajudem empreses petites a crear apps i webs amb IA, de manera segura, i fem cursets d'IA.">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;800&family=DM+Sans:wght@400..700&display=swap">
 <link rel="stylesheet" href="estil.css">
 <link rel="stylesheet" href="efectes.css">
 <link rel="stylesheet" href="cims.css">
-<script>try{var t=localStorage.getItem('bocins-tema')}catch(e){}document.documentElement.dataset.tema=t==='clar'||t==='fosc'?t:matchMedia('(prefers-color-scheme: light)').matches?'clar':'fosc'</script>
+<link rel="stylesheet" href="interactiu.css">
+<script>try{var t=localStorage.getItem('bocins-tema')}catch(e){}document.documentElement.dataset.tema=t==='clar'||t==='fosc'?t:matchMedia('(prefers-color-scheme: light)').matches?'clar':'fosc';try{if(localStorage.getItem('cims-interactiu')==='si')document.documentElement.dataset.interactiu=''}catch(e){}</script>
 <script type="module" src="efectes/comuns.js"></script>
+<script type="module" src="efectes/interactiu.js"></script>
 </head>
 <body>
+<a class="salt" href="#contingut">Salta al contingut</a>
 <header class="barra">
   <a class="marca" href="./" aria-label="CIMS, inici"><svg class="mk" viewBox="0 0 100 100" aria-hidden="true"><rect class="mk-bg" width="100" height="100" rx="22"/><path class="mk-c" d="M 74.51 29.43 A 32 32 0 1 0 74.51 70.57" fill="none" stroke-width="10" stroke-linecap="round"/><polygon class="mk-a" points="31.44,63.12 46.16,36.88 60.88,63.12" stroke-width="1.5" stroke-linejoin="round"/><polygon class="mk-f" points="44.88,63.12 57.04,42.64 68.56,63.12" stroke-width="2.5" stroke-linejoin="round"/></svg>CIMS</a>
   <nav id="menu" aria-label="Seccions">
     <a href="./" aria-current="page">Inici</a>
-    <a href="municipis.html">Municipis</a>
-    <a href="andanes.html">Andanes</a>
     <a href="consultoria.html">Consultoria</a>
   </nav>
   <div class="accions">
+    <button class="icona interruptor" id="interactiu" type="button" aria-pressed="false" title="Activa el mode interactiu">
+      <span class="pista" aria-hidden="true"></span><span class="text">Mode interactiu</span>
+    </button>
+    <span class="amagat" id="avis-interactiu" role="status" aria-live="polite"></span>
     <div class="desplegable" id="tema">
-      <button class="icona" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="tema-menu" aria-label="Tema de colors">
+      <button class="icona" type="button" title="Tema de colors" aria-haspopup="true" aria-expanded="false" aria-controls="tema-menu" aria-label="Tema de colors">
         <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 4a8 8 0 0 1 0 16Z" fill="currentColor"/></svg>
       </button>
       <ul id="tema-menu" role="menu" aria-label="Tema de colors">
@@ -38,38 +43,79 @@
     </button>
   </div>
 </header>
-<main>
-  <section class="portada">
-    <p class="qui">Estudi de creació digital d'Andorra i Catalunya</p>
-    <h1 class="cims-h1">Fem <span class="cim">cim</span><span class="tri" aria-hidden="true"></span><span class="amagat">.</span></h1>
-    <p class="destacat">Som el Martí i el Pol. Fem jocs, apps i webs en català.</p>
-    <div class="accions-portada">
-      <a class="boto" href="#projectes">Mira els projectes <span class="fletxa" aria-hidden="true">↓</span></a>
-      <a class="boto secundari" href="consultoria.html">Encarrega'ns una app o una web</a>
+<main id="contingut">
+  <section class="wrap heroi">
+    <div>
+      <h1>Fem <span class="cim">cim</span>.</h1>
+      <p class="lede">Som el Martí i el Pol, i ajudem empreses petites a fer servir bé la IA.</p>
+      <div class="accions">
+        <a class="bt" href="consultoria.html">Mira què us oferim</a>
+        <a class="bt sec" href="#qui-som">Coneix-nos</a>
+      </div>
+    </div>
+    <figure class="logo-gran">
+      <svg class="mk-gran" viewBox="0 0 100 100" role="img" aria-label="Logo de CIMS: una C amb dos cims"><rect class="mk-bg" width="100" height="100" rx="22"/><path class="mk-c" d="M 74.51 29.43 A 32 32 0 1 0 74.51 70.57" fill="none" stroke-width="10" stroke-linecap="round"/><polygon class="mk-a" points="31.44,63.12 46.16,36.88 60.88,63.12" stroke-width="1.5" stroke-linejoin="round"/><polygon class="mk-f" points="44.88,63.12 57.04,42.64 68.56,63.12" stroke-width="2.5" stroke-linejoin="round"/></svg>
+    </figure>
+  </section>
+
+  <section class="per-a-qui" aria-labelledby="per-a-qui">
+    <div class="wrap">
+      <h2 id="per-a-qui">Per a qui</h2>
+      <p class="gran">Per a empreses petites que volen desenvolupar els seus projectes i els seus processos interns.</p>
     </div>
   </section>
 
-  <section class="seccio">
+  <section class="wrap index" aria-labelledby="projectes">
     <h2 id="projectes">Què fem</h2>
-    <ul class="projectes">
-      <li><a href="municipis.html"><span class="tipus">Joc per a Android</span><span class="nom">Bocins de Catalunya <span class="fletxa" aria-hidden="true">→</span></span><span class="desc">Els 947 municipis de Catalunya, com un videojoc.</span></a></li>
-      <li><a href="andanes.html"><span class="tipus">Joc per a Android</span><span class="nom">Andana 947 <span class="fletxa" aria-hidden="true">→</span></span><span class="desc">Una companyia de transport amb parades reals, conquerides amb el GPS.</span></a></li>
-      <li><a href="consultoria.html"><span class="tipus">Encàrrecs</span><span class="nom">Consultoria <span class="fletxa" aria-hidden="true">→</span></span><span class="desc">Apps i webs a mida per a empreses petites i creadors.</span></a></li>
+    <ul>
+      <li><a href="consultoria.html">
+        <span class="nom">Apps i webs amb IA</span>
+        <div class="desc"><p>Us ajudem a crear les vostres pròpies apps i webs amb intel·ligència artificial, ben fetes i segures.</p></div>
+        <span class="estat">Consultoria</span>
+      </a></li>
+      <li><a href="consultoria.html">
+        <span class="nom">Cursets d'IA</span>
+        <div class="desc"><p>Cursets pràctics perquè les empreses petites aprenguin a fer servir bé la intel·ligència artificial.</p></div>
+        <span class="estat">Formació</span>
+      </a></li>
     </ul>
   </section>
 
-  <section class="seccio">
-    <h2>El nom</h2>
-    <p>Com els de la muntanya: apuntem alt i hi arribem pas a pas.</p>
-    <p class="lletres"><span><b>C</b>onsultoria</span> <span><b>I</b>nnovació</span> <span><b>M</b>etodologia</span> <span><b>S</b>olucions</span></p>
+  <section class="qui-som" aria-labelledby="qui-som">
+    <div class="wrap">
+      <div>
+        <h2 id="qui-som">Qui som</h2>
+        <p class="gran">Tenim 22 anys, acabem de començar i tenim molt clar on volem arribar.</p>
+        <p>Hem estudiat el grau d'Enginyeria Informàtica a la Universitat de Lleida. Ens motiva molt el que fem, i hi anem segurs.</p>
+      </div>
+      <dl class="fitxa">
+        <div><dt>Qui</dt><dd>El Pol i el Martí</dd></div>
+        <div><dt>Edat</dt><dd>22 anys</dd></div>
+        <div><dt>Estudis</dt><dd>Grau en Enginyeria Informàtica, UdL</dd></div>
+        <div><dt>On</dt><dd>Catalunya</dd></div>
+      </dl>
+    </div>
   </section>
 
-  <section class="seccio">
-    <h2>Contacte</h2>
-    <p class="pendent">Aquí hi anirà el correu de contacte i els comptes d'Instagram i TikTok de CIMS.</p>
+  <section class="banda" aria-labelledby="el-nom">
+    <div class="wrap">
+      <div>
+        <h2 id="el-nom">El nom</h2>
+        <ul class="lletres">
+          <li><b>C</b>onsultoria</li><li><b>I</b>nnovació</li><li><b>M</b>etodologia</li><li><b>S</b>olucions</li>
+        </ul>
+      </div>
+      <p>Com els de la muntanya: apuntem alt i hi arribem pas a pas.</p>
+    </div>
   </section>
 </main>
-<button class="amunt" id="amunt" type="button" aria-label="Torna amunt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-<footer>CIMS · Fem cim.</footer>
+<button class="amunt" id="amunt" type="button" title="Torna amunt" aria-label="Torna amunt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+<footer class="peu">
+  <div class="wrap">
+    <p class="gran">Fem cim<span>.</span></p>
+    <ul><li><a href="./">Inici</a></li><li><a href="consultoria.html">Consultoria</a></li><li><a href="avis-legal.html">Avís legal i privacitat</a></li></ul>
+    <p class="credit">Estudi de creació digital de Catalunya.</p>
+  </div>
+</footer>
 </body>
 </html>

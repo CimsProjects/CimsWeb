@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ca" data-marca="cims">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Avís legal i privacitat · CIMS</title>
+<link rel="icon" href="cims-icona.svg" type="image/svg+xml">
+<meta name="description" content="Avís legal i política de privacitat de la web de CIMS.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;800&family=DM+Sans:wght@400..700&display=swap">
+<link rel="stylesheet" href="estil.css">
+<link rel="stylesheet" href="efectes.css">
+<link rel="stylesheet" href="cims.css">
+<link rel="stylesheet" href="interactiu.css">
+<script>try{var t=localStorage.getItem('bocins-tema')}catch(e){}document.documentElement.dataset.tema=t==='clar'||t==='fosc'?t:matchMedia('(prefers-color-scheme: light)').matches?'clar':'fosc';try{if(localStorage.getItem('cims-interactiu')==='si')document.documentElement.dataset.interactiu=''}catch(e){}</script>
+<script type="module" src="efectes/comuns.js"></script>
+<script type="module" src="efectes/interactiu.js"></script>
+</head>
+<body>
+<a class="salt" href="#contingut">Salta al contingut</a>
+<header class="barra">
+  <a class="marca" href="./" aria-label="CIMS, inici"><svg class="mk" viewBox="0 0 100 100" aria-hidden="true"><rect class="mk-bg" width="100" height="100" rx="22"/><path class="mk-c" d="M 74.51 29.43 A 32 32 0 1 0 74.51 70.57" fill="none" stroke-width="10" stroke-linecap="round"/><polygon class="mk-a" points="31.44,63.12 46.16,36.88 60.88,63.12" stroke-width="1.5" stroke-linejoin="round"/><polygon class="mk-f" points="44.88,63.12 57.04,42.64 68.56,63.12" stroke-width="2.5" stroke-linejoin="round"/></svg>CIMS</a>
+  <nav id="menu" aria-label="Seccions">
+    <a href="./">Inici</a>
+    <a href="consultoria.html">Consultoria</a>
+  </nav>
+  <div class="accions">
+    <button class="icona interruptor" id="interactiu" type="button" aria-pressed="false" title="Activa el mode interactiu">
+      <span class="pista" aria-hidden="true"></span><span class="text">Mode interactiu</span>
+    </button>
+    <span class="amagat" id="avis-interactiu" role="status" aria-live="polite"></span>
+    <div class="desplegable" id="tema">
+      <button class="icona" type="button" title="Tema de colors" aria-haspopup="true" aria-expanded="false" aria-controls="tema-menu" aria-label="Tema de colors">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 4a8 8 0 0 1 0 16Z" fill="currentColor"/></svg>
+      </button>
+      <ul id="tema-menu" role="menu" aria-label="Tema de colors">
+        <li role="none"><button type="button" role="menuitemradio" aria-checked="false" data-tema="auto">Automàtic</button></li>
+        <li role="none"><button type="button" role="menuitemradio" aria-checked="false" data-tema="clar">Clar</button></li>
+        <li role="none"><button type="button" role="menuitemradio" aria-checked="false" data-tema="fosc">Fosc</button></li>
+      </ul>
+    </div>
+    <button class="icona obre-menu" id="obre-menu" type="button" aria-expanded="false" aria-controls="menu" aria-label="Obre el menú">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16M4 16h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+</header>
+<main id="contingut">
+  <article class="wrap legal">
+    <h1 class="titol-legal">Avís legal i privacitat</h1>
+    <p>Última actualització: 19 de novembre de 2026.</p>
+
+    <h2>Qui hi ha darrere d'aquesta web</h2>
+    <p>En compliment de la Llei 34/2002 de serveis de la societat de la informació i de comerç electrònic (LSSI-CE), aquestes són les dades del titular:</p>
+    <!-- PENDENT: omplir amb les dades reals del titular. -->
+    <dl>
+      <div><dt>Titular</dt><dd><span class="falta">Pendent d'omplir</span></dd></div>
+      <div><dt>NIF</dt><dd><span class="falta">Pendent d'omplir</span></dd></div>
+      <div><dt>Adreça</dt><dd><span class="falta">Pendent d'omplir</span></dd></div>
+      <div><dt>Correu electrònic</dt><dd><span class="falta">Pendent d'omplir</span></dd></div>
+    </dl>
+
+    <h2>Per a què serveix aquesta web</h2>
+    <p>Aquesta web presenta CIMS, el Pol i el Martí, i els serveis de consultoria i de formació en intel·ligència artificial que oferim a empreses petites.</p>
+    <p>La informació és orientativa. Els preus i els terminis només són vinculants quan us els donem per escrit en un pressupost.</p>
+
+    <h2>Propietat intel·lectual</h2>
+    <p>Els textos, el logo i el disseny d'aquesta web són de CIMS. No els podeu reproduir ni fer-ne servir sense el nostre permís.</p>
+
+    <h2>Privacitat</h2>
+    <p>Aquesta web no té formularis i no recull cap dada personal vostra. No fem servir galetes (<i>cookies</i>) ni cap eina d'analítica o de publicitat.</p>
+    <ul>
+      <li><b>Preferència de tema.</b> Si trieu el tema clar o el fosc, el navegador ho desa al vostre dispositiu. No ens arriba a nosaltres i ho podeu esborrar quan vulgueu des del navegador.</li>
+      <li><b>Lletres de Google Fonts.</b> Per mostrar les lletres, el navegador es connecta als servidors de Google, que reben la vostra adreça IP.</li>
+      <li><b>Allotjament a GitHub Pages.</b> La web està allotjada a GitHub, que pot registrar l'adreça IP de les visites per motius de seguretat.</li>
+    </ul>
+    <p>Si en algun moment ens doneu dades personals, per exemple per correu, les farem servir només per respondre-us. Podeu demanar accedir-hi, rectificar-les o esborrar-les escrivint-nos a l'adreça de més amunt. Si creieu que no les hem tractat bé, podeu reclamar a l'Agència Espanyola de Protecció de Dades.</p>
+  </article>
+</main>
+<button class="amunt" id="amunt" type="button" title="Torna amunt" aria-label="Torna amunt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+<footer class="peu">
+  <div class="wrap">
+    <p class="gran">Fem cim<span>.</span></p>
+    <ul><li><a href="./">Inici</a></li><li><a href="consultoria.html">Consultoria</a></li><li><a href="avis-legal.html">Avís legal i privacitat</a></li></ul>
+    <p class="credit">Estudi de creació digital de Catalunya.</p>
+  </div>
+</footer>
+</body>
+</html>
