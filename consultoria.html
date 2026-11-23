@@ -25,7 +25,12 @@
     <a href="consultoria.html" aria-current="page">Consultoria</a>
   </nav>
   <div class="accions">
-    <button class="gustos-rapid" id="gustos-rapid" type="button" aria-haspopup="dialog">No t'agrada aquesta web?</button>
+    <span class="gustos-rapid-caixa">
+      <button class="icona gustos-rapid" id="gustos-rapid" type="button" aria-haspopup="dialog" aria-label="No t'agrada aquesta web? Adapta-la als teus gustos" aria-describedby="gustos-bafarada">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M7.5 8.5l2.5 1.2M16.5 8.5L14 9.7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="9" cy="11.6" r="1.1" fill="currentColor"/><circle cx="15" cy="11.6" r="1.1" fill="currentColor"/><path d="M8.5 16.5q3.5-2.6 7 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+      <span class="gustos-bafarada" id="gustos-bafarada" role="tooltip"><b>No t'agrada aquesta web?</b> Clica i fes-la a la teva manera.</span>
+    </span>
     <div class="desplegable" id="tema">
       <button class="icona" type="button" title="Tema de colors" aria-haspopup="true" aria-expanded="false" aria-controls="tema-menu" aria-label="Tema de colors">
         <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 4a8 8 0 0 1 0 16Z" fill="currentColor"/></svg>
