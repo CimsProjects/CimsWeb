@@ -117,9 +117,10 @@ export function iniciaGustos() {
 
   const obre = document.getElementById('obre-gustos');
   const treu = document.getElementById('treu-gustos');
-  if (!obre) return;
-  if (g) { treu.hidden = false; obre.textContent = 'Torna a fer el qüestionari'; }
-  treu.addEventListener('click', () => {
+  const rapid = document.getElementById('gustos-rapid');
+  if (!obre && !rapid) return;
+  if (g && obre) { treu.hidden = false; obre.textContent = 'Torna a fer el qüestionari'; }
+  treu?.addEventListener('click', () => {
     try { localStorage.removeItem(CLAU); localStorage.removeItem('bocins-tema'); } catch { /* res */ }
     location.reload();
   });
@@ -148,13 +149,15 @@ export function iniciaGustos() {
   let i = 0;
   let respostes = {};
   const tema = () => { try { return localStorage.getItem('bocins-tema') || 'auto'; } catch { return 'auto'; } };
-  obre.addEventListener('click', () => {
+  const comenca = () => {
     i = 0;
     respostes = { ...(llegeix() || {}) };
     if (!respostes.tema) respostes.tema = tema();
     preguntaActual(dlg, i, respostes);
     dlg.showModal();
-  });
+  };
+  obre?.addEventListener('click', comenca);
+  rapid?.addEventListener('click', comenca);
   dlg.querySelector('#gustos-tanca').addEventListener('click', () => dlg.close());
   dlg.addEventListener('click', (e) => { if (e.target === dlg) dlg.close(); });
   dlg.querySelector('#gustos-enrere').addEventListener('click', () => { if (i > 0) preguntaActual(dlg, --i, respostes); });
