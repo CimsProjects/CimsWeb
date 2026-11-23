@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="cims.css">
 <link rel="stylesheet" href="interactiu.css">
 <script>try{var t=localStorage.getItem('bocins-tema')}catch(e){}document.documentElement.dataset.tema=t==='clar'||t==='fosc'?t:matchMedia('(prefers-color-scheme: light)').matches?'clar':'fosc';try{if(localStorage.getItem('cims-interactiu')==='si')document.documentElement.dataset.interactiu=''}catch(e){}</script>
+<script>try{var g=JSON.parse(localStorage.getItem('cims-gustos')||'null');if(g)for(var k in g)document.documentElement.setAttribute('data-g-'+k,g[k])}catch(e){}</script>
 <script type="module" src="efectes/comuns.js"></script>
 <script type="module" src="efectes/interactiu.js"></script>
 </head>
@@ -139,10 +140,10 @@
   <section class="wrap heroi">
     <div>
       <h1>Fem <span class="cim">cim</span>.</h1>
-      <p class="lede">Som el Martí i el Pol, i ajudem empreses petites a fer servir bé la IA.</p>
+      <p class="lede" data-formal="CIMS és un estudi de creació digital que ajuda les empreses petites a fer servir la intel·ligència artificial amb criteri." data-divertit="Som el Martí i el Pol: fem que la IA treballi per vosaltres, i no al revés.">Som el Martí i el Pol, i ajudem empreses petites a fer servir bé la IA.</p>
       <div class="accions">
-        <a class="bt" href="consultoria.html">Mira què us oferim</a>
-        <a class="bt sec" href="#qui-som">Coneix-nos</a>
+        <a class="bt" href="consultoria.html" data-formal="Consulteu els serveis" data-divertit="A veure què feu">Mira què us oferim</a>
+        <a class="bt sec" href="#qui-som" data-formal="Qui som" data-divertit="Presenteu-vos!">Coneix-nos</a>
       </div>
     </div>
     <figure class="logo-gran">
@@ -152,7 +153,7 @@
 
   <section class="per-a-qui" id="per-a-qui" aria-label="Per a qui">
     <div class="wrap">
-      <p class="gran">Per a empreses petites que volen desenvolupar els seus projectes i els seus processos interns.</p>
+      <p class="gran" data-formal="Treballem amb empreses petites que volen desenvolupar els seus projectes i millorar els seus processos interns." data-divertit="Per a empreses petites amb idees grans i massa feina repetitiva.">Per a empreses petites que volen desenvolupar els seus projectes i els seus processos interns.</p>
     </div>
   </section>
 
@@ -174,7 +175,7 @@
   <section class="qui-som" id="qui-som" aria-label="Qui som">
     <div class="wrap">
       <div>
-        <p class="gran">Tenim 22 anys, acabem de començar i tenim molt clar on volem arribar.</p>
+        <p class="gran" data-formal="Som dos enginyers informàtics de 22 anys que acabem de començar, amb un objectiu clar." data-divertit="Tenim 22 anys, acabem d'arrencar i ja sabem on és el cim.">Tenim 22 anys, acabem de començar i tenim molt clar on volem arribar.</p>
         <p>Hem estudiat el grau d'Enginyeria Informàtica a la Universitat de Lleida. Ens motiva molt el que fem, i hi anem segurs.</p>
       </div>
       <dl class="fitxa">
@@ -209,11 +210,21 @@
           <li><button type="button" aria-controls="frase-nom" data-frase="Al final teniu una app o una web que funciona, i el codi és completament vostre."><b>S</b>olucions</button></li>
         </ul>
       </div>
-      <p id="frase-nom" class="frase-nom" aria-live="polite">Un cim és el punt més alt d'una muntanya. Hi volem portar cada projecte, pas a pas.</p>
+      <p id="frase-nom" class="frase-nom" aria-live="polite" data-formal="Un cim és el punt més alt d'una muntanya: el lloc on volem portar cada projecte." data-divertit="Un cim és el punt més alt d'una muntanya. Nosaltres hi pugem amb el portàtil a la motxilla.">Un cim és el punt més alt d'una muntanya. Hi volem portar cada projecte, pas a pas.</p>
     </div>
   </section>
 </main>
 <button class="amunt" id="amunt" type="button" title="Torna amunt" aria-label="Torna amunt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+<section class="gustos" id="gustos" aria-label="Adapta la web als teus gustos">
+  <div class="wrap">
+    <p class="gustos-text">Cada persona té els seus gustos. Respon unes preguntes i la web es transformarà perquè t'agradi a tu.</p>
+    <div class="gustos-accions">
+      <button class="bt" type="button" id="obre-gustos" aria-haspopup="dialog">No t'agrada la web?</button>
+      <button class="bt sec" type="button" id="treu-gustos" hidden>Torna a la web de sempre</button>
+    </div>
+  </div>
+</section>
+
 <footer class="peu">
   <div class="wrap">
     <p class="gran">Fem cim<span>.</span></p>

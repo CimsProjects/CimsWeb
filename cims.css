@@ -46,7 +46,7 @@ html[data-marca="cims"] .barra nav a { color: var(--c-muted); font: 500 var(--t-
 html[data-marca="cims"] .barra nav a:hover, html[data-marca="cims"] .barra nav a[aria-current="page"] { color: var(--c-ink) }
 
 /* Botons: un sol estil principal, en píndola i sense ombra */
-.bt { display: inline-flex; align-items: center; min-height: 48px; padding: 0 var(--s-5); border-radius: 999px; font: 600 16px var(--f-body); text-decoration: none; white-space: nowrap; cursor: pointer;
+.bt { display: inline-flex; align-items: center; min-height: 48px; padding: 0 var(--s-5); border-radius: var(--radi-boto, 999px); font: 600 16px var(--f-body); text-decoration: none; white-space: nowrap; cursor: pointer;
   background: var(--c-accent); color: var(--c-accent-ink); border: 1.5px solid var(--c-accent); transition: transform var(--dur) var(--ease), color var(--dur) var(--ease), border-color var(--dur) var(--ease) }
 .bt:hover { transform: translateY(-2px); transition-duration: var(--dur-in) }
 .bt:active { transform: translateY(0) }
@@ -89,7 +89,7 @@ html[data-marca="cims"] p { color: var(--c-ink-2); max-width: 65ch; margin: 0 0 
 .qui-som .gran { font: 700 clamp(28px, 3vw, 40px)/1.2 var(--f-display); letter-spacing: -.02em; color: var(--c-ink); max-width: 22ch; margin: 0 0 var(--s-5) }
 /* Fitxa: les dades en píndoles, sense aspecte de taula. Els rètols (Qui, Edat…) només els llegeix el lector de pantalla. */
 .fitxa { margin: 0; display: flex; flex-wrap: wrap; gap: var(--s-3); align-content: start; padding-top: var(--s-2) }
-.fitxa div { display: flex; align-items: center; min-height: 48px; padding: var(--s-2) var(--s-5); border-radius: 999px; background: var(--c-paper-2); border: 1.5px solid var(--c-rule) }
+.fitxa div { display: flex; align-items: center; min-height: 48px; padding: var(--s-2) var(--s-5); border-radius: var(--radi-boto, 999px); background: var(--c-paper-2); border: 1.5px solid var(--c-rule) }
 .fitxa dt { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap }
 .fitxa dd { margin: 0; font: 600 17px/1.3 var(--f-body); color: var(--c-ink) }
 
@@ -256,7 +256,7 @@ html[data-tema="fosc"] .paisatge .estrelles { opacity: .8 }
 .marmota:hover .marmota-cos, .marmota:focus-visible .marmota-cos { translate: 0 -10px }
 .marmota.surt .marmota-cos { translate: 0 -34px }
 .marmota:focus-visible .pell { stroke: var(--c-accent); stroke-width: 3 }
-html[data-marca="cims"] .marmota-diu { position: absolute; z-index: 2; margin: 0; width: max-content; max-width: min(300px, calc(100vw - 32px)); padding: 12px 16px; border-radius: 16px;
+html[data-marca="cims"] .marmota-diu { position: absolute; z-index: 2; margin: 0; width: max-content; max-width: min(300px, calc(100vw - 32px)); padding: 12px 16px; border-radius: var(--radi-caixa, 16px);
   background: var(--c-paper); color: var(--c-ink); font: 600 16px/1.35 var(--f-body); box-shadow: 0 8px 24px rgb(0 0 0 / .2);
   transform: translate(-50%, -100%); opacity: 0; pointer-events: none; transition: opacity .25s var(--ease) }
 .marmota-diu::after { content: ""; position: absolute; left: 50%; bottom: -8px; width: 16px; height: 16px; margin-left: -8px; background: inherit; rotate: 45deg }
@@ -292,3 +292,77 @@ html[data-marca="cims"] .banda { --fosa: 280px; padding-block: var(--fosa); back
 .paisatge-baixa { bottom: calc(var(--fosa) + max(24px, env(safe-area-inset-bottom))) }
 @media (max-width: 900px) { .paisatge-baixa { bottom: calc(var(--fosa) + 84px + env(safe-area-inset-bottom)) } }
 @media (max-aspect-ratio: 4/5) { .paisatge-dibuix { bottom: var(--fosa); height: calc(64% - var(--fosa) * .64) } }
+
+/* ===== Gustos («No t'agrada la web?», efectes/gustos.js) ===================================================
+   Cada eix és un atribut data-g-<eix> a <html>. Els colors de CIMS (corall i pissarra) hi són sempre. */
+
+/* Ambient de colors: només el fons i la força del corall */
+html[data-marca="cims"][data-g-colors="neutre"][data-tema="clar"] { --c-paper: oklch(99% 0 0); --c-paper-2: oklch(96% 0 0); --c-rule: oklch(89% 0 0) }
+html[data-marca="cims"][data-g-colors="neutre"][data-tema="fosc"] { --c-paper: oklch(22% .005 265); --c-paper-2: oklch(26% .006 265); --c-rule: oklch(34% .006 265) }
+html[data-marca="cims"][data-g-colors="fresc"][data-tema="clar"] { --c-paper: oklch(97.5% .01 240); --c-paper-2: oklch(94.5% .016 240); --c-rule: oklch(87.5% .018 240) }
+html[data-marca="cims"][data-g-colors="fresc"][data-tema="fosc"] { --c-paper: oklch(23% .03 255); --c-paper-2: oklch(27% .032 255); --c-rule: oklch(35% .03 255) }
+html[data-marca="cims"][data-g-colors="intens"][data-tema="clar"] { --c-ink: oklch(18% .025 265); --c-ink-2: oklch(28% .022 265); --c-muted: oklch(42% .02 265); --c-accent: oklch(56% .2 33); --c-band: oklch(18% .025 265); --c-band-accent: oklch(72% .19 33) }
+html[data-marca="cims"][data-g-colors="intens"][data-tema="fosc"] { --c-paper: oklch(18% .02 265); --c-paper-2: oklch(22% .022 265); --c-ink: oklch(98% .005 80); --c-ink-2: oklch(90% .01 265); --c-accent: oklch(72% .2 33); --c-band: oklch(13% .02 265) }
+html[data-marca="cims"][data-g-colors="suau"][data-tema="clar"] { --c-paper: oklch(96.5% .01 80); --c-ink: oklch(32% .02 265); --c-ink-2: oklch(42% .018 265); --c-accent: oklch(62% .11 33); --c-band: oklch(32% .02 265); --c-band-accent: oklch(76% .1 33) }
+html[data-marca="cims"][data-g-colors="suau"][data-tema="fosc"] { --c-paper: oklch(28% .018 265); --c-paper-2: oklch(31% .02 265); --c-ink: oklch(90% .008 80); --c-ink-2: oklch(82% .01 265); --c-accent: oklch(70% .1 33) }
+
+/* Lletra */
+html[data-marca="cims"][data-g-lletra="classica"] { --f-display: "Fraunces", Georgia, serif; --f-body: "Source Serif 4", Georgia, serif }
+html[data-marca="cims"][data-g-lletra="amigable"] { --f-display: "Nunito", system-ui, sans-serif; --f-body: "Nunito", system-ui, sans-serif }
+html[data-marca="cims"][data-g-lletra="tecnica"] { --f-display: "Space Grotesk", system-ui, sans-serif; --f-body: "IBM Plex Mono", ui-monospace, monospace }
+html[data-marca="cims"][data-g-lletra="tecnica"] body { font-size: calc(var(--t-body) - 2px) }
+
+/* Mida del text */
+html[data-marca="cims"][data-g-mida="petita"] { --t-body: 16px; --t-lede: clamp(17px, 1.4vw, 19px); --t-small: 14px; --t-section: clamp(30px, 3.4vw, 44px) }
+html[data-marca="cims"][data-g-mida="gran"] { --t-body: 21px; --t-lede: clamp(22px, 1.9vw, 26px); --t-small: 17px; --t-title: clamp(28px, 2.9vw, 40px) }
+
+/* Formes */
+html[data-marca="cims"][data-g-formes="suaus"] { --radi-boto: 10px; --radi-caixa: 10px }
+html[data-marca="cims"][data-g-formes="quadrades"] { --radi-boto: 0; --radi-caixa: 0 }
+html[data-marca="cims"][data-g-formes="quadrades"] .mk-bg { rx: 0 }
+
+/* Espai entre blocs */
+html[data-marca="cims"][data-g-espai="compacte"] { --s-7: 36px; --s-8: 48px; --s-9: 64px; --s-10: 88px }
+html[data-marca="cims"][data-g-espai="aireig"] { --s-7: 64px; --s-8: 88px; --s-9: 128px; --s-10: 168px }
+
+/* Moviment: «gens» ho atura tot */
+html[data-marca="cims"][data-g-moviment="gens"] *, html[data-marca="cims"][data-g-moviment="gens"] *::before, html[data-marca="cims"][data-g-moviment="gens"] *::after {
+  animation: none !important; transition: none !important; scroll-behavior: auto !important }
+
+/* Paisatge de la portada */
+html[data-marca="cims"][data-g-paisatge="no"] .paisatge { display: none }
+
+/* El bloc del botó, abans del peu */
+.gustos { padding-block: var(--s-9); text-align: center }
+.gustos .wrap { display: grid; justify-items: center; gap: var(--s-5) }
+html[data-marca="cims"] .gustos-text { font: 700 clamp(22px, 2.4vw, 32px)/1.25 var(--f-display); letter-spacing: -.015em; color: var(--c-ink); max-width: 30ch; margin: 0 }
+.gustos-accions { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--s-3) }
+
+/* El qüestionari */
+.gustos-dialeg { width: min(620px, calc(100% - 32px)); max-height: calc(100dvh - 32px); padding: 0; border: 1px solid var(--c-rule); border-radius: var(--radi-caixa, 16px);
+  background: var(--c-paper); color: var(--c-ink); box-shadow: 0 24px 64px rgb(0 0 0 / .3) }
+.gustos-dialeg::backdrop { background: rgb(10 12 20 / .55) }
+.gustos-form { padding: var(--s-6); display: grid; gap: var(--s-4); margin: 0; border: 0; border-radius: 0; background: none }
+.gustos-cap { display: flex; align-items: center; justify-content: space-between; gap: var(--s-3) }
+html[data-marca="cims"] .gustos-pas { margin: 0; font: 600 var(--t-small) var(--f-body); color: var(--c-muted) }
+.gustos-tanca { width: 44px; height: 44px; display: grid; place-items: center; border: 0; border-radius: 50%; background: none; color: var(--c-ink); font-size: 20px; cursor: pointer }
+.gustos-tanca:hover { background: var(--c-paper-2) }
+.gustos-barra { height: 4px; border-radius: 4px; background: var(--c-paper-2); overflow: hidden }
+.gustos-barra span { display: block; height: 100%; width: calc(var(--p, 0) * 100%); background: var(--c-accent); transition: width .3s var(--ease) }
+.gustos-pregunta { border: 0; margin: 0; padding: 0; min-width: 0 }
+.gustos-pregunta legend { padding: 0; margin-bottom: var(--s-4) }
+html[data-marca="cims"] .gustos-pregunta h2 { font: 800 clamp(24px, 3vw, 32px)/1.15 var(--f-display); letter-spacing: -.02em; margin: 0 }
+.gustos-opcions { display: grid; gap: var(--s-2) }
+.gustos-opcio { position: relative; display: grid; gap: 2px; min-height: 56px; padding: var(--s-3) var(--s-4) var(--s-3) 52px; border: 1.5px solid var(--c-rule);
+  border-radius: var(--radi-caixa, 12px); cursor: pointer; background: var(--c-paper) }
+.gustos-opcio:hover { border-color: var(--c-muted) }
+.gustos-opcio input { position: absolute; left: 18px; top: 50%; translate: 0 -50%; width: 20px; height: 20px; margin: 0; accent-color: var(--c-accent) }
+.gustos-opcio:has(input:checked) { border-color: var(--c-accent); background: color-mix(in oklch, var(--c-accent) 8%, var(--c-paper)) }
+.gustos-opcio:has(input:focus-visible) { outline: 3px solid var(--c-accent); outline-offset: 2px }
+.gustos-opcio .nom { font: 700 17px/1.3 var(--f-body); color: var(--c-ink) }
+.gustos-opcio .desc { font-size: var(--t-small); color: var(--c-muted) }
+.gustos-botons { display: flex; justify-content: space-between; gap: var(--s-3); margin-top: var(--s-2) }
+.gustos-botons .bt { min-width: 120px; justify-content: center }
+.gustos-botons #gustos-seguent { margin-left: auto }
+.gustos-botons .bt[disabled] { opacity: .45; cursor: default; transform: none }
+@media (max-width: 640px) { .gustos-form { padding: var(--s-5) var(--s-4) } .gustos-botons .bt { min-width: 0; flex: 1 } }
