@@ -84,7 +84,7 @@ html[data-marca="cims"] p { color: var(--c-ink-2); max-width: 65ch; margin: 0 0 
 .index a:hover .nom { color: var(--c-accent); transition-duration: var(--dur-in) }
 
 /* Qui som: una frase gran i la fitxa al costat */
-.qui-som { padding-block: var(--s-9); border-top: 2px solid var(--c-ink) }
+.qui-som { padding-block: var(--s-9) }
 .qui-som .wrap { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--s-8); align-items: start }
 .qui-som .gran { font: 700 clamp(28px, 3vw, 40px)/1.2 var(--f-display); letter-spacing: -.02em; color: var(--c-ink); max-width: 22ch; margin: 0 0 var(--s-5) }
 /* Fitxa: les dades en píndoles, sense aspecte de taula. Els rètols (Qui, Edat…) només els llegeix el lector de pantalla. */
@@ -128,7 +128,7 @@ html[data-marca="cims"] .banda p { color: var(--c-band-muted); font-size: var(--
 html[data-marca="cims"] .passos-s .nota { margin: 0; color: var(--c-ink) }
 
 /* Què en pensem de la IA: la idea en gran a l'esquerra i el text, en primera persona, a la dreta */
-.opinio { padding-block: var(--s-9); border-top: 2px solid var(--c-ink) }
+.opinio { padding-block: var(--s-9) }
 .opinio .wrap { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--s-8); align-items: start }
 .opinio-cita { margin: 0; position: sticky; top: 96px }
 html[data-marca="cims"] .opinio-cita p { font: 700 clamp(28px, 3vw, 42px)/1.18 var(--f-display); letter-spacing: -.02em; color: var(--c-ink); margin: 0; max-width: 18ch }
@@ -170,7 +170,7 @@ html[data-marca="cims"] .legal h2 { font-size: clamp(28px, 3vw, 36px); margin: v
 .legal li { margin-bottom: var(--s-2) }
 
 /* Peu: «Fem cim.» en gran sobre els enllaços */
-html[data-marca="cims"] footer.peu { border-top: 2px solid var(--c-ink); padding-block: var(--s-8) var(--s-7); padding-inline: 0; text-align: left; color: var(--c-muted); font-size: var(--t-small) }
+html[data-marca="cims"] footer.peu { border-top: 0; padding-block: var(--s-8) var(--s-7); padding-inline: 0; text-align: left; color: var(--c-muted); font-size: var(--t-small) }
 .peu .wrap { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--s-5) var(--s-8); align-items: end }
 html[data-marca="cims"] .peu .gran { font: 800 clamp(56px, 10vw, 160px)/.85 var(--f-display); letter-spacing: -.05em; color: var(--c-ink); margin: 0; max-width: none }
 .peu .gran span { color: var(--c-accent) }
