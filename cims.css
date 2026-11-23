@@ -206,3 +206,7 @@ html[data-marca="cims"][data-tema="fosc"] {
   html[data-marca="cims"] main > section.per-a-qui, html[data-marca="cims"] main > section.passos-s { background-color: var(--c-paper-2) }
   html[data-marca="cims"] main > section.banda { background-color: var(--c-band) }
 }
+
+/* Text seleccionat: corall de la marca en lloc del blau del navegador; a la banda fosca, el corall clar */
+html[data-marca="cims"] ::selection { background: var(--c-accent); color: var(--c-accent-ink) }
+html[data-marca="cims"] .banda ::selection { background: var(--c-band-accent); color: var(--c-band) }
