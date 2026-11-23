@@ -387,3 +387,11 @@ html[data-marca="cims"] body > .barra.sobre-fosc nav a { color: var(--c-band-mut
   html[data-marca="cims"] body > .barra.sobre-fosc nav a { color: var(--c-muted) }
   html[data-marca="cims"] body > .barra.sobre-fosc nav a[aria-current="page"] { color: var(--c-ink) }
 }
+
+/* Accés ràpid al qüestionari de gustos, a la barra */
+.gustos-rapid { min-height: 44px; padding: 0 var(--s-4); border: 1.5px solid currentColor; border-radius: var(--radi-boto, 999px); background: none;
+  color: var(--c-ink); font: 600 var(--t-small) var(--f-body); white-space: nowrap; cursor: pointer; transition: color var(--dur) var(--ease), border-color var(--dur) var(--ease) }
+.gustos-rapid:hover { color: var(--c-accent) }
+html[data-marca="cims"] .barra .accions { flex-wrap: nowrap; gap: var(--s-2) }
+html[data-marca="cims"] body > .barra.sobre-fosc .gustos-rapid { color: var(--c-band-ink) }
+@media (max-width: 420px) { .gustos-rapid { padding: 0 var(--s-3); font-size: 13px } }
