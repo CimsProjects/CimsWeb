@@ -195,28 +195,6 @@ html[data-marca="cims"] .peu p { font-size: var(--t-small); color: var(--c-muted
 }
 @media (prefers-reduced-motion: reduce) { .bt, .index .nom { transition: none } .bt:hover { transform: none } }
 
-/* Muntanyes als costats. A les pantalles amples, el contingut queda en una columna i als costats es veuen unes muntanyes
-   (efectes/muntanyes.js). En baixar per la pàgina, les muntanyes pugen: és com si baixessis del cim a la vall. */
-html[data-marca="cims"], html[data-marca="cims"][data-tema="clar"] {
-  --m-cel: oklch(95% .014 78); --m-1: oklch(89% .014 265); --m-2: oklch(81% .018 265); --m-3: oklch(70% .022 265); --m-4: oklch(55% .024 265); --m-5: oklch(36% .022 265);
-  --m-cim: oklch(62% .03 265); --m-neu: oklch(98% .006 80);
-}
-html[data-marca="cims"][data-tema="fosc"] {
-  --m-cel: oklch(30% .024 265); --m-1: oklch(27% .022 265); --m-2: oklch(24% .022 265); --m-3: oklch(21% .02 265); --m-4: oklch(18% .018 265); --m-5: oklch(15% .016 265);
-  --m-cim: oklch(42% .03 265); --m-neu: oklch(80% .012 265);
-}
-.muntanyes { display: none }
-@media (min-width: 1360px) {
-  html[data-marca="cims"] { background: var(--m-cel) }
-  html[data-marca="cims"] body { background: transparent }
-  .muntanyes { display: block; position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none }
-  .muntanyes svg { display: block; width: 100%; height: 300vh; transform: translate3d(0, calc(var(--baixada, 0) * -200vh), 0) }
-  html[data-marca="cims"] body > .barra, html[data-marca="cims"] main > section, html[data-marca="cims"] footer.peu, html[data-marca="cims"] main:has(> .legal) {
-    max-width: var(--wrap); margin-inline: auto; background-color: var(--c-paper) }
-  html[data-marca="cims"] main > section.per-a-qui, html[data-marca="cims"] main > section.passos-s { background-color: var(--c-paper-2) }
-  html[data-marca="cims"] main > section.banda { background-color: var(--c-band) }
-}
-
 /* Text seleccionat: corall de la marca en lloc del blau del navegador; a la banda fosca, el corall clar */
 html[data-marca="cims"] ::selection { background: var(--c-accent); color: var(--c-accent-ink) }
 html[data-marca="cims"] .banda ::selection { background: var(--c-band-accent); color: var(--c-band) }
@@ -224,23 +202,43 @@ html[data-marca="cims"] .banda ::selection { background: var(--c-band-accent); c
 /* Portada de pantalla completa: el paisatge de muntanyes amb el logo de CIMS com a sol i una marmota amagada
    (efectes/portada.js). Va abans de la barra; la resta de la pàgina continua igual a sota. */
 html[data-marca="cims"], html[data-marca="cims"][data-tema="clar"] {
-  --p-cel-dalt: oklch(90% .035 230); --p-cel-baix: oklch(95% .025 70); --p-halo: oklch(88% .09 60 / .7);
-  --p-c1: oklch(78% .02 265); --p-c2: oklch(64% .025 265); --p-c3: oklch(48% .026 265); --p-c4: oklch(31% .022 265); --p-roca: oklch(40% .02 265);
+  --p-cel-dalt: oklch(80% .06 240); --p-cel-baix: oklch(94% .035 70); --p-halo: oklch(90% .1 65 / .75); --p-raig: oklch(97% .05 80 / .28);
+  --p-lluny: oklch(84% .025 245); --p-fons-llum: oklch(78% .03 60); --p-fons-ombra: oklch(66% .03 255);
+  --p-llum: oklch(75% .045 62); --p-ombra: oklch(47% .035 262); --p-neu-llum: oklch(98% .012 80); --p-neu-ombra: oklch(83% .035 250);
+  --p-canal: oklch(35% .03 262 / .35); --p-boira: oklch(97% .015 80 / .65); --p-mitja: oklch(42% .03 262);
+  --p-davant: oklch(30% .025 262); --p-avets: oklch(24% .03 200); --p-c4: oklch(22% .022 262); --p-roca: oklch(34% .02 262);
+  --p-ocell: oklch(30% .02 262);
   --p-pell: oklch(55% .07 60); --p-pell-fosca: oklch(44% .06 55); --p-morro: oklch(82% .035 75); --p-text: oklch(96% .008 80);
 }
 html[data-marca="cims"][data-tema="fosc"] {
-  --p-cel-dalt: oklch(18% .03 265); --p-cel-baix: oklch(30% .04 280); --p-halo: oklch(70% .12 40 / .35);
-  --p-c1: oklch(34% .025 265); --p-c2: oklch(28% .024 265); --p-c3: oklch(22% .02 265); --p-c4: oklch(15% .016 265); --p-roca: oklch(24% .02 265);
+  --p-cel-dalt: oklch(15% .035 265); --p-cel-baix: oklch(30% .05 290); --p-halo: oklch(72% .13 40 / .4); --p-raig: oklch(80% .08 50 / .08);
+  --p-lluny: oklch(30% .03 270); --p-fons-llum: oklch(36% .03 265); --p-fons-ombra: oklch(25% .025 265);
+  --p-llum: oklch(42% .035 260); --p-ombra: oklch(24% .03 265); --p-neu-llum: oklch(85% .025 250); --p-neu-ombra: oklch(58% .04 260);
+  --p-canal: oklch(10% .02 265 / .45); --p-boira: oklch(40% .04 280 / .35); --p-mitja: oklch(19% .022 265);
+  --p-davant: oklch(15% .02 265); --p-avets: oklch(11% .02 220); --p-c4: oklch(9% .015 265); --p-roca: oklch(20% .02 265);
+  --p-ocell: oklch(80% .02 265);
   --p-pell: oklch(48% .06 60); --p-pell-fosca: oklch(38% .05 55); --p-morro: oklch(72% .03 75); --p-text: oklch(92% .01 80);
 }
 .paisatge { position: relative; height: 100svh; min-height: 480px; overflow: hidden; background: var(--p-cel-baix) }
 .paisatge-dibuix { position: absolute; inset: 0; width: 100%; height: 100%; display: block }
+/* En vertical (mòbil), el dibuix es fa més petit i s'enganxa a baix perquè es vegin els dos cims grans; el cel s'allarga amunt */
+@media (max-aspect-ratio: 4/5) {
+  .paisatge { background: var(--p-cel-dalt) }
+  .paisatge-dibuix { top: auto; bottom: 0; height: 64%; overflow: visible }
+}
 .paisatge .cel-dalt { stop-color: var(--p-cel-dalt) } .paisatge .cel-baix { stop-color: var(--p-cel-baix) }
 .paisatge .halo-1 { stop-color: var(--p-halo) } .paisatge .halo-2 { stop-color: var(--p-halo); stop-opacity: 0 }
 .paisatge .estrelles { fill: var(--p-text); opacity: 0 }
 html[data-tema="fosc"] .paisatge .estrelles { opacity: .8 }
-.paisatge .c1 { fill: var(--p-c1) } .paisatge .c2 { fill: var(--p-c2) } .paisatge .c3 { fill: var(--p-c3) } .paisatge .c4 { fill: var(--p-c4) }
-.paisatge .neu { fill: var(--c-paper) } .paisatge .roca { fill: var(--p-roca) }
+.paisatge .raigs { fill: var(--p-raig) } .paisatge .ocells { fill: none; stroke: var(--p-ocell); stroke-width: 2.5; stroke-linecap: round }
+.paisatge .lluny { fill: var(--p-lluny) }
+.paisatge .cg.llum { fill: var(--p-llum) } .paisatge .cg.ombra { fill: var(--p-ombra) }
+.paisatge .cg.c-fons.llum { fill: var(--p-fons-llum) } .paisatge .cg.c-fons.ombra { fill: var(--p-fons-ombra) }
+.paisatge .neu-llum { fill: var(--p-neu-llum) } .paisatge .neu-ombra { fill: var(--p-neu-ombra) }
+.paisatge .canal { fill: none; stroke: var(--p-canal); stroke-width: 2; stroke-linejoin: round }
+.paisatge .boira-0 { stop-color: var(--p-boira); stop-opacity: 0 } .paisatge .boira-1 { stop-color: var(--p-boira) }
+.paisatge .mitja { fill: var(--p-mitja) } .paisatge .davant { fill: var(--p-davant) } .paisatge .avets { fill: var(--p-avets) }
+.paisatge .c4 { fill: var(--p-c4) } .paisatge .roca { fill: var(--p-roca) }
 .paisatge-dibuix { pointer-events: none }
 .marmota { cursor: pointer; outline: none; pointer-events: auto }
 .marmota .pell { fill: var(--p-pell) } .marmota .pell-fosca { fill: var(--p-pell-fosca) } .marmota .orella { fill: var(--p-pell-fosca) }
@@ -261,6 +259,8 @@ html[data-marca="cims"] .marmota-diu.visible { opacity: 1 }
 @media (max-width: 640px) { .paisatge-baixa { left: 16px; translate: none } }
 @media (prefers-reduced-motion: no-preference) {
   .paisatge .sol { animation: sol-surt 1.4s var(--ease) both }
+  .paisatge .raigs { transform-origin: 800px 330px; animation: raigs 120s linear infinite }
+  @keyframes raigs { to { rotate: 360deg } }
   @keyframes sol-surt { from { translate: 0 80px; opacity: 0 } }
   .paisatge-baixa span { display: inline-block; animation: baixa 1.8s ease-in-out infinite }
   @keyframes baixa { 50% { translate: 0 4px } }
