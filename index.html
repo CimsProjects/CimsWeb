@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="interactiu.css">
 <script>try{var t=localStorage.getItem('bocins-tema')}catch(e){}document.documentElement.dataset.tema=t==='clar'||t==='fosc'?t:matchMedia('(prefers-color-scheme: light)').matches?'clar':'fosc';document.documentElement.dataset.interactiu=''</script>
 <script>try{var g=JSON.parse(localStorage.getItem('cims-gustos')||'null');if(g)for(var k in g)document.documentElement.setAttribute('data-g-'+k,g[k])}catch(e){}</script>
+<script>addEventListener('pagereveal',function(e){var v=e.viewTransition,a=window.navigation&&navigation.activation;if(!v||!a||!a.from)return;var o=function(u){u=new URL(u).pathname;return/consultoria/.test(u)?1:/avis-legal/.test(u)?2:0};v.types.add(o(a.entry.url)<o(a.from.url)?'enrere':'endavant')})</script>
 <script type="module" src="efectes/comuns.js"></script>
 <script type="module" src="efectes/interactiu.js"></script>
 </head>
