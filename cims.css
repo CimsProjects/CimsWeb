@@ -394,6 +394,10 @@ html[data-marca="cims"] body > .barra.sobre-fosc nav a { color: var(--c-band-mut
 .gustos-rapid { color: var(--c-ink); transition: color var(--dur) var(--ease), rotate var(--dur) var(--ease) }
 .gustos-rapid:hover, .gustos-rapid:focus-visible { color: var(--c-accent); rotate: -8deg }
 html[data-marca="cims"] body > .barra.sobre-fosc .gustos-rapid { color: var(--c-band-ink) }
+html[data-marca="cims"] body > .barra.sobre-fosc .gustos-rapid:hover, html[data-marca="cims"] body > .barra.sobre-fosc .gustos-rapid:focus-visible { color: var(--c-band-accent) }
+html[data-marca="cims"] body > .barra .icona { border-radius: 50% }
+html[data-marca="cims"] body > .barra.sobre-fosc .icona:hover { background: color-mix(in oklch, var(--c-band-ink) 14%, transparent) }
+html[data-marca="cims"] body > .barra.sobre-fosc .gustos-bafarada { background: var(--c-band-ink); color: var(--c-band); box-shadow: 0 10px 28px rgb(0 0 0 / .45) }
 .gustos-bafarada { position: absolute; top: calc(100% + 10px); right: -8px; z-index: 5; width: max-content; max-width: 220px; padding: 10px 14px;
   border-radius: var(--radi-caixa, 14px); background: var(--c-ink); color: var(--c-paper); font: 400 var(--t-small)/1.35 var(--f-body);
   box-shadow: 0 10px 28px rgb(0 0 0 / .22); opacity: 0; translate: 0 -4px; pointer-events: none; transition: opacity .2s var(--ease), translate .2s var(--ease) }
