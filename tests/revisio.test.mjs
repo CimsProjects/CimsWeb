@@ -45,7 +45,7 @@ async function open(path, opts = {}) {
 // La pàgina de dins de l'iframe
 const inner = page => page.frames().find(f => f.name() === "pagina" || f.url().includes(".html") && f !== page.mainFrame());
 
-const PAGINES = ["index", "consultoria", "municipis", "andanes", "perfil", "ranquing", "collabora", "404"];
+const PAGINES = ["index", "consultoria", "avis-legal", "municipis", "andanes", "perfil", "ranquing", "collabora", "404"];
 const KEY = "cims.revisio";
 
 test("cada còpia carrega la pàgina original sense errors de la revisió", async () => {
@@ -86,11 +86,10 @@ test("comentar un element: es guarda, surt la marca i persisteix", async () => {
   await page.click("#rv-mode");
   assert.equal(await page.getAttribute("#rv-mode", "aria-pressed"), "true");
   // Clicar un enllaç en mode comentari no ha de navegar
-  await inner(page).click(".projectes li:first-child .nom");
+  await inner(page).waitForSelector("[data-revisio]", { state: "attached" });
+  await inner(page).click("#menu a[href='consultoria.html']");
   await page.waitForSelector("#rv-editor[open]");
-  // Cada clic tria l'element més concret; «Tot el contenidor» puja fins a l'enllaç sencer
-  const enllac = /li:nth-of-type\(1\) > a$/;
-  while (!enllac.test(await page.textContent("#rv-target code"))) await page.click("#rv-parent");
+  const enllac = /^#menu > a:nth-of-type\(\d+\)$/;
   await page.fill("#rv-text", "Aquest enllaç hauria de ser més gran");
   await page.click("#rv-save");
   await page.waitForSelector("#rv-editor:not([open])", { state: "attached" });
@@ -99,8 +98,8 @@ test("comentar un element: es guarda, surt la marca i persisteix", async () => {
   assert.equal(saved.length, 1);
   assert.equal(saved[0].pagina, "index.html");
   assert.match(saved[0].selector, enllac);
-  assert.match(saved[0].text, /Bocins de Catalunya/);
-  assert.equal(saved[0].context, "Què fem");
+  assert.match(saved[0].text, /Consultoria/);
+  assert.equal(saved[0].context, "Seccions");
   assert.equal(saved[0].comentari, "Aquest enllaç hauria de ser més gran");
   assert.equal(saved[0].amplada, 1280);
   assert.match(await page.textContent("#rv-count"), /1/);
@@ -130,7 +129,7 @@ test("ampliar la selecció a l'element contenidor", async () => {
   await page.waitForSelector("#rv-editor[open]");
   assert.equal(await page.textContent("#rv-target code"), "#projectes");
   await page.click("#rv-parent");
-  assert.equal(await page.textContent("#rv-target code"), "body > main > section:nth-of-type(2)");
+  assert.match(await page.textContent("#rv-target code"), /^#contingut > section:nth-of-type\(\d+\)/);
   await page.keyboard.press("Escape");
   await page.waitForSelector("#rv-editor:not([open])", { state: "attached" });
   await ctx.close();
@@ -169,13 +168,14 @@ test("teclat: Enter comenta l'element amb focus; Esc surt del mode comentari", a
   const { ctx, page } = await open("/revisio/index.html");
   await inner(page).waitForSelector("[data-revisio]", { state: "attached" });
   await page.click("#rv-mode");
-  await inner(page).focus(".accions-portada .boto");
+  await inner(page).focus("#interactiu");
   await page.keyboard.press("Enter");
   await page.waitForSelector("#rv-editor[open]");
-  assert.match(await page.textContent("#rv-target"), /Mira els projectes/);
+  assert.match(await page.textContent("#rv-target code"), /^#interactiu$/);
+  assert.equal(await inner(page).getAttribute("#interactiu", "aria-pressed"), "false", "Enter no activa el botó");
   await page.keyboard.press("Escape");
   await page.waitForSelector("#rv-editor:not([open])", { state: "attached" });
-  await inner(page).focus(".accions-portada .boto");
+  await inner(page).focus("#interactiu");
   await page.keyboard.press("Escape");
   assert.equal(await page.getAttribute("#rv-mode", "aria-pressed"), "false");
   await ctx.close();
@@ -217,7 +217,7 @@ test("mòbil: tocar un element obre l'editor i els botons fan 44 px", async () =
   const { ctx, page } = await open("/revisio/index.html", { viewport: { width: 390, height: 844 }, touch: true });
   await inner(page).waitForSelector("[data-revisio]", { state: "attached" });
   await page.tap("#rv-mode");
-  await inner(page).tap(".accions-portada .boto");
+  await inner(page).tap("#projectes");
   await page.waitForSelector("#rv-editor[open]");
   for (const sel of ["#rv-parent", "#rv-cancel", "#rv-save"]) {
     const box = await page.locator(sel).boundingBox();

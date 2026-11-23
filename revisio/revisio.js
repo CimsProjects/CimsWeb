@@ -10,7 +10,7 @@
   const PAGES = {
     "index.html": "Inici", "consultoria.html": "Consultoria", "municipis.html": "Bocins de Catalunya",
     "andanes.html": "Andana 947", "perfil.html": "Explorador", "ranquing.html": "Rànquing",
-    "collabora.html": "Espai de col·laboració", "404.html": "Pàgina no trobada",
+    "collabora.html": "Espai de col·laboració", "avis-legal.html": "Avís legal i privacitat", "404.html": "Pàgina no trobada",
   };
   // Tokens d'estil.css (comuns a les dues marques) que la barra copia de la pàgina de dins.
   const TOKENS = ["--fons", "--sup", "--sup2", "--linia", "--text", "--cos-text", "--suau", "--accent", "--error"];
