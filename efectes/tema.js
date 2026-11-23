@@ -22,7 +22,7 @@ export function iniciaTema() {
   boto.addEventListener('click', () => {
     const obert = caixa.classList.toggle('obert');
     boto.setAttribute('aria-expanded', String(obert));
-    if (obert) caixa.querySelector('[aria-checked="true"]')?.focus();
+    if (obert) caixa.querySelector('[aria-checked="true"]')?.focus({ preventScroll: true });
   });
   caixa.addEventListener('click', (e) => {
     // Només els botons del menú: <html> també porta data-tema, i closest() el trobaria en clicar el botó del tema.
@@ -31,15 +31,15 @@ export function iniciaTema() {
     try { localStorage.setItem(CLAU, b.dataset.tema); } catch { /* Sense memòria: només per a aquesta visita. */ }
     aplica(b.dataset.tema);
     tanca();
-    boto.focus();
+    boto.focus({ preventScroll: true });
   });
   caixa.addEventListener('keydown', (e) => {
     const items = [...caixa.querySelectorAll('[data-tema]')];
     const i = items.indexOf(document.activeElement);
-    if (e.key === 'Escape') { tanca(); boto.focus(); }
+    if (e.key === 'Escape') { tanca(); boto.focus({ preventScroll: true }); }
     if (i >= 0 && (e.key === 'ArrowDown' || e.key === 'ArrowUp')) {
       e.preventDefault();
-      items[(i + (e.key === 'ArrowDown' ? 1 : items.length - 1)) % items.length].focus();
+      items[(i + (e.key === 'ArrowDown' ? 1 : items.length - 1)) % items.length].focus({ preventScroll: true });
     }
   });
   document.addEventListener('click', (e) => { if (!caixa.contains(e.target)) tanca(); });

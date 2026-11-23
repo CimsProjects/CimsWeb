@@ -426,3 +426,7 @@ html:active-view-transition-type(enrere)::view-transition-new(root) { animation-
 @keyframes cims-entra-dre { from { opacity: 0; translate: 22% 0 } }
 @keyframes cims-entra-esq { from { opacity: 0; translate: -22% 0 } }
 html[data-g-moviment="gens"]::view-transition-group(*), html[data-g-moviment="gens"]::view-transition-old(*), html[data-g-moviment="gens"]::view-transition-new(*) { animation: none }
+
+/* La barra és enganxosa i la web té scroll-padding-top (perquè els enllaços interns no quedin sota la barra). Sense això,
+   en posar el focus en un element de la barra (amb el teclat o després de triar el tema), el navegador pujava la pàgina. */
+html[data-marca="cims"] body > .barra, html[data-marca="cims"] body > .barra * { scroll-margin-top: -80px }
