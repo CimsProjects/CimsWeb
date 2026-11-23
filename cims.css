@@ -406,3 +406,18 @@ html[data-marca="cims"] body > .barra.sobre-fosc .gustos-bafarada { background: 
 .gustos-rapid-caixa:hover .gustos-bafarada, .gustos-rapid:focus-visible + .gustos-bafarada { opacity: 1; translate: 0 0 }
 @media (hover: none) { .gustos-bafarada { display: none } }
 html[data-marca="cims"] .barra .accions { flex-wrap: nowrap; gap: var(--s-2) }
+
+/* Transició entre pàgines de CIMS (Inici ↔ Consultoria): la barra queda quieta, el contingut fa un fos suau amb una mica
+   de desplaçament i la ratlla del menú llisca d'un enllaç a l'altre. Els navegadors sense View Transitions canvien de pàgina com sempre. */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition { navigation: auto }
+}
+html[data-marca="cims"] body > .barra { view-transition-name: barra }
+html[data-marca="cims"] .barra nav a[aria-current="page"]::after { view-transition-name: ratlla-menu }
+::view-transition-group(root) { animation-duration: .5s }
+::view-transition-old(root) { animation: .28s cubic-bezier(.4, 0, 1, 1) both cims-surt }
+::view-transition-new(root) { animation: .5s cubic-bezier(.2, .7, .2, 1) .12s both cims-entra }
+::view-transition-group(ratlla-menu) { animation-duration: .45s; animation-timing-function: cubic-bezier(.3, .7, .2, 1) }
+@keyframes cims-surt { to { opacity: 0; translate: 0 -12px; filter: blur(3px) } }
+@keyframes cims-entra { from { opacity: 0; translate: 0 18px; filter: blur(3px) } }
+html[data-g-moviment="gens"]::view-transition-group(*), html[data-g-moviment="gens"]::view-transition-old(*), html[data-g-moviment="gens"]::view-transition-new(*) { animation: none }
