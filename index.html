@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="efectes.css">
 <link rel="stylesheet" href="cims.css">
 <link rel="stylesheet" href="interactiu.css">
-<script>try{var t=localStorage.getItem('bocins-tema')}catch(e){}document.documentElement.dataset.tema=t==='clar'||t==='fosc'?t:matchMedia('(prefers-color-scheme: light)').matches?'clar':'fosc';try{if(localStorage.getItem('cims-interactiu')==='si')document.documentElement.dataset.interactiu=''}catch(e){}</script>
+<script>try{var t=localStorage.getItem('bocins-tema')}catch(e){}document.documentElement.dataset.tema=t==='clar'||t==='fosc'?t:matchMedia('(prefers-color-scheme: light)').matches?'clar':'fosc';document.documentElement.dataset.interactiu=''</script>
 <script>try{var g=JSON.parse(localStorage.getItem('cims-gustos')||'null');if(g)for(var k in g)document.documentElement.setAttribute('data-g-'+k,g[k])}catch(e){}</script>
 <script type="module" src="efectes/comuns.js"></script>
 <script type="module" src="efectes/interactiu.js"></script>
@@ -117,10 +117,6 @@
     <a href="consultoria.html">Consultoria</a>
   </nav>
   <div class="accions">
-    <button class="icona interruptor" id="interactiu" type="button" aria-pressed="false" title="Activa el mode interactiu">
-      <span class="pista" aria-hidden="true"></span><span class="text">Mode interactiu</span>
-    </button>
-    <span class="amagat" id="avis-interactiu" role="status" aria-live="polite"></span>
     <div class="desplegable" id="tema">
       <button class="icona" type="button" title="Tema de colors" aria-haspopup="true" aria-expanded="false" aria-controls="tema-menu" aria-label="Tema de colors">
         <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 4a8 8 0 0 1 0 16Z" fill="currentColor"/></svg>

@@ -168,14 +168,14 @@ test("teclat: Enter comenta l'element amb focus; Esc surt del mode comentari", a
   const { ctx, page } = await open("/revisio/index.html");
   await inner(page).waitForSelector("[data-revisio]", { state: "attached" });
   await page.click("#rv-mode");
-  await inner(page).focus("#interactiu");
+  await inner(page).focus("#obre-gustos");
   await page.keyboard.press("Enter");
   await page.waitForSelector("#rv-editor[open]");
-  assert.match(await page.textContent("#rv-target code"), /^#interactiu$/);
-  assert.equal(await inner(page).getAttribute("#interactiu", "aria-pressed"), "false", "Enter no activa el botó");
+  assert.match(await page.textContent("#rv-target code"), /^#obre-gustos$/);
+  assert.equal(await inner(page).locator("dialog[open]").count(), 0, "Enter no obre el qüestionari");
   await page.keyboard.press("Escape");
   await page.waitForSelector("#rv-editor:not([open])", { state: "attached" });
-  await inner(page).focus("#interactiu");
+  await inner(page).focus("#obre-gustos");
   await page.keyboard.press("Escape");
   assert.equal(await page.getAttribute("#rv-mode", "aria-pressed"), "false");
   await ctx.close();

@@ -1,7 +1,5 @@
-// Versió interactiva de la web de CIMS. És opcional: el visitant l'activa i la desactiva amb el botó de la barra,
-// i la tria es recorda. El contingut és el mateix en les dues versions; aquí només s'hi afegeix una capa d'efectes.
+// Versió interactiva de la web de CIMS. Sempre activa (tret que al qüestionari de gustos es triï «Tot quiet»). El contingut és el mateix en les dues versions; aquí només s'hi afegeix una capa d'efectes.
 // Amb «reduir moviment» no es mou res: només queden els canvis de color i la barra de progrés.
-const CLAU = 'cims-interactiu';
 const arrel = document.documentElement;
 const quiet = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
 const ratoli = () => matchMedia('(hover: hover) and (pointer: fine)').matches;
@@ -143,30 +141,12 @@ function desactiva() {
   desfer = [];
 }
 
-function posa(si, boto, avis) {
-  desactiva();
-  if (si) activa();
-  boto.setAttribute('aria-pressed', String(si));
-  boto.title = si ? 'Desactiva el mode interactiu' : 'Activa el mode interactiu';
-  if (avis) avis.textContent = si ? 'Mode interactiu activat' : 'Mode interactiu desactivat';
-}
-
 export function iniciaInteractiu() {
-  const boto = document.getElementById('interactiu');
-  if (!boto) return;
-  const avis = document.getElementById('avis-interactiu');
-  let desat = null;
-  try { desat = localStorage.getItem(CLAU); } catch {}
-  posa(desat === 'si', boto, null);
-  boto.addEventListener('click', () => {
-    const si = boto.getAttribute('aria-pressed') !== 'true';
-    try { localStorage.setItem(CLAU, si ? 'si' : 'no'); } catch {}
-    posa(si, boto, avis);
-  });
+  // Sempre activa, tret que el visitant hagi triat «Tot quiet» al qüestionari de gustos.
+  if (arrel.dataset.gMoviment === 'gens') { desactiva(); return; }
+  activa();
   // Si el visitant canvia «reduir moviment» amb la pàgina oberta, es torna a muntar.
-  matchMedia('(prefers-reduced-motion: reduce)').addEventListener?.('change', () => {
-    if (boto.getAttribute('aria-pressed') === 'true') posa(true, boto, null);
-  });
+  matchMedia('(prefers-reduced-motion: reduce)').addEventListener?.('change', () => { desactiva(); activa(); });
 }
 
 iniciaInteractiu();

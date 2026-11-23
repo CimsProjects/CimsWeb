@@ -2,7 +2,7 @@
 // Els colors de CIMS (el corall i el gris pissarra) hi són sempre: l'ambient només canvia el to del fons i la força del corall.
 // Cada resposta és un eix independent (colors, lletra, mida, formes, espai, moviment, paisatge i to del text), així
 // que qualsevol combinació té la seva web sense haver de duplicar pàgines: cada eix és un atribut data-g-<eix> a <html>
-// que cims.css fa servir. El tema clar/fosc i el mode interactiu fan servir les claus que ja tenia la web.
+// que cims.css fa servir. El tema clar/fosc fa servir la clau que ja tenia la web.
 // Es desa al navegador (localStorage «cims-gustos») i s'aplica a totes les pàgines de CIMS amb l'script del <head>.
 const CLAU = 'cims-gustos';
 
@@ -41,9 +41,8 @@ const PREGUNTES = [
     ['aireig', 'Molt', 'Molt d\'aire, sense presses'],
   ] },
   { clau: 'moviment', titol: 'I el moviment?', opcions: [
-    ['molt', 'Molt', 'Efectes en passar el ratolí i en baixar'],
-    ['poc', 'Poc', 'Només el just'],
-    ['gens', 'Gens', 'Tot quiet'],
+    ['molt', 'Amb efectes', 'Coses que es mouen en passar el ratolí i en baixar'],
+    ['gens', 'Tot quiet', 'Res no es mou'],
   ] },
   { clau: 'paisatge', titol: 'La pantalla de les muntanyes del principi…', opcions: [
     ['si', 'M\'encanta', 'Que hi sigui sempre'],
@@ -121,7 +120,7 @@ export function iniciaGustos() {
   if (!obre) return;
   if (g) { treu.hidden = false; obre.textContent = 'Torna a fer el qüestionari'; }
   treu.addEventListener('click', () => {
-    try { localStorage.removeItem(CLAU); localStorage.removeItem('bocins-tema'); localStorage.removeItem('cims-interactiu'); } catch { /* res */ }
+    try { localStorage.removeItem(CLAU); localStorage.removeItem('bocins-tema'); } catch { /* res */ }
     location.reload();
   });
 
@@ -166,7 +165,6 @@ export function iniciaGustos() {
     const { tema: t, ...resta } = respostes;
     try {
       localStorage.setItem('bocins-tema', t);
-      localStorage.setItem('cims-interactiu', resta.moviment === 'molt' ? 'si' : 'no');
     } catch { /* res */ }
     desa(resta);
     location.href = location.pathname; // torna a dalt amb la web nova

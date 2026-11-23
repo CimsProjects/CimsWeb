@@ -366,3 +366,24 @@ html[data-marca="cims"] .gustos-pregunta h2 { font: 800 clamp(24px, 3vw, 32px)/1
 .gustos-botons #gustos-seguent { margin-left: auto }
 .gustos-botons .bt[disabled] { opacity: .45; cursor: default; transform: none }
 @media (max-width: 640px) { .gustos-form { padding: var(--s-5) var(--s-4) } .gustos-botons .bt { min-width: 0; flex: 1 } }
+
+/* Barra de dalt: d'amplada completa i de vidre, perquè els canvis de color dels blocs es vegin a través seu en lloc
+   d'un rectangle de color fix. Sobre la banda fosca, el text passa a clar (efectes/barra.js). El vidre va en un
+   ::before perquè el backdrop-filter no faci de contenidor del menú fix del mòbil. */
+html[data-marca="cims"] body > .barra {
+  max-width: none; margin-inline: 0; background: transparent; isolation: isolate;
+  padding-inline: max(clamp(var(--s-4), 5vw, var(--s-8)), calc((100% - var(--wrap)) / 2 + clamp(var(--s-4), 5vw, var(--s-8)))) }
+html[data-marca="cims"] body > .barra::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: color-mix(in oklch, var(--c-paper) 30%, transparent);
+  -webkit-backdrop-filter: blur(16px) saturate(1.3); backdrop-filter: blur(16px) saturate(1.3); transition: background-color .4s var(--ease) }
+html[data-marca="cims"] body > .barra.sobre-fosc::before { background: color-mix(in oklch, var(--c-band) 30%, transparent) }
+html[data-marca="cims"] body > .barra .marca, html[data-marca="cims"] body > .barra .icona, html[data-marca="cims"] body > .barra nav a { transition: color .4s var(--ease) }
+html[data-marca="cims"] body > .barra.sobre-fosc .marca, html[data-marca="cims"] body > .barra.sobre-fosc .icona,
+html[data-marca="cims"] body > .barra.sobre-fosc nav a[aria-current="page"] { color: var(--c-band-ink) }
+html[data-marca="cims"] body > .barra.sobre-fosc nav a { color: var(--c-band-muted) }
+@media (max-width: 640px) {
+  html[data-marca="cims"] .barra nav { background: color-mix(in oklch, var(--c-paper) 70%, transparent); border-top: 0;
+    -webkit-backdrop-filter: blur(16px) saturate(1.3); backdrop-filter: blur(16px) saturate(1.3) }
+  html[data-marca="cims"] body > .barra.sobre-fosc nav a { color: var(--c-muted) }
+  html[data-marca="cims"] body > .barra.sobre-fosc nav a[aria-current="page"] { color: var(--c-ink) }
+}
