@@ -125,11 +125,11 @@ test("ampliar la selecció a l'element contenidor", async () => {
   const { ctx, page } = await open("/revisio/index.html");
   await inner(page).waitForSelector("[data-revisio]", { state: "attached" });
   await page.click("#rv-mode");
-  await inner(page).click("#projectes");
+  await inner(page).click("#qui-som .gran");
   await page.waitForSelector("#rv-editor[open]");
-  assert.equal(await page.textContent("#rv-target code"), "#projectes");
+  assert.match(await page.textContent("#rv-target code"), /^#qui-som > div > div > p/);
   await page.click("#rv-parent");
-  assert.match(await page.textContent("#rv-target code"), /^#contingut > section:nth-of-type\(\d+\)/);
+  assert.equal(await page.textContent("#rv-target code"), "#qui-som > div > div");
   await page.keyboard.press("Escape");
   await page.waitForSelector("#rv-editor:not([open])", { state: "attached" });
   await ctx.close();
