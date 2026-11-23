@@ -101,6 +101,16 @@ html[data-marca="cims"] .banda p { color: var(--c-band-muted); font-size: var(--
 .lletres { list-style: none; margin: 0; padding: 0; font: 800 clamp(44px, 6vw, 88px)/1.02 var(--f-display); letter-spacing: -.035em }
 .lletres li { color: var(--c-band-muted) }
 .lletres b { color: var(--c-band-accent) }
+/* Cada paraula és un botó: en passar-hi per sobre (o amb el focus) canvia la frase del costat (efectes/nom.js) */
+.lletres button { all: unset; display: inline-block; cursor: default; color: inherit; border-radius: 6px; transition: color var(--dur) var(--ease), opacity var(--dur) var(--ease) }
+.lletres button:focus-visible { outline: 3px solid var(--c-band-accent); outline-offset: 4px }
+.lletres.amb-actiu li { opacity: .45 }
+.lletres.amb-actiu li:has([aria-pressed="true"]) { opacity: 1; color: var(--c-band-ink) }
+.frase-nom { min-height: 4.4em }
+@media (prefers-reduced-motion: no-preference) {
+  .frase-nom.canvi { animation: frase-entra .35s var(--ease) }
+  @keyframes frase-entra { from { opacity: 0; transform: translateY(6px) } }
+}
 
 /* Serveis: una llista de definicions amb el títol gran */
 .serveis { padding-block: var(--s-8) var(--s-9) }
