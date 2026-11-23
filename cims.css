@@ -275,3 +275,23 @@ html[data-marca="cims"] .marmota-diu.visible { opacity: 1 }
   @keyframes baixa { 50% { translate: 0 4px } }
 }
 @media (prefers-reduced-motion: reduce) { .marmota-cos, .marmota-diu { transition: none } }
+
+/* Canvis de color entre blocs: en lloc d'un tall sec, un degradat. Els blocs d'un altre color es fonen amb el paper
+   a dalt i a baix, dins del seu propi farciment, perquè el contingut quedi sempre sobre el color ple. */
+html[data-marca="cims"] .per-a-qui, html[data-marca="cims"] .passos-s {
+  background: linear-gradient(var(--c-paper), var(--c-paper-2) var(--s-9), var(--c-paper-2) calc(100% - var(--s-9)), var(--c-paper)) }
+html[data-marca="cims"] .banda {
+  background: linear-gradient(var(--c-paper), var(--c-band) var(--s-10), var(--c-band) calc(100% - var(--s-10)), var(--c-paper)) }
+@media (max-width: 900px) {
+  html[data-marca="cims"] .per-a-qui, html[data-marca="cims"] .passos-s {
+    background: linear-gradient(var(--c-paper), var(--c-paper-2) var(--s-8), var(--c-paper-2) calc(100% - var(--s-8)), var(--c-paper)) }
+  html[data-marca="cims"] .banda {
+    background: linear-gradient(var(--c-paper), var(--c-band) var(--s-9), var(--c-band) calc(100% - var(--s-9)), var(--c-paper)) }
+}
+/* Del terra del paisatge al paper de la pàgina */
+.paisatge { --fosa: 110px; height: calc(100svh + var(--fosa)) }
+.paisatge::after { content: ""; position: absolute; inset: auto 0 0; height: var(--fosa); background: linear-gradient(var(--p-c4), var(--c-paper)); pointer-events: none }
+.paisatge-dibuix { height: calc(100% - var(--fosa)) }
+.paisatge-baixa { bottom: calc(var(--fosa) + max(24px, env(safe-area-inset-bottom))) }
+@media (max-width: 900px) { .paisatge-baixa { bottom: calc(var(--fosa) + 84px + env(safe-area-inset-bottom)) } }
+@media (max-aspect-ratio: 4/5) { .paisatge-dibuix { bottom: var(--fosa); height: calc(64% - var(--fosa) * .64) } }
