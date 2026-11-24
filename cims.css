@@ -292,6 +292,8 @@ html[data-tema="fosc"] .pn-nuvol, html[data-tema="fosc"] .pn-ocells { opacity: 0
 .pn-carenes { position: absolute; inset: 0; width: 100%; height: 100%; display: block; user-select: none; transition: opacity var(--pn-durada) var(--ease) }
 .pn-carenes.pn-nit { opacity: 0 }
 html[data-tema="fosc"] .pn-carenes.pn-nit { opacity: 1 }
+/* La de dia s'amaga de nit: si no, a les vores de la de nit (mig transparents) se n'hi veia una línia clara */
+html[data-tema="fosc"] .pn-carenes.pn-dia { opacity: 0 }
 /* Del terra del dibuix al paper de la pàgina, amb el mateix degradat llarg que la resta de blocs */
 /* Les carenes de davant es fonen en una boira que acaba amb el color del paper: no hi ha cap tall amb el bloc de sota */
 .portada-nit::after { content: ""; position: absolute; inset: auto 0 0; z-index: 1; height: calc(var(--fosa) * 1.7); pointer-events: none; background: linear-gradient(transparent 0%, color-mix(in oklab, var(--c-paper) 3%, transparent) 10%, color-mix(in oklab, var(--c-paper) 10%, transparent) 20%, color-mix(in oklab, var(--c-paper) 22%, transparent) 30%, color-mix(in oklab, var(--c-paper) 35%, transparent) 40%, color-mix(in oklab, var(--c-paper) 50%, transparent) 50%, color-mix(in oklab, var(--c-paper) 65%, transparent) 60%, color-mix(in oklab, var(--c-paper) 78%, transparent) 70%, color-mix(in oklab, var(--c-paper) 90%, transparent) 80%, color-mix(in oklab, var(--c-paper) 97%, transparent) 90%, var(--c-paper) 100%) }
