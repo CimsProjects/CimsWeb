@@ -234,7 +234,7 @@ html[data-marca="cims"] .banda ::selection { background: var(--c-band-accent); c
 
 /* Portada «Nit al cim» (dibuix de Canva: carenes i sol corall). Sempre fosca, sigui quin sigui el tema; el cel és el
    mateix color que el fons del dibuix (imatges/portada-nit.webp) perquè no es vegi on acaba. Va abans de la barra. */
-html[data-marca="cims"] { --pn-cel: #131a28; --pn-text: oklch(96% .008 80); --pn-suau: oklch(80% .014 265); --pn-corall: #e8624b }
+html[data-marca="cims"] { --pn-cel: #151c29; --pn-text: oklch(96% .008 80); --pn-suau: oklch(80% .014 265); --pn-corall: #e8624b }
 .portada-nit { --fosa: 240px; position: relative; overflow: hidden; display: grid; align-content: start;
   min-height: calc(100svh + var(--fosa)); padding-block: clamp(72px, 14svh, 160px) var(--fosa); background: var(--pn-cel); color: var(--pn-text); isolation: isolate }
 .portada-nit .pn-text { position: relative; z-index: 1; width: 100% }
@@ -259,7 +259,9 @@ html[data-marca="cims"] .portada-nit :focus-visible { outline-color: var(--pn-co
 }
 /* En vertical (mòbil), el text a dalt i el sol amb el cim a baix, retallats perquè el cim quedi al mig */
 @media (max-aspect-ratio: 4/5) {
-  .pn-dibuix { min-height: 0; height: 40svh; object-position: 90% 100% }
+  .pn-dibuix { min-height: 0; height: 33svh; object-position: 90% 100% }
+  /* Si el text no hi cap (mòbils baixos), la portada s'allarga i el sol queda sota els botons, mai al darrere */
+  .portada-nit { padding-bottom: calc(var(--fosa) + 33svh - 20px) }
   html[data-marca="cims"] .portada-nit .pn-sigles { font-size: 15px }
   .pn-sigles .pn-punt { display: none }
   .pn-sigles { display: grid; gap: 2px }
