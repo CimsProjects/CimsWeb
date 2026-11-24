@@ -583,3 +583,6 @@ html[data-marca="cims"] .persona-per-que .falta { color: var(--c-band-accent) }
   .persona-contacte { padding-block: var(--s-8) var(--s-7) }
   .persona-altre { padding-block: 0 var(--s-8) }
 }
+/* La foto: fins que no hi sigui, un requadre amb les inicials (mateixa forma que el logo) */
+.persona-foto { display: grid; place-items: center; width: clamp(96px, 11vw, 140px); aspect-ratio: 1; margin: 0 0 var(--s-5); border-radius: 22%; background: var(--c-band); object-fit: cover }
+.persona-foto span { font: 800 clamp(34px, 4vw, 50px)/1 var(--f-display); letter-spacing: -.04em; color: var(--c-band-accent) }
