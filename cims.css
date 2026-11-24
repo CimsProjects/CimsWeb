@@ -61,12 +61,6 @@ html[data-marca="cims"] p { color: var(--c-ink-2); max-width: 65ch; margin: 0 0 
 .lede { font-size: var(--t-lede); line-height: 1.45; color: var(--c-ink-2) }
 
 /* Portada: el títol i les accions a l'esquerra, el logo de CIMS en gran a la dreta */
-.heroi { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: var(--s-8); align-items: center; min-height: calc(100svh - 80px); max-height: 860px; padding-block: var(--s-7) }
-.heroi h1 { font: 800 var(--t-hero)/.92 var(--f-display); letter-spacing: -.045em; margin: 0 0 var(--s-6) }
-.heroi h1 .cim { color: var(--c-accent) }
-.heroi .lede { max-width: 28ch; margin-bottom: var(--s-6) }
-.logo-gran { margin: 0; min-width: 0; display: grid; place-items: center }
-.logo-gran .mk-gran { width: min(100%, 420px); height: auto; display: block }
 
 /* Capçalera d'una pàgina interior (consultoria) */
 .cap { padding-block: var(--s-9) var(--s-8); display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--s-8); align-items: end }
@@ -181,8 +175,6 @@ html[data-marca="cims"] .peu p { font-size: var(--t-small); color: var(--c-muted
 .peu .credit { grid-column: 1 / -1 }
 
 @media (max-width: 900px) {
-  .heroi { grid-template-columns: minmax(0, 1fr); min-height: 0; max-height: none; padding-block: var(--s-6) var(--s-8); gap: var(--s-6) }
-  .logo-gran .mk-gran { width: min(60%, 240px) }
   .cap { grid-template-columns: minmax(0, 1fr); gap: var(--s-5); padding-block: var(--s-7) var(--s-6) }
   .index li > a, .index li > div { grid-template-columns: minmax(0, 1fr); gap: var(--s-2) }
   .index .estat { justify-self: start; text-align: left; order: -1 }
@@ -208,73 +200,45 @@ html[data-marca="cims"] .peu p { font-size: var(--t-small); color: var(--c-muted
 html[data-marca="cims"] ::selection { background: var(--c-accent); color: var(--c-accent-ink) }
 html[data-marca="cims"] .banda ::selection { background: var(--c-band-accent); color: var(--c-band) }
 
-/* Portada de pantalla completa: el paisatge de muntanyes amb el logo de CIMS com a sol i una marmota amagada
-   (efectes/portada.js). Va abans de la barra; la resta de la pàgina continua igual a sota. */
-html[data-marca="cims"], html[data-marca="cims"][data-tema="clar"] {
-  --p-cel-dalt: oklch(80% .06 240); --p-cel-baix: oklch(94% .035 70); --p-halo: oklch(90% .1 65 / .75); --p-raig: oklch(97% .05 80 / .28);
-  --p-lluny: oklch(84% .025 245); --p-fons-llum: oklch(78% .03 60); --p-fons-ombra: oklch(66% .03 255);
-  --p-llum: oklch(75% .045 62); --p-ombra: oklch(47% .035 262); --p-neu-llum: oklch(98% .012 80); --p-neu-ombra: oklch(83% .035 250);
-  --p-canal: oklch(35% .03 262 / .35); --p-boira: oklch(97% .015 80 / .65); --p-mitja: oklch(42% .03 262);
-  --p-davant: oklch(30% .025 262); --p-avets: oklch(24% .03 200); --p-c4: oklch(22% .022 262); --p-roca: oklch(34% .02 262);
-  --p-ocell: oklch(30% .02 262);
-  --p-pell: oklch(55% .07 60); --p-pell-fosca: oklch(44% .06 55); --p-morro: oklch(82% .035 75); --p-text: oklch(96% .008 80);
+/* Portada «Nit al cim» (dibuix de Canva: carenes i sol corall). Sempre fosca, sigui quin sigui el tema; el cel és el
+   mateix color que el fons del dibuix (imatges/portada-nit.webp) perquè no es vegi on acaba. Va abans de la barra. */
+html[data-marca="cims"] { --pn-cel: #131a28; --pn-text: oklch(96% .008 80); --pn-suau: oklch(80% .014 265); --pn-corall: #e8624b }
+.portada-nit { --fosa: 240px; position: relative; overflow: hidden; display: grid; align-content: start;
+  min-height: calc(100svh + var(--fosa)); padding-block: clamp(72px, 14svh, 160px) var(--fosa); background: var(--pn-cel); color: var(--pn-text); isolation: isolate }
+.portada-nit .pn-text { position: relative; z-index: 1; width: 100% }
+html[data-marca="cims"] .portada-nit h1 { font: 800 clamp(72px, 11vw, 176px)/.9 var(--f-display); letter-spacing: -.045em; margin: 0 0 var(--s-5); color: var(--pn-text) }
+.portada-nit h1 .cim { color: var(--pn-corall) }
+html[data-marca="cims"] .portada-nit .pn-sigles { font: 700 clamp(17px, 1.7vw, 24px)/1.4 var(--f-display); letter-spacing: -.01em; color: var(--pn-suau); margin: 0 0 var(--s-5); max-width: none }
+.pn-sigles b { color: var(--pn-corall); font-weight: inherit }
+.pn-sigles .pn-punt { color: var(--pn-corall) }
+html[data-marca="cims"] .portada-nit .lede { color: var(--pn-suau); max-width: 34ch; margin: 0 0 var(--s-6) }
+html[data-marca="cims"] .portada-nit .bt { background: var(--pn-corall); border-color: var(--pn-corall); color: var(--pn-cel) }
+html[data-marca="cims"] .portada-nit .bt.sec { background: transparent; color: var(--pn-text); border-color: var(--pn-text) }
+html[data-marca="cims"] .portada-nit .bt.sec:hover { color: var(--pn-corall); border-color: var(--pn-corall) }
+html[data-marca="cims"] .portada-nit ::selection { background: var(--pn-corall); color: var(--pn-cel) }
+html[data-marca="cims"] .portada-nit :focus-visible { outline-color: var(--pn-corall) }
+/* El dibuix s'enganxa a baix (abans del degradat cap al paper) i ocupa tota l'amplada */
+.pn-dibuix { position: absolute; z-index: 0; left: 0; bottom: calc(var(--fosa) - 1px); width: 100%; height: auto; min-height: 46svh; object-fit: cover; object-position: 72% 100%; pointer-events: none; user-select: none;
+  -webkit-mask-image: linear-gradient(#000 78%, transparent); mask-image: linear-gradient(#000 78%, transparent) }
+/* Del terra del dibuix al paper de la pàgina, amb el mateix degradat llarg que la resta de blocs */
+.portada-nit::after { content: ""; position: absolute; inset: auto 0 0; height: var(--fosa); background: linear-gradient(var(--pn-cel) 0%, color-mix(in oklab, var(--c-paper) 3%, var(--pn-cel)) 10%, color-mix(in oklab, var(--c-paper) 10%, var(--pn-cel)) 20%, color-mix(in oklab, var(--c-paper) 22%, var(--pn-cel)) 30%, color-mix(in oklab, var(--c-paper) 35%, var(--pn-cel)) 40%, color-mix(in oklab, var(--c-paper) 50%, var(--pn-cel)) 50%, color-mix(in oklab, var(--c-paper) 65%, var(--pn-cel)) 60%, color-mix(in oklab, var(--c-paper) 78%, var(--pn-cel)) 70%, color-mix(in oklab, var(--c-paper) 90%, var(--pn-cel)) 80%, color-mix(in oklab, var(--c-paper) 97%, var(--pn-cel)) 90%, var(--c-paper) 100%); pointer-events: none; z-index: 0 }
+@media (max-width: 900px) {
+  .portada-nit { --fosa: 160px; padding-top: clamp(56px, 10svh, 96px) }
 }
-html[data-marca="cims"][data-tema="fosc"] {
-  --p-cel-dalt: oklch(15% .035 265); --p-cel-baix: oklch(30% .05 290); --p-halo: oklch(72% .13 40 / .4); --p-raig: oklch(80% .08 50 / .08);
-  --p-lluny: oklch(30% .03 270); --p-fons-llum: oklch(36% .03 265); --p-fons-ombra: oklch(25% .025 265);
-  --p-llum: oklch(42% .035 260); --p-ombra: oklch(24% .03 265); --p-neu-llum: oklch(85% .025 250); --p-neu-ombra: oklch(58% .04 260);
-  --p-canal: oklch(10% .02 265 / .45); --p-boira: oklch(40% .04 280 / .35); --p-mitja: oklch(19% .022 265);
-  --p-davant: oklch(15% .02 265); --p-avets: oklch(11% .02 220); --p-c4: oklch(9% .015 265); --p-roca: oklch(20% .02 265);
-  --p-ocell: oklch(80% .02 265);
-  --p-pell: oklch(48% .06 60); --p-pell-fosca: oklch(38% .05 55); --p-morro: oklch(72% .03 75); --p-text: oklch(92% .01 80);
-}
-.paisatge { position: relative; height: 100svh; min-height: 480px; overflow: hidden; background: var(--p-cel-baix) }
-.paisatge-dibuix { position: absolute; inset: 0; width: 100%; height: 100%; display: block }
-/* En vertical (mòbil), el dibuix es fa més petit i s'enganxa a baix perquè es vegin els dos cims grans; el cel s'allarga amunt */
+/* En vertical (mòbil), el text a dalt i el sol amb el cim a baix, retallats perquè el cim quedi al mig */
 @media (max-aspect-ratio: 4/5) {
-  .paisatge { background: var(--p-cel-dalt) }
-  .paisatge-dibuix { top: auto; bottom: 0; height: 64%; overflow: visible }
+  .pn-dibuix { min-height: 0; height: 40svh; object-position: 90% 100% }
+  html[data-marca="cims"] .portada-nit .pn-sigles { font-size: 15px }
+  .pn-sigles .pn-punt { display: none }
+  .pn-sigles { display: grid; gap: 2px }
 }
-.paisatge .cel-dalt { stop-color: var(--p-cel-dalt) } .paisatge .cel-baix { stop-color: var(--p-cel-baix) }
-.paisatge .halo-1 { stop-color: var(--p-halo) } .paisatge .halo-2 { stop-color: var(--p-halo); stop-opacity: 0 }
-.paisatge .estrelles { fill: var(--p-text); opacity: 0 }
-html[data-tema="fosc"] .paisatge .estrelles { opacity: .8 }
-.paisatge .raigs { fill: var(--p-raig) } .paisatge .ocells { fill: none; stroke: var(--p-ocell); stroke-width: 2.5; stroke-linecap: round }
-.paisatge .lluny { fill: var(--p-lluny) }
-.paisatge .cg.llum { fill: var(--p-llum) } .paisatge .cg.ombra { fill: var(--p-ombra) }
-.paisatge .cg.c-fons.llum { fill: var(--p-fons-llum) } .paisatge .cg.c-fons.ombra { fill: var(--p-fons-ombra) }
-.paisatge .neu-llum { fill: var(--p-neu-llum) } .paisatge .neu-ombra { fill: var(--p-neu-ombra) }
-.paisatge .canal { fill: none; stroke: var(--p-canal); stroke-width: 2; stroke-linejoin: round }
-.paisatge .boira-0 { stop-color: var(--p-boira); stop-opacity: 0 } .paisatge .boira-1 { stop-color: var(--p-boira) }
-.paisatge .mitja { fill: var(--p-mitja) } .paisatge .davant { fill: var(--p-davant) } .paisatge .avets { fill: var(--p-avets) }
-.paisatge .c4 { fill: var(--p-c4) } .paisatge .roca { fill: var(--p-roca) }
-.paisatge-dibuix { pointer-events: none }
-.marmota { cursor: pointer; outline: none; pointer-events: auto }
-.marmota .pell { fill: var(--p-pell) } .marmota .pell-fosca { fill: var(--p-pell-fosca) } .marmota .orella { fill: var(--p-pell-fosca) }
-.marmota .morro { fill: var(--p-morro) } .marmota .ull { fill: #1b1b1f } .marmota .brillantor { fill: #fff } .marmota .dents { fill: #fff }
-.marmota-cos { transition: translate .35s var(--ease) }
-.marmota:hover .marmota-cos, .marmota:focus-visible .marmota-cos { translate: 0 -10px }
-.marmota.surt .marmota-cos { translate: 0 -34px }
-.marmota:focus-visible .pell { stroke: var(--c-accent); stroke-width: 3 }
-html[data-marca="cims"] .marmota-diu { position: absolute; z-index: 2; margin: 0; width: max-content; max-width: min(300px, calc(100vw - 32px)); padding: 12px 16px; border-radius: var(--radi-caixa, 16px);
-  background: var(--c-paper); color: var(--c-ink); font: 600 16px/1.35 var(--f-body); box-shadow: 0 8px 24px rgb(0 0 0 / .2);
-  transform: translate(-50%, -100%); opacity: 0; pointer-events: none; transition: opacity .25s var(--ease) }
-.marmota-diu::after { content: ""; position: absolute; left: 50%; bottom: -8px; width: 16px; height: 16px; margin-left: -8px; background: inherit; rotate: 45deg }
-html[data-marca="cims"] .marmota-diu.visible { opacity: 1 }
-.paisatge-baixa { position: absolute; left: 50%; bottom: max(24px, env(safe-area-inset-bottom)); translate: -50% 0; display: inline-flex; align-items: center; gap: 8px;
-  min-height: 48px; padding: 0 20px; border-radius: 999px; color: var(--p-text); font: 600 16px var(--f-body); white-space: nowrap; text-decoration: none; border: 1.5px solid currentColor }
-.paisatge-baixa:hover { background: color-mix(in oklch, var(--p-text) 12%, transparent) }
-@media (max-width: 900px) { .paisatge-baixa { bottom: calc(84px + env(safe-area-inset-bottom)) } }
-@media (max-width: 640px) { .paisatge-baixa { left: 16px; translate: none } }
 @media (prefers-reduced-motion: no-preference) {
-  .paisatge .sol { animation: sol-surt 1.4s var(--ease) both }
-  .paisatge .raigs { transform-origin: 800px 330px; animation: raigs 120s linear infinite }
-  @keyframes raigs { to { rotate: 360deg } }
-  @keyframes sol-surt { from { translate: 0 80px; opacity: 0 } }
-  .paisatge-baixa span { display: inline-block; animation: baixa 1.8s ease-in-out infinite }
-  @keyframes baixa { 50% { translate: 0 4px } }
+  .pn-dibuix { animation: pn-surt 1.4s var(--ease) both }
+  .portada-nit .pn-text > * { animation: pn-text .9s var(--ease) both }
+  .portada-nit .pn-text > :nth-child(2) { animation-delay: .08s } .portada-nit .pn-text > :nth-child(3) { animation-delay: .16s } .portada-nit .pn-text > :nth-child(4) { animation-delay: .24s }
+  @keyframes pn-surt { from { translate: 0 60px; opacity: 0 } }
+  @keyframes pn-text { from { translate: 0 16px; opacity: 0 } }
 }
-@media (prefers-reduced-motion: reduce) { .marmota-cos, .marmota-diu { transition: none } }
 
 /* Canvis de color entre blocs: en lloc d'un tall, un degradat llarg i suau (corba suavitzada, sense ratlla visible).
    Els blocs d'un altre color tenen més marge a dalt i a baix i s'hi fonen amb el paper, perquè el contingut quedi sempre
@@ -285,13 +249,6 @@ html[data-marca="cims"] .banda { --fosa: 280px; padding-block: var(--fosa); back
   html[data-marca="cims"] .per-a-qui, html[data-marca="cims"] .passos-s { --fosa: 150px }
   html[data-marca="cims"] .banda { --fosa: 190px }
 }
-/* Del terra del paisatge al paper de la pàgina */
-.paisatge { --fosa: 240px; height: calc(100svh + var(--fosa)) }
-.paisatge::after { content: ""; position: absolute; inset: auto 0 0; height: var(--fosa); background: linear-gradient(var(--p-c4) 0%, color-mix(in oklch, var(--c-paper) 3%, var(--p-c4)) 10%, color-mix(in oklch, var(--c-paper) 10%, var(--p-c4)) 20%, color-mix(in oklch, var(--c-paper) 22%, var(--p-c4)) 30%, color-mix(in oklch, var(--c-paper) 35%, var(--p-c4)) 40%, color-mix(in oklch, var(--c-paper) 50%, var(--p-c4)) 50%, color-mix(in oklch, var(--c-paper) 65%, var(--p-c4)) 60%, color-mix(in oklch, var(--c-paper) 78%, var(--p-c4)) 70%, color-mix(in oklch, var(--c-paper) 90%, var(--p-c4)) 80%, color-mix(in oklch, var(--c-paper) 97%, var(--p-c4)) 90%, var(--c-paper) 100%); pointer-events: none }
-.paisatge-dibuix { height: calc(100% - var(--fosa)) }
-.paisatge-baixa { bottom: calc(var(--fosa) + max(24px, env(safe-area-inset-bottom))) }
-@media (max-width: 900px) { .paisatge-baixa { bottom: calc(var(--fosa) + 84px + env(safe-area-inset-bottom)) } }
-@media (max-aspect-ratio: 4/5) { .paisatge-dibuix { bottom: var(--fosa); height: calc(64% - var(--fosa) * .64) } }
 
 /* ===== Gustos («No t'agrada la web?», efectes/gustos.js) ===================================================
    Cada eix és un atribut data-g-<eix> a <html>. Els colors de CIMS (corall i pissarra) hi són sempre. */
@@ -329,8 +286,9 @@ html[data-marca="cims"][data-g-espai="aireig"] { --s-7: 64px; --s-8: 88px; --s-9
 html[data-marca="cims"][data-g-moviment="gens"] *, html[data-marca="cims"][data-g-moviment="gens"] *::before, html[data-marca="cims"][data-g-moviment="gens"] *::after {
   animation: none !important; transition: none !important; scroll-behavior: auto !important }
 
-/* Paisatge de la portada */
-html[data-marca="cims"][data-g-paisatge="no"] .paisatge { display: none }
+/* Portada: «anar al gra» la fa curta i sense el dibuix, perquè el contingut surti de seguida */
+html[data-marca="cims"][data-g-paisatge="no"] .portada-nit { min-height: 0; padding-top: var(--s-9) }
+html[data-marca="cims"][data-g-paisatge="no"] .pn-dibuix { display: none }
 
 /* El bloc del botó, abans del peu */
 .gustos { padding-block: var(--s-9); text-align: center }

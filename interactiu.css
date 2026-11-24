@@ -36,18 +36,6 @@
 [data-interactiu] .bt { transform: translate(var(--mx, 0), var(--my, 0)); transition: transform .3s var(--ease), background-color var(--dur) var(--ease), color var(--dur) var(--ease), border-color var(--dur) var(--ease) }
 [data-interactiu] .bt:hover { transform: translate(var(--mx, 0), calc(var(--my, 0px) - 2px)); transition-duration: .12s }
 
-/* Logo gran: s'inclina cap al cursor; els dos cims, a profunditats diferents */
-[data-interactiu] .logo-gran { perspective: 900px; cursor: pointer }
-[data-interactiu] .logo-gran .mk-gran { transform: rotateX(calc(var(--iy, 0) * -14deg)) rotateY(calc(var(--ix, 0) * 16deg)); transition: transform .5s var(--ease) }
-[data-interactiu] .logo-gran.int-viu .mk-gran { transition-duration: .12s }
-[data-interactiu] .logo-gran .mk-a, [data-interactiu] .logo-gran .mk-f, [data-interactiu] .logo-gran .mk-c { transition: transform .5s var(--ease); transform-box: fill-box; transform-origin: 50% 100% }
-[data-interactiu] .logo-gran.int-viu .mk-a, [data-interactiu] .logo-gran.int-viu .mk-f, [data-interactiu] .logo-gran.int-viu .mk-c { transition-duration: .12s }
-[data-interactiu] .logo-gran .mk-c { transform: translate(calc(var(--ix, 0) * -3px), calc(var(--iy, 0) * -3px)) }
-[data-interactiu] .logo-gran .mk-a { transform: translate(calc(var(--ix, 0) * 4px), calc(var(--iy, 0) * 4px)) }
-[data-interactiu] .logo-gran .mk-f { transform: translate(calc(var(--ix, 0) * 8px), calc(var(--iy, 0) * 8px)) }
-[data-interactiu] .logo-gran.int-salta .mk-a { animation: int-salta .7s var(--ease) }
-[data-interactiu] .logo-gran.int-salta .mk-f { animation: int-salta .7s var(--ease) .08s }
-@keyframes int-salta { 0%, 100% { translate: 0 0 } 35% { translate: 0 -9px } 60% { translate: 0 1px } }
 
 /* Cercle que segueix el cursor */
 .int-halo { position: fixed; left: -18px; top: -18px; width: 36px; height: 36px; border-radius: 50%; border: 1.5px solid var(--c-accent); pointer-events: none; z-index: 40; opacity: 0; transition: opacity .3s, width .2s var(--ease), height .2s var(--ease), left .2s var(--ease), top .2s var(--ease), background-color .2s }
@@ -63,7 +51,7 @@
 @media (prefers-reduced-motion: reduce) {
   [data-interactiu] *, [data-interactiu] *::before, [data-interactiu] *::after { transition-property: color, background-color, border-color, opacity !important; animation: none !important }
   [data-interactiu] .int-abans { opacity: 1; translate: none }
-  [data-interactiu] .index a:hover .nom, [data-interactiu] .lletres li:hover, [data-interactiu] .bt, [data-interactiu] .bt:hover, [data-interactiu] .logo-gran .mk-gran { transform: none }
+  [data-interactiu] .index a:hover .nom, [data-interactiu] .lletres li:hover, [data-interactiu] .bt, [data-interactiu] .bt:hover { transform: none }
   .int-halo { display: none }
 }
 @media print { .int-progres, .int-halo { display: none } }

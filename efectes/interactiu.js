@@ -37,32 +37,6 @@ function llum() {
   });
 }
 
-/** El logo gran s'inclina cap al cursor i els dos cims es mouen a profunditats diferents. */
-function inclinaLogo() {
-  const heroi = document.querySelector('.heroi');
-  const logo = heroi?.querySelector('.logo-gran');
-  if (!logo) return;
-  let pendent = false;
-  escolta(heroi, 'pointermove', (e) => {
-    if (e.pointerType !== 'mouse' || pendent) return;
-    pendent = true;
-    requestAnimationFrame(() => {
-      const r = logo.getBoundingClientRect();
-      const x = Math.max(-1, Math.min(1, (e.clientX - (r.left + r.width / 2)) / (r.width / 2 + 200)));
-      const y = Math.max(-1, Math.min(1, (e.clientY - (r.top + r.height / 2)) / (r.height / 2 + 200)));
-      logo.style.setProperty('--ix', x.toFixed(3));
-      logo.style.setProperty('--iy', y.toFixed(3));
-      logo.classList.add('int-viu');
-      pendent = false;
-    });
-  });
-  escolta(heroi, 'pointerleave', () => { logo.classList.remove('int-viu'); logo.style.setProperty('--ix', 0); logo.style.setProperty('--iy', 0); });
-  // Un clic al logo fa saltar els cims una vegada (menys d'un segon).
-  escolta(logo, 'click', () => { logo.classList.remove('int-salta'); void logo.offsetWidth; logo.classList.add('int-salta'); });
-  escolta(logo, 'animationend', () => logo.classList.remove('int-salta'));
-  desfer.push(() => { logo.classList.remove('int-viu', 'int-salta'); logo.style.removeProperty('--ix'); logo.style.removeProperty('--iy'); });
-}
-
 /** Els botons principals s'acosten una mica al cursor. */
 function iman() {
   document.querySelectorAll('.bt').forEach((bt) => {
@@ -130,7 +104,6 @@ function activa() {
   if (quiet()) return;
   entrades();
   if (!ratoli()) return;
-  inclinaLogo();
   iman();
   halo();
 }
