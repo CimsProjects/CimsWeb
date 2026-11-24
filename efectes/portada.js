@@ -81,22 +81,19 @@ export function iniciaPortada() {
 const LLETRES = 'abcdefghijlmnopqrstuvxyz';
 const quiet = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-/** Canvia el text de `el` de `abans` a `despres` remenant les lletres: es fixen d'una en una, d'esquerra a dreta. */
-function remena(el, abans, despres, acaba) {
-  const llarg = Math.max(abans.length, despres.length);
+/** Canvia el text de `el` a `despres` remenant les lletres: es fixen d'una en una, d'esquerra a dreta. */
+function remena(el, despres, acaba) {
+  // Sempre hi ha tantes lletres com la paraula nova: les ja fixades i, a la dreta, lletres a l'atzar.
   const majuscules = despres === despres.toUpperCase();
   const aleatoria = () => { const l = LLETRES[Math.floor(Math.random() * LLETRES.length)]; return majuscules ? l.toUpperCase() : l; };
   let pas = 0;
-  const total = llarg * 3 + 4; // cada lletra es remena uns quants cops abans de fixar-se
+  const total = despres.length * 2 + 2; // cada lletra es remena un parell de cops abans de fixar-se
   const tic = () => {
-    const fixades = Math.max(0, Math.floor((pas - 4) / 3));
-    let html = '';
-    for (let i = 0; i < llarg; i++) {
-      if (i < fixades) html += despres[i] ?? '';
-      else if (i < despres.length || pas < total / 2) html += `<span class="remena">${aleatoria()}</span>`;
-    }
+    const fixades = Math.max(0, Math.floor((pas - 2) / 2));
+    let html = despres.slice(0, fixades);
+    for (let i = fixades; i < despres.length; i++) html += `<span class="remena">${aleatoria()}</span>`;
     el.innerHTML = html;
-    if (++pas <= total) setTimeout(tic, 38);
+    if (++pas <= total) setTimeout(tic, 26);
     else { el.textContent = despres; acaba?.(); }
   };
   tic();
@@ -115,7 +112,7 @@ export function iniciaTitol() {
     const abans = paraules[i];
     i = (i + 1) % paraules.length;
     if (paraules[i] === abans) i = (i + 1) % paraules.length; // «CIMS» final i «CIMS» inicial són el mateix
-    remena(el, abans, paraules[i], () => { corrent = false; espera = setTimeout(seguent, paraules[i] === 'CIMS' ? 4200 : 1700); });
+    remena(el, paraules[i], () => { corrent = false; espera = setTimeout(seguent, paraules[i] === 'CIMS' ? 2800 : 1100); });
   };
   new IntersectionObserver(([e]) => {
     const ara = e.isIntersecting;
@@ -123,5 +120,5 @@ export function iniciaTitol() {
     visible = ara;
   }).observe(el);
   document.addEventListener('visibilitychange', () => { if (!document.hidden && visible) { clearTimeout(espera); espera = setTimeout(seguent, 1200); } });
-  espera = setTimeout(seguent, 2600);
+  espera = setTimeout(seguent, 1800);
 }
