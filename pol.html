@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="ca" data-marca="cims">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CIMS · Pol Marsol</title>
+<link rel="icon" href="cims-icona.svg" type="image/svg+xml">
+<meta name="description" content="Pol Marsol Torras, enginyer informàtic per la Universitat de Lleida i cofundador de CIMS. Qui sóc, per què faig CIMS i com contactar-me.">
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;800&family=DM+Sans:wght@400..700&display=swap">
+<link rel="stylesheet" href="estil.css">
+<link rel="stylesheet" href="efectes.css">
+<link rel="stylesheet" href="cims.css">
+<link rel="stylesheet" href="interactiu.css">
+<script>try{var t=localStorage.getItem('bocins-tema')}catch(e){}document.documentElement.dataset.tema=t==='clar'||t==='fosc'?t:matchMedia('(prefers-color-scheme: light)').matches?'clar':'fosc';document.documentElement.dataset.interactiu=''</script>
+<script>try{var g=JSON.parse(localStorage.getItem('cims-gustos')||'null');if(g)for(var k in g)document.documentElement.setAttribute('data-g-'+k,g[k])}catch(e){}</script>
+<script>addEventListener('pagereveal',function(e){var v=e.viewTransition,a=window.navigation&&navigation.activation;if(!v||!a||!a.from)return;var o=function(u){u=new URL(u).pathname;return/consultoria/.test(u)?1:/marti/.test(u)?2:/pol\.html/.test(u)?3:/avis-legal/.test(u)?4:0};v.types.add(o(a.entry.url)<o(a.from.url)?'enrere':'endavant')})</script>
+<script type="module" src="efectes/comuns.js"></script>
+<script type="module" src="efectes/interactiu.js"></script>
+</head>
+<body>
+<a class="salt" href="#contingut">Salta al contingut</a>
+<header class="barra">
+  <a class="marca" href="./" aria-label="CIMS, inici"><svg class="mk" viewBox="0 0 100 100" aria-hidden="true"><rect class="mk-bg" width="100" height="100" rx="22"/><path class="mk-c" d="M 74.51 29.43 A 32 32 0 1 0 74.51 70.57" fill="none" stroke-width="10" stroke-linecap="round"/><polygon class="mk-a" points="31.44,63.12 46.16,36.88 60.88,63.12" stroke-width="1.5" stroke-linejoin="round"/><polygon class="mk-f" points="44.88,63.12 57.04,42.64 68.56,63.12" stroke-width="2.5" stroke-linejoin="round"/></svg>CIMS</a>
+  <nav id="menu" aria-label="Seccions">
+    <a href="./">Inici</a>
+    <a href="consultoria.html">Consultoria</a>
+  </nav>
+  <div class="accions">
+    <span class="gustos-rapid-caixa">
+      <button class="icona gustos-rapid" id="gustos-rapid" type="button" aria-haspopup="dialog" aria-label="No t'agrada aquesta web? Adapta-la als teus gustos" aria-describedby="gustos-bafarada">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M7.5 8.5l2.5 1.2M16.5 8.5L14 9.7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="9" cy="11.6" r="1.1" fill="currentColor"/><circle cx="15" cy="11.6" r="1.1" fill="currentColor"/><path d="M8.5 16.5q3.5-2.6 7 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+      <span class="gustos-bafarada" id="gustos-bafarada" role="tooltip"><b>No t'agrada aquesta web?</b> Clica i fes-la a la teva manera.</span>
+    </span>
+    <div class="desplegable" id="tema">
+      <button class="icona" type="button" title="Tema de colors" aria-haspopup="true" aria-expanded="false" aria-controls="tema-menu" aria-label="Tema de colors">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 4a8 8 0 0 1 0 16Z" fill="currentColor"/></svg>
+      </button>
+      <ul id="tema-menu" role="menu" aria-label="Tema de colors">
+        <li role="none"><button type="button" role="menuitemradio" aria-checked="false" data-tema="auto">Automàtic</button></li>
+        <li role="none"><button type="button" role="menuitemradio" aria-checked="false" data-tema="clar">Clar</button></li>
+        <li role="none"><button type="button" role="menuitemradio" aria-checked="false" data-tema="fosc">Fosc</button></li>
+      </ul>
+    </div>
+    <button class="icona obre-menu" id="obre-menu" type="button" aria-expanded="false" aria-controls="menu" aria-label="Obre el menú">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16M4 16h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+</header>
+<main id="contingut" class="persona">
+  <!-- PENDENT: treure el noindex del <head> i enllaçar la pàgina des de l'inici quan no quedi cap «Pendent». -->
+  <section class="wrap cap persona-cap">
+    <div>
+      <p class="persona-rol">Cofundador de CIMS</p>
+      <h1>Pol Marsol Torras</h1>
+    </div>
+    <div>
+      <p class="lede">Enginyer informàtic per la Universitat de Lleida. Amb el Martí, faig que la IA treballi per a les empreses petites.</p>
+      <div class="accions"><a class="bt" href="#contacte">Contacta amb mi</a></div>
+    </div>
+  </section>
+
+  <section class="qui-som" aria-labelledby="qui-soc">
+    <div class="wrap">
+      <div>
+        <h2 id="qui-soc" class="persona-h2">Una mica de mi</h2>
+        <p class="gran">Sóc de l'Anoia.</p>
+        <p>Vaig fer el grau d'Enginyeria Informàtica a la Universitat de Lleida.</p>
+        <p><span class="falta">Pendent: una mica més de la teva vida: d'on ets exactament, què t'agrada fer, aficions, què et motiva…</span></p>
+      </div>
+      <dl class="fitxa">
+        <div><dt>Edat</dt><dd>22 anys</dd></div>
+        <div><dt>D'on</dt><dd>L'Anoia</dd></div>
+        <div><dt>Estudis</dt><dd>Grau en Enginyeria Informàtica, UdL</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="banda persona-per-que" aria-labelledby="per-que">
+    <div class="wrap">
+      <h2 id="per-que">Per què sóc a CIMS</h2>
+      <div>
+        <p>Amb el Martí estem creant CIMS com a cooperativa de treball.</p>
+        <p><span class="falta">Pendent: per què vas decidir fer CIMS i què t'hi aporta</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap persona-contacte" aria-labelledby="contacte">
+    <h2 id="contacte">On em trobareu</h2>
+    <ul>
+      <li><div class="sense"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.15-1.11-1.46-1.11-1.46-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.6 9.6 0 0 1 5 0c1.91-1.3 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.93.36.31.68.92.68 1.85v2.75c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg><span><b>GitHub</b><span class="falta">Pendent: enllaç</span></span></div></li>
+      <li><div class="sense"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg><span><b>LinkedIn</b><span class="falta">Pendent: enllaç</span></span></div></li>
+      <li><div class="sense"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="m4 7 8 6 8-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><span><b>Correu</b><span class="falta">Pendent: adreça, si el vols públic</span></span></div></li>
+    </ul>
+  </section>
+
+  <section class="wrap persona-altre" aria-label="L'altra meitat de CIMS">
+    <a href="marti.html"><span>L'altra meitat de CIMS</span><b>Martí Farran Colell</b></a>
+  </section>
+</main>
+<button class="amunt" id="amunt" type="button" title="Torna amunt" aria-label="Torna amunt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+<footer class="peu">
+  <div class="wrap">
+    <p class="gran">Fem cim<span>.</span></p>
+    <ul><li><a href="./">Inici</a></li><li><a href="consultoria.html">Consultoria</a></li><li><a href="avis-legal.html">Avís legal i privacitat</a></li></ul>
+    <p class="credit">Estudi de creació digital de Catalunya.</p>
+  </div>
+</footer>
+</body>
+</html>

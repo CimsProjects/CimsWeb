@@ -8,7 +8,7 @@
   const KEY = "cims.revisio";
   const me = document.currentScript;
   const PAGES = {
-    "index.html": "Inici", "consultoria.html": "Consultoria", "municipis.html": "Bocins de Catalunya",
+    "index.html": "Inici", "consultoria.html": "Consultoria", "marti.html": "Martí Farran", "pol.html": "Pol Marsol", "municipis.html": "Bocins de Catalunya",
     "andanes.html": "Andana 947", "perfil.html": "Explorador", "ranquing.html": "Rànquing",
     "collabora.html": "Espai de col·laboració", "avis-legal.html": "Avís legal i privacitat", "404.html": "Pàgina no trobada",
   };

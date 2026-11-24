@@ -10,7 +10,7 @@ Còpies de cada pàgina de la web per deixar-hi comentaris sobre qualsevol eleme
 
 ## Pàgines
 
-`index`, `consultoria`, `avis-legal`, `municipis`, `andanes`, `perfil`, `ranquing`, `collabora` i `404`. Si se n'afegeix una de nova, crea `revisio/<nom>.html` (copia'n una i canvia `data-pagina`) i afegeix-ne el nom a `PAGES` de `revisio.js`.
+`index`, `consultoria`, `marti`, `pol`, `avis-legal`, `municipis`, `andanes`, `perfil`, `ranquing`, `collabora` i `404`. Si se n'afegeix una de nova, crea `revisio/<nom>.html` (copia'n una i canvia `data-pagina`) i afegeix-ne el nom a `PAGES` de `revisio.js`.
 
 ## Prompt per passar els comentaris a Claude
 

@@ -45,7 +45,7 @@ async function open(path, opts = {}) {
 // La pàgina de dins de l'iframe
 const inner = page => page.frames().find(f => f.name() === "pagina" || f.url().includes(".html") && f !== page.mainFrame());
 
-const PAGINES = ["index", "consultoria", "avis-legal", "municipis", "andanes", "perfil", "ranquing", "collabora", "404"];
+const PAGINES = ["index", "consultoria", "marti", "pol", "avis-legal", "municipis", "andanes", "perfil", "ranquing", "collabora", "404"];
 const KEY = "cims.revisio";
 
 test("cada còpia carrega la pàgina original sense errors de la revisió", async () => {
