@@ -147,6 +147,38 @@ html[data-marca="cims"] .per-a-qui h2 { margin-bottom: var(--s-5) }
 .compromisos b { color: var(--c-ink) }
 
 /* Preguntes freqüents: desplegables natius */
+/* Consultoria: per a què sí i per a què no */
+.si-no { padding-block: var(--s-8) var(--s-9) }
+.si-no-cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-8) }
+.si-no h3 { font: 800 var(--t-title)/1.1 var(--f-display); letter-spacing: -.02em; margin: 0 0 var(--s-4); padding-top: var(--s-4); border-top: 2px solid var(--c-ink) }
+.si-no .no h3 { border-top-color: var(--c-rule) }
+.si-no ul { list-style: none; margin: 0; padding: 0 }
+.si-no li { display: flex; gap: var(--s-3); align-items: baseline; padding-block: var(--s-3); border-bottom: 1px solid var(--c-rule); font-size: var(--t-lede); color: var(--c-ink) }
+.si-no li::before { flex: none; width: 1.2em; font-weight: 800; text-align: center }
+.si-no .si li::before { content: "✓"; color: var(--c-accent) }
+.si-no .no li { color: var(--c-muted) }
+.si-no .no li::before { content: "✕"; color: var(--c-muted) }
+html[data-marca="cims"] .si-no .no p { margin: var(--s-5) 0 0; color: var(--c-ink-2) }
+
+/* Consultoria: les dades (bloc de color, amb el mateix degradat suau que «Com treballem») */
+html[data-marca="cims"] .dades-s h2 { margin-bottom: var(--s-6); max-width: 16ch }
+.dades-cols { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--s-8); align-items: end }
+html[data-marca="cims"] .dades-cols p { margin: 0; color: var(--c-ink-2) }
+html[data-marca="cims"] .dades-cols .gran { font-size: var(--t-lede); line-height: 1.45; color: var(--c-ink) }
+
+/* Consultoria: amb què treballem i on som */
+.amb-que { padding-block: var(--s-8); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-8) }
+.amb-que h2 { padding-top: var(--s-4); border-top: 2px solid var(--c-ink) }
+.eines { list-style: none; margin: 0 0 var(--s-4); padding: 0; display: flex; flex-wrap: wrap; gap: var(--s-2) }
+.eines li { padding: 8px 16px; border: 1.5px solid var(--c-rule); border-radius: var(--radi-boto, 999px); font: 600 16px var(--f-body); color: var(--c-ink); transition: border-color var(--dur) var(--ease), color var(--dur) var(--ease) }
+.eines li:hover { border-color: var(--c-accent); color: var(--c-accent) }
+html[data-marca="cims"] .amb-que p { color: var(--c-ink-2) }
+html[data-marca="cims"] .amb-que p b { color: var(--c-ink) }
+html[data-marca="cims"] .amb-que .nota { margin: 0; color: var(--c-muted); font-size: var(--t-small) }
+@media (max-width: 900px) {
+  .si-no-cols, .dades-cols, .amb-que { grid-template-columns: minmax(0, 1fr); gap: var(--s-6) }
+}
+
 .preguntes { padding-block: var(--s-8) var(--s-9) }
 .preguntes details { border-bottom: 1px solid var(--c-rule) }
 .preguntes details:first-of-type { border-top: 2px solid var(--c-ink) }
@@ -279,10 +311,10 @@ html[data-marca="cims"] .marmota-diu.visible { opacity: 1 }
 /* Canvis de color entre blocs: en lloc d'un tall, un degradat llarg i suau (corba suavitzada, sense ratlla visible).
    Els blocs d'un altre color tenen més marge a dalt i a baix i s'hi fonen amb el paper, perquè el contingut quedi sempre
    sobre el color ple. --fosa és la llargada del degradat. */
-html[data-marca="cims"] .per-a-qui, html[data-marca="cims"] .passos-s { --fosa: 220px; padding-block: var(--fosa); background: linear-gradient(var(--c-paper) calc(var(--fosa) * 0), color-mix(in oklch, var(--c-paper-2) 3%, var(--c-paper)) calc(var(--fosa) * 0.1), color-mix(in oklch, var(--c-paper-2) 10%, var(--c-paper)) calc(var(--fosa) * 0.2), color-mix(in oklch, var(--c-paper-2) 22%, var(--c-paper)) calc(var(--fosa) * 0.3), color-mix(in oklch, var(--c-paper-2) 35%, var(--c-paper)) calc(var(--fosa) * 0.4), color-mix(in oklch, var(--c-paper-2) 50%, var(--c-paper)) calc(var(--fosa) * 0.5), color-mix(in oklch, var(--c-paper-2) 65%, var(--c-paper)) calc(var(--fosa) * 0.6), color-mix(in oklch, var(--c-paper-2) 78%, var(--c-paper)) calc(var(--fosa) * 0.7), color-mix(in oklch, var(--c-paper-2) 90%, var(--c-paper)) calc(var(--fosa) * 0.8), color-mix(in oklch, var(--c-paper-2) 97%, var(--c-paper)) calc(var(--fosa) * 0.9), var(--c-paper-2) calc(var(--fosa) * 1), var(--c-paper-2) calc(100% - var(--fosa) * 1), color-mix(in oklch, var(--c-paper-2) 97%, var(--c-paper)) calc(100% - var(--fosa) * 0.9), color-mix(in oklch, var(--c-paper-2) 90%, var(--c-paper)) calc(100% - var(--fosa) * 0.8), color-mix(in oklch, var(--c-paper-2) 78%, var(--c-paper)) calc(100% - var(--fosa) * 0.7), color-mix(in oklch, var(--c-paper-2) 65%, var(--c-paper)) calc(100% - var(--fosa) * 0.6), color-mix(in oklch, var(--c-paper-2) 50%, var(--c-paper)) calc(100% - var(--fosa) * 0.5), color-mix(in oklch, var(--c-paper-2) 35%, var(--c-paper)) calc(100% - var(--fosa) * 0.4), color-mix(in oklch, var(--c-paper-2) 22%, var(--c-paper)) calc(100% - var(--fosa) * 0.3), color-mix(in oklch, var(--c-paper-2) 10%, var(--c-paper)) calc(100% - var(--fosa) * 0.2), color-mix(in oklch, var(--c-paper-2) 3%, var(--c-paper)) calc(100% - var(--fosa) * 0.1), var(--c-paper) calc(100% - var(--fosa) * 0)) }
+html[data-marca="cims"] .per-a-qui, html[data-marca="cims"] .passos-s, html[data-marca="cims"] .dades-s { --fosa: 220px; padding-block: var(--fosa); background: linear-gradient(var(--c-paper) calc(var(--fosa) * 0), color-mix(in oklch, var(--c-paper-2) 3%, var(--c-paper)) calc(var(--fosa) * 0.1), color-mix(in oklch, var(--c-paper-2) 10%, var(--c-paper)) calc(var(--fosa) * 0.2), color-mix(in oklch, var(--c-paper-2) 22%, var(--c-paper)) calc(var(--fosa) * 0.3), color-mix(in oklch, var(--c-paper-2) 35%, var(--c-paper)) calc(var(--fosa) * 0.4), color-mix(in oklch, var(--c-paper-2) 50%, var(--c-paper)) calc(var(--fosa) * 0.5), color-mix(in oklch, var(--c-paper-2) 65%, var(--c-paper)) calc(var(--fosa) * 0.6), color-mix(in oklch, var(--c-paper-2) 78%, var(--c-paper)) calc(var(--fosa) * 0.7), color-mix(in oklch, var(--c-paper-2) 90%, var(--c-paper)) calc(var(--fosa) * 0.8), color-mix(in oklch, var(--c-paper-2) 97%, var(--c-paper)) calc(var(--fosa) * 0.9), var(--c-paper-2) calc(var(--fosa) * 1), var(--c-paper-2) calc(100% - var(--fosa) * 1), color-mix(in oklch, var(--c-paper-2) 97%, var(--c-paper)) calc(100% - var(--fosa) * 0.9), color-mix(in oklch, var(--c-paper-2) 90%, var(--c-paper)) calc(100% - var(--fosa) * 0.8), color-mix(in oklch, var(--c-paper-2) 78%, var(--c-paper)) calc(100% - var(--fosa) * 0.7), color-mix(in oklch, var(--c-paper-2) 65%, var(--c-paper)) calc(100% - var(--fosa) * 0.6), color-mix(in oklch, var(--c-paper-2) 50%, var(--c-paper)) calc(100% - var(--fosa) * 0.5), color-mix(in oklch, var(--c-paper-2) 35%, var(--c-paper)) calc(100% - var(--fosa) * 0.4), color-mix(in oklch, var(--c-paper-2) 22%, var(--c-paper)) calc(100% - var(--fosa) * 0.3), color-mix(in oklch, var(--c-paper-2) 10%, var(--c-paper)) calc(100% - var(--fosa) * 0.2), color-mix(in oklch, var(--c-paper-2) 3%, var(--c-paper)) calc(100% - var(--fosa) * 0.1), var(--c-paper) calc(100% - var(--fosa) * 0)) }
 html[data-marca="cims"] .banda { --fosa: 280px; padding-block: var(--fosa); background: linear-gradient(var(--c-paper) calc(var(--fosa) * 0), color-mix(in oklch, var(--c-band) 3%, var(--c-paper)) calc(var(--fosa) * 0.1), color-mix(in oklch, var(--c-band) 10%, var(--c-paper)) calc(var(--fosa) * 0.2), color-mix(in oklch, var(--c-band) 22%, var(--c-paper)) calc(var(--fosa) * 0.3), color-mix(in oklch, var(--c-band) 35%, var(--c-paper)) calc(var(--fosa) * 0.4), color-mix(in oklch, var(--c-band) 50%, var(--c-paper)) calc(var(--fosa) * 0.5), color-mix(in oklch, var(--c-band) 65%, var(--c-paper)) calc(var(--fosa) * 0.6), color-mix(in oklch, var(--c-band) 78%, var(--c-paper)) calc(var(--fosa) * 0.7), color-mix(in oklch, var(--c-band) 90%, var(--c-paper)) calc(var(--fosa) * 0.8), color-mix(in oklch, var(--c-band) 97%, var(--c-paper)) calc(var(--fosa) * 0.9), var(--c-band) calc(var(--fosa) * 1), var(--c-band) calc(100% - var(--fosa) * 1), color-mix(in oklch, var(--c-band) 97%, var(--c-paper)) calc(100% - var(--fosa) * 0.9), color-mix(in oklch, var(--c-band) 90%, var(--c-paper)) calc(100% - var(--fosa) * 0.8), color-mix(in oklch, var(--c-band) 78%, var(--c-paper)) calc(100% - var(--fosa) * 0.7), color-mix(in oklch, var(--c-band) 65%, var(--c-paper)) calc(100% - var(--fosa) * 0.6), color-mix(in oklch, var(--c-band) 50%, var(--c-paper)) calc(100% - var(--fosa) * 0.5), color-mix(in oklch, var(--c-band) 35%, var(--c-paper)) calc(100% - var(--fosa) * 0.4), color-mix(in oklch, var(--c-band) 22%, var(--c-paper)) calc(100% - var(--fosa) * 0.3), color-mix(in oklch, var(--c-band) 10%, var(--c-paper)) calc(100% - var(--fosa) * 0.2), color-mix(in oklch, var(--c-band) 3%, var(--c-paper)) calc(100% - var(--fosa) * 0.1), var(--c-paper) calc(100% - var(--fosa) * 0)) }
 @media (max-width: 900px) {
-  html[data-marca="cims"] .per-a-qui, html[data-marca="cims"] .passos-s { --fosa: 150px }
+  html[data-marca="cims"] .per-a-qui, html[data-marca="cims"] .passos-s, html[data-marca="cims"] .dades-s { --fosa: 150px }
   html[data-marca="cims"] .banda { --fosa: 190px }
 }
 /* Del terra del paisatge al paper de la pàgina */
