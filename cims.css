@@ -280,7 +280,11 @@ html[data-tema="fosc"] .pn-estels { opacity: 1 }
 .pn-nuvol::before, .pn-nuvol::after { content: ""; position: absolute; bottom: 40%; border-radius: 50%; background: inherit }
 .pn-nuvol::before { left: 18%; width: 38%; aspect-ratio: 1 } .pn-nuvol::after { left: 46%; width: 30%; aspect-ratio: 1 }
 .pn-nuvol.n1 { width: 180px; left: 8%; top: 9% } .pn-nuvol.n2 { width: 120px; left: 58%; top: 18%; scale: .8 } .pn-nuvol.n3 { width: 220px; left: 34%; top: 30%; scale: .65; opacity: .7 }
-.pn-ocells { position: absolute; left: 62%; top: 26%; width: 90px; fill: none; stroke: var(--pn-ocell); stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; transition: opacity var(--pn-durada) var(--ease) }
+/* Una colla d'ocells en V: cada un bat les ales (giren des de l'espatlla), plana una estona i torna a batre */
+.pn-ocells { position: absolute; left: 46%; top: 16%; width: 120px; height: 60px; transition: opacity var(--pn-durada) var(--ease) }
+.pn-ocell { position: absolute; width: 30px; height: 15px; overflow: visible; fill: var(--pn-ocell) }
+.pn-ocell.o1 { left: 0; top: 0 } .pn-ocell.o2 { left: -26px; top: 14px; scale: .86 } .pn-ocell.o3 { left: 22px; top: 20px; scale: .9 } .pn-ocell.o4 { left: -48px; top: 30px; scale: .74 }
+.pn-ocell .ala { transform-box: view-box; transform-origin: 0 0 }
 html[data-tema="fosc"] .pn-nuvol, html[data-tema="fosc"] .pn-ocells { opacity: 0 }
 
 /* L'escena s'enganxa a baix (abans del degradat cap al paper). Té la proporció del dibuix i, quan la pantalla és més
@@ -374,8 +378,10 @@ html[data-marca="cims"] .pn-diu.visible { opacity: 1 }
   html:not([data-tema="fosc"]) .pn-sol, html[data-tema="fosc"] .pn-lluna { animation: pn-surt 2.4s var(--ease) .3s both }
   .pn-sol > svg, .pn-lluna > svg { animation: pn-respira 6s ease-in-out infinite }
   .pn-nuvol.n1 { animation: pn-vent 70s linear infinite } .pn-nuvol.n2 { animation: pn-vent 95s linear -30s infinite } .pn-nuvol.n3 { animation: pn-vent 120s linear -60s infinite }
-  .pn-ocells { animation: pn-volen 38s linear infinite } .pn-ocells path { transform-box: fill-box; transform-origin: 50% 100%; animation: pn-ales .5s ease-in-out infinite alternate }
-  .pn-ocells path:nth-child(2) { animation-delay: -.2s } .pn-ocells path:nth-child(3) { animation-delay: -.35s }
+  .pn-ocells { animation: pn-volen 46s linear infinite }
+  .pn-ocell { animation: pn-balanceig 3.2s ease-in-out infinite }
+  .pn-ocell .ala.e { animation: pn-ala-e 3s ease-in-out infinite } .pn-ocell .ala.d { animation: pn-ala-d 3s ease-in-out infinite }
+  .pn-ocell.o2, .pn-ocell.o2 .ala { animation-delay: -.7s } .pn-ocell.o3, .pn-ocell.o3 .ala { animation-delay: -1.6s } .pn-ocell.o4, .pn-ocell.o4 .ala { animation-delay: -2.3s }
   .pn-estels i { animation: pn-pampalluga var(--t, 4s) ease-in-out var(--d, 0s) infinite }
   html[data-tema="fosc"] .pn-fugac { animation: pn-fugac 9s ease-in 3s infinite }
   .po-ulls, .pm-ulls { transform-box: fill-box; transform-origin: center; animation: pn-parpelleja 5s steps(1) infinite } .pm-ulls { animation-duration: 4.2s; animation-delay: -1.3s }
@@ -387,8 +393,10 @@ html[data-marca="cims"] .pn-diu.visible { opacity: 1 }
   @keyframes pn-gira { to { rotate: 360deg } }
   @keyframes pn-respira { 50% { scale: 1.025 } }
   @keyframes pn-vent { from { translate: -30vw 0 } to { translate: 110vw 0 } }
-  @keyframes pn-volen { from { translate: -70vw 20px } 50% { translate: 0 -10px } to { translate: 60vw 10px } }
-  @keyframes pn-ales { to { scale: 1 .45 } }
+  @keyframes pn-volen { 0% { translate: -60vw 40px; opacity: 0 } 4% { opacity: 1 } 60% { translate: 50vw -30px; opacity: 1 } 64%, 100% { translate: 56vw -36px; opacity: 0 } }
+  @keyframes pn-balanceig { 50% { translate: 0 -4px } }
+  @keyframes pn-ala-e { 0%, 24%, 48% { rotate: 24deg } 12%, 36% { rotate: -30deg } 60%, 100% { rotate: -4deg } }
+  @keyframes pn-ala-d { 0%, 24%, 48% { rotate: -24deg } 12%, 36% { rotate: 30deg } 60%, 100% { rotate: 4deg } }
   @keyframes pn-pampalluga { 50% { opacity: calc(var(--o) * .25) } }
   @keyframes pn-fugac { 0% { opacity: 0; translate: 0 0 } 2% { opacity: 1 } 9% { opacity: 0; translate: -420px 150px } 100% { opacity: 0; translate: -420px 150px } }
   @keyframes pn-parpelleja { 0%, 94% { scale: 1 1 } 95%, 98% { scale: 1 .1 } }
