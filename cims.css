@@ -318,10 +318,10 @@ html[data-tema="fosc"] .pn-lluna { translate: 0 0; opacity: 1 }
 /* Els animals amagats: la marmota treu el cap per darrere una roca; de nit, un mussol en una branca. A dalt del cim gran,
    una banderola corall (fem cim!). */
 html[data-marca="cims"] {
-  --pn-bandera: #151c29; --pn-roca: #6b7596; --pn-roca-ombra: #555e7d; --pn-roca-llum: #8a93b3; --pn-pell-ombra: #6e523e; --pn-rosa: #e8a39a; --pn-ungla: #4a3a30;
+  --pn-roca: #6b7596; --pn-roca-ombra: #555e7d; --pn-roca-llum: #8a93b3; --pn-pell-ombra: #6e523e; --pn-rosa: #e8a39a; --pn-ungla: #4a3a30;
 }
 html[data-marca="cims"][data-tema="fosc"] {
-  --pn-bandera: var(--pn-corall); --pn-roca: #2e3650; --pn-roca-ombra: #232a40; --pn-roca-llum: #3c4563; --pn-pell-ombra: #463936; --pn-rosa: #8c5f5c; --pn-ungla: #2a211d;
+  --pn-roca: #2e3650; --pn-roca-ombra: #232a40; --pn-roca-llum: #3c4563; --pn-pell-ombra: #463936; --pn-rosa: #8c5f5c; --pn-ungla: #2a211d;
 }
 .pn-animal { position: absolute; padding: 0; margin: 0; border: 0; background: none; cursor: pointer; pointer-events: auto; -webkit-tap-highlight-color: transparent }
 .pn-animal:focus-visible { outline: 3px solid var(--pn-corall); outline-offset: 4px; border-radius: 8px }
@@ -342,8 +342,6 @@ html[data-tema="fosc"] .pn-mussol { visibility: visible; opacity: 1; transition:
 .po-cos { transform-box: fill-box; transform-origin: 50% 100%; transition: rotate .35s var(--ease) }
 .pn-mussol:hover .po-cos, .pn-mussol.parla .po-cos { rotate: -8deg }
 .pn-mussol:hover .po-ull, .pn-mussol.parla .po-ull { fill: #ffd36e }
-.pn-bandera { position: absolute; left: 74.05%; bottom: 76.27%; width: 2px; height: 3.33%; min-height: 18px; background: var(--pn-text); transition: background-color var(--pn-durada) var(--ease) }
-.pn-bandera::after { content: ""; position: absolute; left: 2px; top: 0; width: 900%; min-width: 16px; aspect-ratio: 3 / 2; height: auto; background: var(--pn-bandera, var(--pn-corall)); clip-path: polygon(0 0, 100% 45%, 0 90%); transform-origin: 0 50% }
 
 /* La bafarada */
 html[data-marca="cims"] .pn-diu { position: absolute; z-index: 3; margin: 0; width: max-content; max-width: min(300px, calc(100vw - 32px)); padding: 12px 16px; border-radius: var(--radi-caixa, 16px);
@@ -382,7 +380,6 @@ html[data-marca="cims"] .pn-diu.visible { opacity: 1 }
   html[data-tema="fosc"] .pn-fugac { animation: pn-fugac 9s ease-in 3s infinite }
   .po-ulls, .pm-ulls { transform-box: fill-box; transform-origin: center; animation: pn-parpelleja 5s steps(1) infinite } .pm-ulls { animation-duration: 4.2s; animation-delay: -1.3s }
   .pm-orelles { transform-box: fill-box; transform-origin: 50% 100%; animation: pn-orelles 6s ease-in-out infinite }
-  .pn-bandera::after { animation: pn-oneja 1.6s ease-in-out infinite }
   .portada-nit .pn-text > * { animation: pn-text .9s var(--ease) both }
   .portada-nit .pn-text > :nth-child(2) { animation-delay: .08s } .portada-nit .pn-text > :nth-child(3) { animation-delay: .16s } .portada-nit .pn-text > :nth-child(4) { animation-delay: .24s }
   @keyframes pn-puja { from { translate: 0 60px; opacity: 0 } }
@@ -396,7 +393,6 @@ html[data-marca="cims"] .pn-diu.visible { opacity: 1 }
   @keyframes pn-fugac { 0% { opacity: 0; translate: 0 0 } 2% { opacity: 1 } 9% { opacity: 0; translate: -420px 150px } 100% { opacity: 0; translate: -420px 150px } }
   @keyframes pn-parpelleja { 0%, 94% { scale: 1 1 } 95%, 98% { scale: 1 .1 } }
   @keyframes pn-orelles { 0%, 88%, 100% { scale: 1 } 92% { scale: 1.12 .9 } }
-  @keyframes pn-oneja { 50% { transform: skewY(-8deg) scaleX(.86) } }
   @keyframes pn-text { from { translate: 0 16px; opacity: 0 } }
 }
 @media (prefers-reduced-motion: reduce) {
