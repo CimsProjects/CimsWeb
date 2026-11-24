@@ -93,32 +93,33 @@ function remena(el, despres, acaba) {
     let html = despres.slice(0, fixades);
     for (let i = fixades; i < despres.length; i++) html += `<span class="remena">${aleatoria()}</span>`;
     el.innerHTML = html;
-    if (++pas <= total) setTimeout(tic, 26);
+    if (++pas <= total) setTimeout(tic, 16);
     else { el.textContent = despres; acaba?.(); }
   };
   tic();
 }
 
-/** «Fem CIMS» → «Fem Consultoria» → … → «Fem CIMS», i torna a començar. S'atura si la portada no es veu. */
+/** «Fem CIMS» → «Fem Consultoria» → … → «Fem CIMS», una sola volta. Si la portada no es veu, s'espera fins que torni. */
 export function iniciaTitol() {
   const el = document.querySelector('.pn-paraula');
   if (!el || quiet()) return;
   const paraules = el.dataset.paraules.split(' ');
+  const QUIETA = 2000; // el temps que cada paraula es queda parada
   let i = 0, visible = true, espera = null, corrent = false;
+  const fet = () => i >= paraules.length - 1;
   const seguent = () => {
     clearTimeout(espera);
-    if (corrent || !visible || document.hidden) return;
+    if (corrent || fet() || !visible || document.hidden) return;
     corrent = true;
-    const abans = paraules[i];
-    i = (i + 1) % paraules.length;
-    if (paraules[i] === abans) i = (i + 1) % paraules.length; // «CIMS» final i «CIMS» inicial són el mateix
-    remena(el, paraules[i], () => { corrent = false; espera = setTimeout(seguent, paraules[i] === 'CIMS' ? 2800 : 1100); });
+    i += 1;
+    remena(el, paraules[i], () => { corrent = false; if (!fet()) espera = setTimeout(seguent, QUIETA); });
   };
+  const repren = () => { if (!fet() && !corrent) { clearTimeout(espera); espera = setTimeout(seguent, 1200); } };
   new IntersectionObserver(([e]) => {
     const ara = e.isIntersecting;
-    if (ara && !visible) { visible = true; espera = setTimeout(seguent, 1200); }
+    if (ara && !visible) { visible = true; repren(); }
     visible = ara;
   }).observe(el);
-  document.addEventListener('visibilitychange', () => { if (!document.hidden && visible) { clearTimeout(espera); espera = setTimeout(seguent, 1200); } });
-  espera = setTimeout(seguent, 1800);
+  document.addEventListener('visibilitychange', () => { if (!document.hidden && visible) repren(); });
+  espera = setTimeout(seguent, QUIETA);
 }
