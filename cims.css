@@ -286,7 +286,9 @@ html[data-tema="fosc"] .pn-nuvol, html[data-tema="fosc"] .pn-ocells { opacity: 0
 /* L'escena s'enganxa a baix (abans del degradat cap al paper). Té la proporció del dibuix i, quan la pantalla és més
    estreta, es retalla pels costats deixant el cim al 72 %. Per sota no s'hi veu res (el sol i la lluna s'hi amaguen). */
 .pn-escena { position: absolute; z-index: 1; bottom: calc(var(--fosa) - 1px); left: 72%; translate: -72% 0; width: max(100%, 46svh * 1920 / 680); aspect-ratio: 1920 / 680;
-  clip-path: inset(-100vh -100vw 0 -100vw); pointer-events: none }
+ pointer-events: none }
+/* El sol i la lluna, retallats per sota: quan es ponen, s'amaguen darrere les carenes i no surten pel degradat */
+.pn-astres { position: absolute; left: 0; right: 0; bottom: 0; top: -300%; overflow: hidden }
 .pn-carenes { position: absolute; inset: 0; width: 100%; height: 100%; display: block; user-select: none; transition: opacity var(--pn-durada) var(--ease) }
 .pn-carenes.pn-nit { opacity: 0 }
 html[data-tema="fosc"] .pn-carenes.pn-nit { opacity: 1 }
@@ -294,35 +296,51 @@ html[data-tema="fosc"] .pn-carenes.pn-nit { opacity: 1 }
 .portada-nit::after { content: ""; position: absolute; inset: auto 0 0; height: var(--fosa); background: linear-gradient(var(--pn-terra) 0%, color-mix(in oklab, var(--c-paper) 3%, var(--pn-terra)) 10%, color-mix(in oklab, var(--c-paper) 10%, var(--pn-terra)) 20%, color-mix(in oklab, var(--c-paper) 22%, var(--pn-terra)) 30%, color-mix(in oklab, var(--c-paper) 35%, var(--pn-terra)) 40%, color-mix(in oklab, var(--c-paper) 50%, var(--pn-terra)) 50%, color-mix(in oklab, var(--c-paper) 65%, var(--pn-terra)) 60%, color-mix(in oklab, var(--c-paper) 78%, var(--pn-terra)) 70%, color-mix(in oklab, var(--c-paper) 90%, var(--pn-terra)) 80%, color-mix(in oklab, var(--c-paper) 97%, var(--pn-terra)) 90%, var(--c-paper) 100%); pointer-events: none; z-index: 0 }
 
 /* El sol i la lluna: el logo de CIMS dins d'un disc pla, darrere el cim gran (on hi havia el sol del dibuix) */
-.pn-astre { position: absolute; left: 64.27%; top: -10%; width: 23.75%; aspect-ratio: 1; border-radius: 50%;
+.pn-astre { position: absolute; left: 64.27%; top: calc(75% - 2.5%); width: 23.75%; aspect-ratio: 1; border-radius: 50%;
   transition: translate var(--pn-durada) var(--ease), opacity var(--pn-durada) var(--ease) }
 .pn-astre > svg { position: relative; display: block; width: 100%; height: 100%; overflow: visible }
-.pn-sol { box-shadow: 0 0 80px 10px rgb(255 170 110 / .55), 0 0 220px 60px rgb(255 200 150 / .35) }
+/* La llum al voltant: un degradat radial que s'esvaeix del tot (una ombra de caixa deixava un quadre visible al mòbil) */
+.pn-astre::before { content: ""; position: absolute; inset: -75%; border-radius: 50%; pointer-events: none }
+.pn-sol::before { background: radial-gradient(closest-side, rgb(255 190 130 / .55) 34%, rgb(255 205 160 / .25) 55%, transparent) }
 .pn-sol .pa-disc { fill: var(--pn-corall) } .pn-sol .pa-c { stroke: #fbf3e8 } .pn-sol .pa-a { fill: #ffc2ad; stroke: #ffc2ad } .pn-sol .pa-f { fill: #fbf3e8; stroke: var(--pn-corall) }
 .pn-raigs { position: absolute; inset: -38%; border-radius: 50%; pointer-events: none;
   background: repeating-conic-gradient(rgb(255 236 210 / .5) 0 5deg, transparent 5deg 15deg);
   -webkit-mask-image: radial-gradient(closest-side, #000 52%, transparent); mask-image: radial-gradient(closest-side, #000 52%, transparent) }
-.pn-lluna { box-shadow: 0 0 60px 6px rgb(243 237 226 / .22), 0 0 200px 50px rgb(160 175 220 / .12) }
+.pn-lluna::before { background: radial-gradient(closest-side, rgb(243 237 226 / .22) 34%, rgb(160 175 220 / .1) 58%, transparent) }
 .pn-lluna .pa-disc { fill: #f1ebdf } .pn-lluna .pa-c { stroke: #1f2430 } .pn-lluna .pa-a { fill: #9aa3b5; stroke: #9aa3b5 } .pn-lluna .pa-f { fill: #ff6b57; stroke: #f1ebdf }
 /* Quin dels dos surt: l'altre baixa darrere les carenes */
 .pn-lluna, html[data-tema="fosc"] .pn-sol { translate: 0 175%; opacity: 0 }
 html[data-tema="fosc"] .pn-lluna { translate: 0 0; opacity: 1 }
 
-/* Els animals amagats: la marmota treu el cap per darrere una carena; de nit, uns ulls de mussol a la muntanya */
+/* Els animals amagats: la marmota treu el cap per darrere una roca; de nit, un mussol en una branca. A dalt del cim gran,
+   una banderola corall (fem cim!). */
+html[data-marca="cims"] {
+  --pn-bandera: #151c29; --pn-roca: #6b7596; --pn-roca-ombra: #555e7d; --pn-roca-llum: #8a93b3; --pn-pell-ombra: #6e523e; --pn-rosa: #e8a39a; --pn-ungla: #4a3a30;
+}
+html[data-marca="cims"][data-tema="fosc"] {
+  --pn-bandera: var(--pn-corall); --pn-roca: #2e3650; --pn-roca-ombra: #232a40; --pn-roca-llum: #3c4563; --pn-pell-ombra: #463936; --pn-rosa: #8c5f5c; --pn-ungla: #2a211d;
+}
 .pn-animal { position: absolute; padding: 0; margin: 0; border: 0; background: none; cursor: pointer; pointer-events: auto; -webkit-tap-highlight-color: transparent }
 .pn-animal:focus-visible { outline: 3px solid var(--pn-corall); outline-offset: 4px; border-radius: 8px }
-.pn-marmota { left: 49.2%; bottom: 38.4%; width: 3.4%; min-width: 30px; aspect-ratio: 60 / 64; overflow: hidden; border-radius: 0 }
-.pn-marmota svg { display: block; width: 100%; height: 100%; translate: 0 62%; transition: translate .35s var(--ease) }
-.pn-marmota:hover svg, .pn-marmota:focus-visible svg { translate: 0 44% }
-.pn-marmota.parla svg { translate: 0 6% }
-.pm-pell { fill: var(--pn-pell) } .pm-panxa { fill: var(--pn-panxa) } .pm-orella { fill: var(--pn-orella) } .pm-morro { fill: var(--pn-morro) }
-.pm-ull { fill: #17181d } .pm-brill { fill: #fff } .pm-dents { fill: #fff }
-.pm-pell, .pm-panxa, .pm-orella, .pm-morro { transition: fill var(--pn-durada) var(--ease) }
-.pn-mussol { left: 14.6%; top: 80%; width: 2.6%; min-width: 30px; aspect-ratio: 40 / 16; visibility: hidden; opacity: 0; transition: opacity var(--pn-durada) var(--ease), visibility 0s var(--pn-durada) }
+.pn-animal svg { display: block; width: 100%; height: 100%; overflow: hidden }
+.pn-marmota { left: 38.6%; bottom: calc(100% - 74.6%); width: 6.6%; min-width: 64px; aspect-ratio: 100 / 90 }
+.pm-cos { transform: translateY(24px); transition: transform .4s var(--ease) }
+.pn-marmota:hover .pm-cos, .pn-marmota:focus-visible .pm-cos { transform: translateY(14px) }
+.pn-marmota.parla .pm-cos { transform: translateY(0) }
+.pm-pell { fill: var(--pn-pell) } .pm-ombra { fill: var(--pn-pell-ombra) } .pm-panxa { fill: var(--pn-panxa) } .pm-orella { fill: var(--pn-orella) } .pm-rosa { fill: var(--pn-rosa) }
+.pm-morro { fill: var(--pn-morro) } .pm-ungla { fill: var(--pn-ungla) } .pm-ull { fill: #17181d } .pm-brill { fill: #fff } .pm-dents { fill: #fffaf2 }
+.pm-bigoti, .pm-boca { fill: none; stroke: #17181d; stroke-width: .9; stroke-linecap: round; opacity: .55 } .pm-boca { opacity: .8 }
+.pr-roca { fill: var(--pn-roca) } .pr-ombra { fill: var(--pn-roca-ombra) } .pr-llum { fill: var(--pn-roca-llum) }
+.pm-pell, .pm-ombra, .pm-panxa, .pm-orella, .pm-morro, .pm-rosa, .pr-roca, .pr-ombra, .pr-llum { transition: fill var(--pn-durada) var(--ease) }
+.pn-mussol { left: 13%; bottom: calc(100% - 87.6%); width: 3.8%; min-width: 44px; aspect-ratio: 64 / 84; visibility: hidden; opacity: 0; transition: opacity var(--pn-durada) var(--ease), visibility 0s var(--pn-durada) }
 html[data-tema="fosc"] .pn-mussol { visibility: visible; opacity: 1; transition: opacity var(--pn-durada) var(--ease) 1s, visibility 0s }
-.pn-mussol svg { display: block; width: 100%; height: 100% }
-.po-ull { fill: #f2b544 } .po-nina { fill: #10131c }
+.po-ploma { fill: #5b5068 } .po-ombra { fill: #463d52 } .po-pit { fill: #8d8096 } .po-cara { fill: #b3a6b5 } .po-taques { fill: none; stroke: #5b5068; stroke-width: 1.3; stroke-linecap: round; stroke-linejoin: round }
+.po-ull { fill: #f2b544 } .po-nina { fill: #10131c } .po-bec { fill: #e8824b } .po-urpes { stroke: #e8824b; stroke-width: 1.6; stroke-linecap: round } .po-branca { fill: #241e26 }
+.po-cos { transform-box: fill-box; transform-origin: 50% 100%; transition: rotate .35s var(--ease) }
+.pn-mussol:hover .po-cos, .pn-mussol.parla .po-cos { rotate: -8deg }
 .pn-mussol:hover .po-ull, .pn-mussol.parla .po-ull { fill: #ffd36e }
+.pn-bandera { position: absolute; left: 74.05%; bottom: calc(100% - 35.6%); width: 2px; height: 5%; min-height: 18px; background: var(--pn-text); transition: background-color var(--pn-durada) var(--ease) }
+.pn-bandera::after { content: ""; position: absolute; left: 2px; top: 0; width: 900%; min-width: 16px; aspect-ratio: 3 / 2; height: auto; background: var(--pn-bandera, var(--pn-corall)); clip-path: polygon(0 0, 100% 45%, 0 90%); transform-origin: 0 50% }
 
 /* La bafarada */
 html[data-marca="cims"] .pn-diu { position: absolute; z-index: 3; margin: 0; width: max-content; max-width: min(300px, calc(100vw - 32px)); padding: 12px 16px; border-radius: var(--radi-caixa, 16px);
@@ -358,7 +376,9 @@ html[data-marca="cims"] .pn-diu.visible { opacity: 1 }
   .pn-ocells path:nth-child(2) { animation-delay: -.2s } .pn-ocells path:nth-child(3) { animation-delay: -.35s }
   .pn-estels i { animation: pn-pampalluga var(--t, 4s) ease-in-out var(--d, 0s) infinite }
   html[data-tema="fosc"] .pn-fugac { animation: pn-fugac 9s ease-in 3s infinite }
-  .pn-mussol .po-ull { transform-box: fill-box; transform-origin: center; animation: pn-parpelleja 5s steps(1) infinite }
+  .po-ulls, .pm-ulls { transform-box: fill-box; transform-origin: center; animation: pn-parpelleja 5s steps(1) infinite } .pm-ulls { animation-duration: 4.2s; animation-delay: -1.3s }
+  .pm-orelles { transform-box: fill-box; transform-origin: 50% 100%; animation: pn-orelles 6s ease-in-out infinite }
+  .pn-bandera::after { animation: pn-oneja 1.6s ease-in-out infinite }
   .portada-nit .pn-text > * { animation: pn-text .9s var(--ease) both }
   .portada-nit .pn-text > :nth-child(2) { animation-delay: .08s } .portada-nit .pn-text > :nth-child(3) { animation-delay: .16s } .portada-nit .pn-text > :nth-child(4) { animation-delay: .24s }
   @keyframes pn-puja { from { translate: 0 60px; opacity: 0 } }
@@ -371,10 +391,12 @@ html[data-marca="cims"] .pn-diu.visible { opacity: 1 }
   @keyframes pn-pampalluga { 50% { opacity: calc(var(--o) * .25) } }
   @keyframes pn-fugac { 0% { opacity: 0; translate: 0 0 } 2% { opacity: 1 } 9% { opacity: 0; translate: -420px 150px } 100% { opacity: 0; translate: -420px 150px } }
   @keyframes pn-parpelleja { 0%, 94% { scale: 1 1 } 95%, 98% { scale: 1 .1 } }
+  @keyframes pn-orelles { 0%, 88%, 100% { scale: 1 } 92% { scale: 1.12 .9 } }
+  @keyframes pn-oneja { 50% { transform: skewY(-8deg) scaleX(.86) } }
   @keyframes pn-text { from { translate: 0 16px; opacity: 0 } }
 }
 @media (prefers-reduced-motion: reduce) {
-  .portada-nit, .pn-cel::before, .pn-estels, .pn-carenes, .pn-astre, .pn-nuvol, .pn-ocells, .pn-mussol, .pn-marmota svg, .pn-diu { transition: none }
+  .portada-nit, .pn-cel::before, .pn-estels, .pn-carenes, .pn-astre, .pn-nuvol, .pn-ocells, .pn-mussol, .pm-cos, .po-cos, .pn-diu { transition: none }
 }
 
 /* Canvis de color entre blocs: en lloc d'un tall, un degradat llarg i suau (corba suavitzada, sense ratlla visible).
