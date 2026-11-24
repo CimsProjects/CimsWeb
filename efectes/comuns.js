@@ -5,6 +5,7 @@ import { iniciaNavegacio } from './navegacio.js';
 import { iniciaCursor, iniciaParallax } from './moviment.js';
 import { iniciaNom } from './nom.js';
 import { iniciaBarra } from './barra.js';
+import { iniciaPortada, iniciaTitol } from './portada.js';
 
 iniciaGustos();
 iniciaTema();
@@ -13,3 +14,5 @@ iniciaParallax();
 iniciaCursor();
 iniciaNom();
 iniciaBarra();
+iniciaPortada();
+iniciaTitol();

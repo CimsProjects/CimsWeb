@@ -232,46 +232,149 @@ html[data-marca="cims"] .peu p { font-size: var(--t-small); color: var(--c-muted
 html[data-marca="cims"] ::selection { background: var(--c-accent); color: var(--c-accent-ink) }
 html[data-marca="cims"] .banda ::selection { background: var(--c-band-accent); color: var(--c-band) }
 
-/* Portada «Nit al cim» (dibuix de Canva: carenes i sol corall). Sempre fosca, sigui quin sigui el tema; el cel és el
-   mateix color que el fons del dibuix (imatges/portada-nit.webp) perquè no es vegi on acaba. Va abans de la barra. */
-html[data-marca="cims"] { --pn-cel: #151c29; --pn-text: oklch(96% .008 80); --pn-suau: oklch(80% .014 265); --pn-corall: #e8624b }
+/* Portada «Fem cim.»: el dibuix de Canva (carenes planes) per capes, amb el logo de CIMS fent de sol (tema clar) o de
+   lluna (tema fosc), núvols i ocells de dia, estels i estels fugaços de nit, i una marmota (i, de nit, un mussol) amagats
+   que diuen coses en clicar-los (efectes/portada.js). Les carenes de dia són el mateix dibuix recolorit. Va abans de la barra. */
+html[data-marca="cims"] {
+  --pn-nit: #151c29; --pn-corall: #e8624b; --pn-durada: 1.4s;
+  --pn-text: #151c29; --pn-suau: #3b4560; --pn-terra: #3a4468; --pn-bt-text: #151c29;
+  --pn-nuvol: #fbf8f2; --pn-ocell: #2c3350; --pn-pell: #8b6b52; --pn-panxa: #d1b08e; --pn-orella: #6e523e; --pn-morro: #e6cfb4;
+}
+html[data-marca="cims"][data-tema="fosc"] {
+  --pn-text: oklch(96% .008 80); --pn-suau: oklch(80% .014 265); --pn-terra: #161d2c; --pn-bt-text: #151c29;
+  --pn-pell: #5d4c47; --pn-panxa: #84705f; --pn-orella: #463936; --pn-morro: #9c8877;
+}
 .portada-nit { --fosa: 240px; position: relative; overflow: hidden; display: grid; align-content: start;
-  min-height: calc(100svh + var(--fosa)); padding-block: clamp(72px, 14svh, 160px) var(--fosa); background: var(--pn-cel); color: var(--pn-text); isolation: isolate }
-.portada-nit .pn-text { position: relative; z-index: 1; width: 100% }
+  min-height: calc(100svh + var(--fosa)); padding-block: clamp(72px, 14svh, 160px) var(--fosa); background: var(--pn-nit); color: var(--pn-text); isolation: isolate;
+  transition: color var(--pn-durada) var(--ease) }
+.portada-nit .pn-text { position: relative; z-index: 2; width: 100%; pointer-events: none }
+.portada-nit .pn-text a, .portada-nit .pn-text button { pointer-events: auto }
 html[data-marca="cims"] .portada-nit h1 { font: 800 clamp(72px, 11vw, 176px)/.9 var(--f-display); letter-spacing: -.045em; margin: 0 0 var(--s-5); color: var(--pn-text) }
-.portada-nit h1 .cim { color: var(--pn-corall) }
+/* El títol: «Fem» fix i, a sota, la segona paraula, que va passant per les de CIMS remenant les lletres (efectes/portada.js).
+   La mida és la que fa cabre «Metodologia», la més llarga, perquè res no salti en canviar. */
+html[data-marca="cims"] .portada-nit h1 { font-size: clamp(30px, min(7.6vw, (100vw - 48px) / 6.4), 132px) }
+.pn-titol, .pn-fem, .pn-paraula { display: block }
+.pn-paraula { color: var(--pn-corall); white-space: nowrap; min-height: .9em }
+.pn-paraula .remena { opacity: .55 }
 html[data-marca="cims"] .portada-nit .pn-sigles { font: 700 clamp(17px, 1.7vw, 24px)/1.4 var(--f-display); letter-spacing: -.01em; color: var(--pn-suau); margin: 0 0 var(--s-5); max-width: none }
 .pn-sigles b { color: var(--pn-corall); font-weight: inherit }
 .pn-sigles .pn-punt { color: var(--pn-corall) }
 html[data-marca="cims"] .portada-nit .lede { color: var(--pn-suau); max-width: 34ch; margin: 0 0 var(--s-6) }
-html[data-marca="cims"] .portada-nit .bt { background: var(--pn-corall); border-color: var(--pn-corall); color: var(--pn-cel) }
+html[data-marca="cims"] .portada-nit .bt { background: var(--pn-corall); border-color: var(--pn-corall); color: var(--pn-bt-text) }
 html[data-marca="cims"] .portada-nit .bt.sec { background: transparent; color: var(--pn-text); border-color: var(--pn-text) }
 html[data-marca="cims"] .portada-nit .bt.sec:hover { color: var(--pn-corall); border-color: var(--pn-corall) }
-html[data-marca="cims"] .portada-nit ::selection { background: var(--pn-corall); color: var(--pn-cel) }
+html[data-marca="cims"] .portada-nit ::selection { background: var(--pn-corall); color: var(--pn-nit) }
 html[data-marca="cims"] .portada-nit :focus-visible { outline-color: var(--pn-corall) }
-/* El dibuix s'enganxa a baix (abans del degradat cap al paper) i ocupa tota l'amplada */
-.pn-dibuix { position: absolute; z-index: 0; left: 0; bottom: calc(var(--fosa) - 1px); width: 100%; height: auto; min-height: 46svh; object-fit: cover; object-position: 72% 100%; pointer-events: none; user-select: none;
-  -webkit-mask-image: linear-gradient(#000 78%, transparent); mask-image: linear-gradient(#000 78%, transparent) }
+
+/* El cel: de dia, un degradat de blau a la llum càlida de l'horitzó; de nit, el blau fosc pla del dibuix */
+.pn-cel { position: absolute; inset: 0 0 var(--fosa); z-index: 0; pointer-events: none; overflow: hidden;
+ }
+.pn-cel::before { content: ""; position: absolute; inset: 0; background: linear-gradient(#8fb4dc 0%, #bcd3ea 38%, #e9e6e0 72%, #f7dcc4 100%); transition: opacity var(--pn-durada) var(--ease) }
+html[data-tema="fosc"] .pn-cel::before { opacity: 0 }
+.pn-estels { position: absolute; inset: 0; opacity: 0; transition: opacity var(--pn-durada) var(--ease) }
+html[data-tema="fosc"] .pn-estels { opacity: 1 }
+.pn-estels i { position: absolute; left: var(--x); top: var(--y); width: var(--m); height: var(--m); border-radius: 50%; background: #f3ede2; opacity: var(--o) }
+.pn-fugac { position: absolute; left: 30%; top: 12%; width: 140px; height: 2px; border-radius: 2px; opacity: 0; rotate: 160deg;
+  background: linear-gradient(90deg, #f3ede2, transparent) }
+.pn-nuvol { position: absolute; display: block; height: 34px; border-radius: 34px; background: var(--pn-nuvol); opacity: .9; transition: opacity var(--pn-durada) var(--ease) }
+.pn-nuvol::before, .pn-nuvol::after { content: ""; position: absolute; bottom: 40%; border-radius: 50%; background: inherit }
+.pn-nuvol::before { left: 18%; width: 38%; aspect-ratio: 1 } .pn-nuvol::after { left: 46%; width: 30%; aspect-ratio: 1 }
+.pn-nuvol.n1 { width: 180px; left: 8%; top: 9% } .pn-nuvol.n2 { width: 120px; left: 58%; top: 18%; scale: .8 } .pn-nuvol.n3 { width: 220px; left: 34%; top: 30%; scale: .65; opacity: .7 }
+.pn-ocells { position: absolute; left: 62%; top: 26%; width: 90px; fill: none; stroke: var(--pn-ocell); stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; transition: opacity var(--pn-durada) var(--ease) }
+html[data-tema="fosc"] .pn-nuvol, html[data-tema="fosc"] .pn-ocells { opacity: 0 }
+
+/* L'escena s'enganxa a baix (abans del degradat cap al paper). Té la proporció del dibuix i, quan la pantalla és més
+   estreta, es retalla pels costats deixant el cim al 72 %. Per sota no s'hi veu res (el sol i la lluna s'hi amaguen). */
+.pn-escena { position: absolute; z-index: 1; bottom: calc(var(--fosa) - 1px); left: 72%; translate: -72% 0; width: max(100%, 46svh * 1920 / 680); aspect-ratio: 1920 / 680;
+  clip-path: inset(-100vh -100vw 0 -100vw); pointer-events: none }
+.pn-carenes { position: absolute; inset: 0; width: 100%; height: 100%; display: block; user-select: none; transition: opacity var(--pn-durada) var(--ease) }
+.pn-carenes.pn-nit { opacity: 0 }
+html[data-tema="fosc"] .pn-carenes.pn-nit { opacity: 1 }
 /* Del terra del dibuix al paper de la pàgina, amb el mateix degradat llarg que la resta de blocs */
-.portada-nit::after { content: ""; position: absolute; inset: auto 0 0; height: var(--fosa); background: linear-gradient(var(--pn-cel) 0%, color-mix(in oklab, var(--c-paper) 3%, var(--pn-cel)) 10%, color-mix(in oklab, var(--c-paper) 10%, var(--pn-cel)) 20%, color-mix(in oklab, var(--c-paper) 22%, var(--pn-cel)) 30%, color-mix(in oklab, var(--c-paper) 35%, var(--pn-cel)) 40%, color-mix(in oklab, var(--c-paper) 50%, var(--pn-cel)) 50%, color-mix(in oklab, var(--c-paper) 65%, var(--pn-cel)) 60%, color-mix(in oklab, var(--c-paper) 78%, var(--pn-cel)) 70%, color-mix(in oklab, var(--c-paper) 90%, var(--pn-cel)) 80%, color-mix(in oklab, var(--c-paper) 97%, var(--pn-cel)) 90%, var(--c-paper) 100%); pointer-events: none; z-index: 0 }
+.portada-nit::after { content: ""; position: absolute; inset: auto 0 0; height: var(--fosa); background: linear-gradient(var(--pn-terra) 0%, color-mix(in oklab, var(--c-paper) 3%, var(--pn-terra)) 10%, color-mix(in oklab, var(--c-paper) 10%, var(--pn-terra)) 20%, color-mix(in oklab, var(--c-paper) 22%, var(--pn-terra)) 30%, color-mix(in oklab, var(--c-paper) 35%, var(--pn-terra)) 40%, color-mix(in oklab, var(--c-paper) 50%, var(--pn-terra)) 50%, color-mix(in oklab, var(--c-paper) 65%, var(--pn-terra)) 60%, color-mix(in oklab, var(--c-paper) 78%, var(--pn-terra)) 70%, color-mix(in oklab, var(--c-paper) 90%, var(--pn-terra)) 80%, color-mix(in oklab, var(--c-paper) 97%, var(--pn-terra)) 90%, var(--c-paper) 100%); pointer-events: none; z-index: 0 }
+
+/* El sol i la lluna: el logo de CIMS dins d'un disc pla, darrere el cim gran (on hi havia el sol del dibuix) */
+.pn-astre { position: absolute; left: 64.27%; top: -10%; width: 23.75%; aspect-ratio: 1; border-radius: 50%;
+  transition: translate var(--pn-durada) var(--ease), opacity var(--pn-durada) var(--ease) }
+.pn-astre > svg { position: relative; display: block; width: 100%; height: 100%; overflow: visible }
+.pn-sol { box-shadow: 0 0 80px 10px rgb(255 170 110 / .55), 0 0 220px 60px rgb(255 200 150 / .35) }
+.pn-sol .pa-disc { fill: var(--pn-corall) } .pn-sol .pa-c { stroke: #fbf3e8 } .pn-sol .pa-a { fill: #ffc2ad; stroke: #ffc2ad } .pn-sol .pa-f { fill: #fbf3e8; stroke: var(--pn-corall) }
+.pn-raigs { position: absolute; inset: -38%; border-radius: 50%; pointer-events: none;
+  background: repeating-conic-gradient(rgb(255 236 210 / .5) 0 5deg, transparent 5deg 15deg);
+  -webkit-mask-image: radial-gradient(closest-side, #000 52%, transparent); mask-image: radial-gradient(closest-side, #000 52%, transparent) }
+.pn-lluna { box-shadow: 0 0 60px 6px rgb(243 237 226 / .22), 0 0 200px 50px rgb(160 175 220 / .12) }
+.pn-lluna .pa-disc { fill: #f1ebdf } .pn-lluna .pa-c { stroke: #1f2430 } .pn-lluna .pa-a { fill: #9aa3b5; stroke: #9aa3b5 } .pn-lluna .pa-f { fill: #ff6b57; stroke: #f1ebdf }
+/* Quin dels dos surt: l'altre baixa darrere les carenes */
+.pn-lluna, html[data-tema="fosc"] .pn-sol { translate: 0 175%; opacity: 0 }
+html[data-tema="fosc"] .pn-lluna { translate: 0 0; opacity: 1 }
+
+/* Els animals amagats: la marmota treu el cap per darrere una carena; de nit, uns ulls de mussol a la muntanya */
+.pn-animal { position: absolute; padding: 0; margin: 0; border: 0; background: none; cursor: pointer; pointer-events: auto; -webkit-tap-highlight-color: transparent }
+.pn-animal:focus-visible { outline: 3px solid var(--pn-corall); outline-offset: 4px; border-radius: 8px }
+.pn-marmota { left: 49.2%; bottom: 38.4%; width: 3.4%; min-width: 30px; aspect-ratio: 60 / 64; overflow: hidden; border-radius: 0 }
+.pn-marmota svg { display: block; width: 100%; height: 100%; translate: 0 62%; transition: translate .35s var(--ease) }
+.pn-marmota:hover svg, .pn-marmota:focus-visible svg { translate: 0 44% }
+.pn-marmota.parla svg { translate: 0 6% }
+.pm-pell { fill: var(--pn-pell) } .pm-panxa { fill: var(--pn-panxa) } .pm-orella { fill: var(--pn-orella) } .pm-morro { fill: var(--pn-morro) }
+.pm-ull { fill: #17181d } .pm-brill { fill: #fff } .pm-dents { fill: #fff }
+.pm-pell, .pm-panxa, .pm-orella, .pm-morro { transition: fill var(--pn-durada) var(--ease) }
+.pn-mussol { left: 14.6%; top: 80%; width: 2.6%; min-width: 30px; aspect-ratio: 40 / 16; visibility: hidden; opacity: 0; transition: opacity var(--pn-durada) var(--ease), visibility 0s var(--pn-durada) }
+html[data-tema="fosc"] .pn-mussol { visibility: visible; opacity: 1; transition: opacity var(--pn-durada) var(--ease) 1s, visibility 0s }
+.pn-mussol svg { display: block; width: 100%; height: 100% }
+.po-ull { fill: #f2b544 } .po-nina { fill: #10131c }
+.pn-mussol:hover .po-ull, .pn-mussol.parla .po-ull { fill: #ffd36e }
+
+/* La bafarada */
+html[data-marca="cims"] .pn-diu { position: absolute; z-index: 3; margin: 0; width: max-content; max-width: min(300px, calc(100vw - 32px)); padding: 12px 16px; border-radius: var(--radi-caixa, 16px);
+  background: #fbf8f2; color: #151c29; font: 600 16px/1.35 var(--f-body); box-shadow: 0 8px 24px rgb(0 0 0 / .25);
+  transform: translate(-50%, -100%); opacity: 0; pointer-events: none; transition: opacity .25s var(--ease) }
+.pn-diu::after { content: ""; position: absolute; left: var(--punta, 50%); bottom: -7px; width: 14px; height: 14px; margin-left: -7px; background: inherit; rotate: 45deg }
+html[data-marca="cims"] .pn-diu.visible { opacity: 1 }
+
 @media (max-width: 900px) {
   .portada-nit { --fosa: 160px; padding-top: clamp(56px, 10svh, 96px) }
+  html[data-marca="cims"] .portada-nit h1 { font-size: clamp(30px, (100vw - 48px) / 6.4, 96px) }
 }
-/* En vertical (mòbil), el text a dalt i el sol amb el cim a baix, retallats perquè el cim quedi al mig */
+/* En vertical (mòbil), el text a dalt i el dibuix més baix, retallat perquè el cim i el sol quedin a la vista */
 @media (max-aspect-ratio: 4/5) {
-  .pn-dibuix { min-height: 0; height: 33svh; object-position: 90% 100% }
+  .pn-escena { width: calc(33svh * 1920 / 680); left: 80%; translate: -80% 0 }
   /* Si el text no hi cap (mòbils baixos), la portada s'allarga i el sol queda sota els botons, mai al darrere */
-  .portada-nit { padding-bottom: calc(var(--fosa) + 33svh - 20px) }
+  .portada-nit { padding-bottom: calc(var(--fosa) + 37svh) }
   html[data-marca="cims"] .portada-nit .pn-sigles { font-size: 15px }
   .pn-sigles .pn-punt { display: none }
   .pn-sigles { display: grid; gap: 2px }
+  .pn-nuvol.n1 { left: auto; right: -40px; top: 6%; scale: .7 } .pn-nuvol.n2, .pn-ocells { display: none } .pn-nuvol.n3 { left: 55%; top: auto; bottom: 30%; scale: .5 }
 }
+
+/* El moviment: en entrar, les carenes pugen i el sol (o la lluna) surt de darrere el cim; després, els raigs giren,
+   els núvols i els ocells passen, els estels fan pampallugues i de tant en tant n'hi ha un de fugaç */
 @media (prefers-reduced-motion: no-preference) {
-  .pn-dibuix { animation: pn-surt 1.4s var(--ease) both }
+  .pn-carenes { animation: pn-puja 1.6s var(--ease) both }
+  .pn-sol .pn-raigs { animation: pn-gira 90s linear infinite }
+  html:not([data-tema="fosc"]) .pn-sol, html[data-tema="fosc"] .pn-lluna { animation: pn-surt 2.4s var(--ease) .3s both }
+  .pn-sol > svg, .pn-lluna > svg { animation: pn-respira 6s ease-in-out infinite }
+  .pn-nuvol.n1 { animation: pn-vent 70s linear infinite } .pn-nuvol.n2 { animation: pn-vent 95s linear -30s infinite } .pn-nuvol.n3 { animation: pn-vent 120s linear -60s infinite }
+  .pn-ocells { animation: pn-volen 38s linear infinite } .pn-ocells path { transform-box: fill-box; transform-origin: 50% 100%; animation: pn-ales .5s ease-in-out infinite alternate }
+  .pn-ocells path:nth-child(2) { animation-delay: -.2s } .pn-ocells path:nth-child(3) { animation-delay: -.35s }
+  .pn-estels i { animation: pn-pampalluga var(--t, 4s) ease-in-out var(--d, 0s) infinite }
+  html[data-tema="fosc"] .pn-fugac { animation: pn-fugac 9s ease-in 3s infinite }
+  .pn-mussol .po-ull { transform-box: fill-box; transform-origin: center; animation: pn-parpelleja 5s steps(1) infinite }
   .portada-nit .pn-text > * { animation: pn-text .9s var(--ease) both }
   .portada-nit .pn-text > :nth-child(2) { animation-delay: .08s } .portada-nit .pn-text > :nth-child(3) { animation-delay: .16s } .portada-nit .pn-text > :nth-child(4) { animation-delay: .24s }
-  @keyframes pn-surt { from { translate: 0 60px; opacity: 0 } }
+  @keyframes pn-puja { from { translate: 0 60px; opacity: 0 } }
+  @keyframes pn-surt { from { translate: 0 120%; opacity: 0 } 30% { opacity: 1 } }
+  @keyframes pn-gira { to { rotate: 360deg } }
+  @keyframes pn-respira { 50% { scale: 1.025 } }
+  @keyframes pn-vent { from { translate: -30vw 0 } to { translate: 110vw 0 } }
+  @keyframes pn-volen { from { translate: -70vw 20px } 50% { translate: 0 -10px } to { translate: 60vw 10px } }
+  @keyframes pn-ales { to { scale: 1 .45 } }
+  @keyframes pn-pampalluga { 50% { opacity: calc(var(--o) * .25) } }
+  @keyframes pn-fugac { 0% { opacity: 0; translate: 0 0 } 2% { opacity: 1 } 9% { opacity: 0; translate: -420px 150px } 100% { opacity: 0; translate: -420px 150px } }
+  @keyframes pn-parpelleja { 0%, 94% { scale: 1 1 } 95%, 98% { scale: 1 .1 } }
   @keyframes pn-text { from { translate: 0 16px; opacity: 0 } }
+}
+@media (prefers-reduced-motion: reduce) {
+  .portada-nit, .pn-cel::before, .pn-estels, .pn-carenes, .pn-astre, .pn-nuvol, .pn-ocells, .pn-mussol, .pn-marmota svg, .pn-diu { transition: none }
 }
 
 /* Canvis de color entre blocs: en lloc d'un tall, un degradat llarg i suau (corba suavitzada, sense ratlla visible).
@@ -321,8 +424,8 @@ html[data-marca="cims"][data-g-moviment="gens"] *, html[data-marca="cims"][data-
   animation: none !important; transition: none !important; scroll-behavior: auto !important }
 
 /* Portada: «anar al gra» la fa curta i sense el dibuix, perquè el contingut surti de seguida */
-html[data-marca="cims"][data-g-paisatge="no"] .portada-nit { min-height: 0; padding-top: var(--s-9) }
-html[data-marca="cims"][data-g-paisatge="no"] .pn-dibuix { display: none }
+html[data-marca="cims"][data-g-paisatge="no"] .portada-nit { min-height: 0; padding-top: var(--s-9); padding-bottom: var(--fosa) }
+html[data-marca="cims"][data-g-paisatge="no"] :is(.pn-escena, .pn-estels, .pn-fugac, .pn-nuvol, .pn-ocells) { display: none }
 
 /* El bloc del botó, abans del peu */
 .gustos { padding-block: var(--s-9); text-align: center }
