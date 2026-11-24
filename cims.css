@@ -315,8 +315,8 @@ html[data-tema="fosc"] .pn-carenes.pn-dia { opacity: 0 }
 .pn-lluna, html[data-tema="fosc"] .pn-sol { translate: 0 175%; opacity: 0 }
 html[data-tema="fosc"] .pn-lluna { translate: 0 0; opacity: 1 }
 
-/* Els animals amagats: la marmota treu el cap per darrere una roca; de nit, un mussol en una branca. A dalt del cim gran,
-   una banderola corall (fem cim!). */
+/* Els animals amagats: la marmota treu el cap per darrere una roca; de nit, un mussol en una branca. Ara no surten a la portada
+   (de moment, apartats). */
 html[data-marca="cims"] {
   --pn-roca: #6b7596; --pn-roca-ombra: #555e7d; --pn-roca-llum: #8a93b3; --pn-pell-ombra: #6e523e; --pn-rosa: #e8a39a; --pn-ungla: #4a3a30;
 }
